@@ -1,0 +1,4 @@
+../Application/Src/LineSensor.c:32:6:TurnOnInfraLEDs	32	static
+../Application/Src/LineSensor.c:52:6:TurnOffInfraLEDs	16	static
+../Application/Src/LineSensor.c:59:6:ReadADCValues	32	static
+../Application/Src/LineSensor.c:74:6:LineSensorTask	56	static

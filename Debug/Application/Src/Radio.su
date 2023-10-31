@@ -1,0 +1,2 @@
+../Application/Src/Radio.c:19:6:Radio_Init	8	static
+../Application/Src/Radio.c:25:6:HAL_UART_RxCpltCallback	32	static
