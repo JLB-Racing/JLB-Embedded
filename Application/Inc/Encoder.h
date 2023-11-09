@@ -8,10 +8,12 @@
 #ifndef INC_ENCODER_H_
 #define INC_ENCODER_H_
 
+#include "main.h"
+
 #define AB_PULSES_PER_ROT		1024.0f
 #define AB_ROT_PER_PULSE		1.0f/AB_PULSES_PER_ROT
 #define ENCODER_TASK_TIMESTEP	5u //[ms]
-#define GEAR_RATIO				1u
+#define GEAR_RATIO				0.27085f
 
 typedef struct{
 	int16_t velocity;

@@ -25,7 +25,6 @@ SUBDIRS := \
 Application/Src \
 Core/Src \
 Core/Startup \
-Drivers/BSP/Components/lsm6dsl \
 Drivers/STM32L5xx_HAL_Driver/Src \
 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 \
 Middlewares/Third_Party/FreeRTOS/Source \

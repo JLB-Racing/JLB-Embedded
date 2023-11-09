@@ -8,6 +8,9 @@
 #include "LineSensor.h"
 #include "main.h"
 
+//TODO: remove this after LED control has been tested
+#define LINE_SENSOR_LED_TEST
+
 LineSensorData_s ls_data = {0u};
 
 GPIO_TypeDef* front_adc_cs_ports[4] = {ADCF1_CS_GPIO_Port, ADCF2_CS_GPIO_Port, ADCF3_CS_GPIO_Port, ADCF4_CS_GPIO_Port};
@@ -21,6 +24,12 @@ uint16_t infra_le_pins[2] = {INFRA_LE_F_Pin, INFRA_LE_R_Pin};
 
 GPIO_TypeDef* infra_oe_ports[2] = {INFRA_OE_F_GPIO_Port, INFRA_OE_R_GPIO_Port};
 uint16_t infra_oe_pins[2] = {INFRA_OE_F_Pin, INFRA_OE_R_Pin};
+
+GPIO_TypeDef* led_le_ports[2] = {LED_LE_F_GPIO_Port, LED_LE_R_GPIO_Port};
+uint16_t led_le_pins[2] = {LED_LE_F_Pin, LED_LE_R_Pin};
+
+GPIO_TypeDef* led_oe_ports[2] = {LED_OE_F_GPIO_Port, LED_OE_R_GPIO_Port};
+uint16_t led_oe_pins[2] = {LED_OE_F_Pin, LED_OE_R_Pin};
 
 
 // SPI for reading out ADC values from the line sensors
@@ -42,12 +51,37 @@ void TurnOnInfraLEDs(GPIO_TypeDef* LE_port[2], uint16_t LE_pin[2],GPIO_TypeDef* 
 	//TODO: maybe add a delay to let the latch in
 	HAL_GPIO_WritePin(LE_port[0], LE_pin[0], GPIO_PIN_SET);
 	HAL_GPIO_WritePin(LE_port[1], LE_pin[1], GPIO_PIN_SET);
-	HAL_GPIO_WritePin(LE_port[1], LE_pin[0], GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(LE_port[0], LE_pin[0], GPIO_PIN_RESET);
 	HAL_GPIO_WritePin(LE_port[1], LE_pin[1], GPIO_PIN_RESET);
 	HAL_GPIO_WritePin(OE_port[0], OE_pin[0], GPIO_PIN_RESET);
 	HAL_GPIO_WritePin(OE_port[1], OE_pin[1], GPIO_PIN_RESET);
 
 }
+
+void TurnOnLEDs(GPIO_TypeDef *LE_port[2], uint16_t LE_pin[2], GPIO_TypeDef *OE_port[2], uint16_t OE_pin[2], uint32_t front, uint32_t rear)
+{
+	uint8_t i,j;
+	for (i = 0; i < 4; ++i)
+	{
+		uint8_t data_front = (front >> (8u*i)) & 0xFF;
+		HAL_SPI_Transmit(&hspi2, &data_front, 1, HAL_MAX_DELAY);
+	}
+	//TODO: maybe add a delay to let the latch in
+	HAL_GPIO_WritePin(LE_port[0], LE_pin[0], GPIO_PIN_SET);
+	HAL_GPIO_WritePin(LE_port[0], LE_pin[0], GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(OE_port[0], OE_pin[0], GPIO_PIN_RESET);
+	for (i = 0; i < 4; ++i)
+	{
+		uint8_t data_rear = (rear >> (8u*i)) & 0xFF;
+		HAL_SPI_Transmit(&hspi2, &data_rear, 1, HAL_MAX_DELAY);
+	}
+
+	//TODO: maybe add a delay to let the latch in
+	HAL_GPIO_WritePin(LE_port[1], LE_pin[1], GPIO_PIN_SET);
+	HAL_GPIO_WritePin(LE_port[1], LE_pin[1], GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(OE_port[1], OE_pin[1], GPIO_PIN_RESET);
+}
+
 
 void TurnOffInfraLEDs(GPIO_TypeDef* OE_port[2], uint16_t OE_pin[2])
 {
@@ -73,6 +107,15 @@ void ReadADCValues(GPIO_TypeDef* ports[4], uint16_t pins[4], uint8_t num, uint8_
 }
 void LineSensorTask(void)
 {
+#ifdef LINE_SENSOR_LED_TEST
+	static uint32_t leds = 1u;
+	TurnOnLEDs(led_le_ports, led_le_pins, led_oe_ports, led_oe_pins, leds, leds);
+	leds = leds << 1u;
+	if(leds == 0u)
+	{
+		leds = 1u;
+	}
+#else
 	uint8_t i,j = 0;
 	uint8_t temp_res_front[16] = {0u};
 	uint8_t temp_res_rear[16] = {0u};
@@ -92,5 +135,5 @@ void LineSensorTask(void)
 			ls_data.adc_values_r[i*8 + j + 4] = (temp_res_rear[4*j+2] << 8u) | (temp_res_rear[4*j + 3]);
 		}
 	}
-
+#endif
 }

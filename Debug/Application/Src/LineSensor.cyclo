@@ -1,4 +1,5 @@
-../Application/Src/LineSensor.c:32:6:TurnOnInfraLEDs	2
-../Application/Src/LineSensor.c:52:6:TurnOffInfraLEDs	1
-../Application/Src/LineSensor.c:59:6:ReadADCValues	2
-../Application/Src/LineSensor.c:74:6:LineSensorTask	3
+../Application/Src/LineSensor.c:41:6:TurnOnInfraLEDs	2
+../Application/Src/LineSensor.c:61:6:TurnOnLEDs	3
+../Application/Src/LineSensor.c:86:6:TurnOffInfraLEDs	1
+../Application/Src/LineSensor.c:93:6:ReadADCValues	2
+../Application/Src/LineSensor.c:108:6:LineSensorTask	2

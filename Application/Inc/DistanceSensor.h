@@ -17,8 +17,8 @@ typedef struct
 {
 	float voltage_long[2];
 	float voltage_short[2];
-	float_distance_long[2];
-	float_distance_short[2];
+	float distance_long[2];
+	float distance_short[2];
 
 	float distance;
 } DistanceSensorData_s;

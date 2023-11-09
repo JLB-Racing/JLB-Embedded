@@ -5,29 +5,44 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../Application/Src/ADC.c \
+../Application/Src/DistanceSensor.c \
+../Application/Src/Encoder.c \
 ../Application/Src/IMU.c \
 ../Application/Src/LineSensor.c \
-../Application/Src/Radio.c 
+../Application/Src/MotorControl.c \
+../Application/Src/Radio.c \
+../Application/Src/Servo.c 
 
 OBJS += \
+./Application/Src/ADC.o \
+./Application/Src/DistanceSensor.o \
+./Application/Src/Encoder.o \
 ./Application/Src/IMU.o \
 ./Application/Src/LineSensor.o \
-./Application/Src/Radio.o 
+./Application/Src/MotorControl.o \
+./Application/Src/Radio.o \
+./Application/Src/Servo.o 
 
 C_DEPS += \
+./Application/Src/ADC.d \
+./Application/Src/DistanceSensor.d \
+./Application/Src/Encoder.d \
 ./Application/Src/IMU.d \
 ./Application/Src/LineSensor.d \
-./Application/Src/Radio.d 
+./Application/Src/MotorControl.d \
+./Application/Src/Radio.d \
+./Application/Src/Servo.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
 Application/Src/%.o Application/Src/%.su Application/Src/%.cyclo: ../Application/Src/%.c Application/Src/subdir.mk
-	arm-none-eabi-gcc "$<" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_FULL_LL_DRIVER -DUSE_HAL_DRIVER -DSTM32L552xx -c -I../Core/Inc -I../Drivers/STM32L5xx_HAL_Driver/Inc -I../Drivers/STM32L5xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM33_NTZ/non_secure -I../Drivers/CMSIS/Device/ST/STM32L5xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc" -I../Drivers/BSP/Components/lsm6dsl -I../MEMS/Target -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
+	arm-none-eabi-gcc "$<" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_FULL_LL_DRIVER -DUSE_HAL_DRIVER -DSTM32L552xx -c -I../Core/Inc -I../Drivers/STM32L5xx_HAL_Driver/Inc -I../Drivers/STM32L5xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM33_NTZ/non_secure -I../Drivers/CMSIS/Device/ST/STM32L5xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
 
 clean: clean-Application-2f-Src
 
 clean-Application-2f-Src:
-	-$(RM) ./Application/Src/IMU.cyclo ./Application/Src/IMU.d ./Application/Src/IMU.o ./Application/Src/IMU.su ./Application/Src/LineSensor.cyclo ./Application/Src/LineSensor.d ./Application/Src/LineSensor.o ./Application/Src/LineSensor.su ./Application/Src/Radio.cyclo ./Application/Src/Radio.d ./Application/Src/Radio.o ./Application/Src/Radio.su
+	-$(RM) ./Application/Src/ADC.cyclo ./Application/Src/ADC.d ./Application/Src/ADC.o ./Application/Src/ADC.su ./Application/Src/DistanceSensor.cyclo ./Application/Src/DistanceSensor.d ./Application/Src/DistanceSensor.o ./Application/Src/DistanceSensor.su ./Application/Src/Encoder.cyclo ./Application/Src/Encoder.d ./Application/Src/Encoder.o ./Application/Src/Encoder.su ./Application/Src/IMU.cyclo ./Application/Src/IMU.d ./Application/Src/IMU.o ./Application/Src/IMU.su ./Application/Src/LineSensor.cyclo ./Application/Src/LineSensor.d ./Application/Src/LineSensor.o ./Application/Src/LineSensor.su ./Application/Src/MotorControl.cyclo ./Application/Src/MotorControl.d ./Application/Src/MotorControl.o ./Application/Src/MotorControl.su ./Application/Src/Radio.cyclo ./Application/Src/Radio.d ./Application/Src/Radio.o ./Application/Src/Radio.su ./Application/Src/Servo.cyclo ./Application/Src/Servo.d ./Application/Src/Servo.o ./Application/Src/Servo.su
 
 .PHONY: clean-Application-2f-Src
 

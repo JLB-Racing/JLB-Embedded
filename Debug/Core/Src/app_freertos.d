@@ -60,7 +60,8 @@ Core/Src/app_freertos.o: ../Core/Src/app_freertos.c \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_gpio.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_dma.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_dmamux.h \
- ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_exti.h
+ ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_exti.h \
+ C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/Encoder.h
 ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 ../Core/Inc/FreeRTOSConfig.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h:
@@ -124,3 +125,4 @@ Core/Src/app_freertos.o: ../Core/Src/app_freertos.c \
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_dma.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_dmamux.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_exti.h:
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/Encoder.h:

@@ -1,6 +1,7 @@
-Core/Src/stm32l5xx_nucleo_bus.o: ../Core/Src/stm32l5xx_nucleo_bus.c \
- ../Core/Inc/stm32l5xx_nucleo_bus.h ../Core/Inc/stm32l5xx_nucleo_conf.h \
- ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal.h \
+Application/Src/DistanceSensor.o: ../Application/Src/DistanceSensor.c \
+ C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/DistanceSensor.h \
+ C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/ADC.h \
+ ../Core/Inc/main.h ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal.h \
  ../Core/Inc/stm32l5xx_hal_conf.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_rcc.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_def.h \
@@ -42,9 +43,21 @@ Core/Src/stm32l5xx_nucleo_bus.o: ../Core/Src/stm32l5xx_nucleo_bus.c \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_tim_ex.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_uart.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_uart_ex.h \
- ../Core/Inc/stm32l5xx_nucleo_errno.h
-../Core/Inc/stm32l5xx_nucleo_bus.h:
-../Core/Inc/stm32l5xx_nucleo_conf.h:
+ ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_ucpd.h \
+ ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_bus.h \
+ ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_cortex.h \
+ ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_rcc.h \
+ ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_system.h \
+ ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_utils.h \
+ ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_pwr.h \
+ ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_gpio.h \
+ ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_dma.h \
+ ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_dmamux.h \
+ ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_exti.h \
+ C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/Encoder.h
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/DistanceSensor.h:
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/ADC.h:
+../Core/Inc/main.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal.h:
 ../Core/Inc/stm32l5xx_hal_conf.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_rcc.h:
@@ -87,4 +100,15 @@ Core/Src/stm32l5xx_nucleo_bus.o: ../Core/Src/stm32l5xx_nucleo_bus.c \
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_tim_ex.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_uart.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_uart_ex.h:
-../Core/Inc/stm32l5xx_nucleo_errno.h:
+../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_ucpd.h:
+../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_bus.h:
+../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_cortex.h:
+../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_rcc.h:
+../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_system.h:
+../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_utils.h:
+../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_pwr.h:
+../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_gpio.h:
+../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_dma.h:
+../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_dmamux.h:
+../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_exti.h:
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/Encoder.h:
