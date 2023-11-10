@@ -12,7 +12,8 @@ C_SRCS += \
 ../Application/Src/LineSensor.c \
 ../Application/Src/MotorControl.c \
 ../Application/Src/Radio.c \
-../Application/Src/Servo.c 
+../Application/Src/Servo.c \
+../Application/Src/Tasks.c 
 
 OBJS += \
 ./Application/Src/ADC.o \
@@ -22,7 +23,8 @@ OBJS += \
 ./Application/Src/LineSensor.o \
 ./Application/Src/MotorControl.o \
 ./Application/Src/Radio.o \
-./Application/Src/Servo.o 
+./Application/Src/Servo.o \
+./Application/Src/Tasks.o 
 
 C_DEPS += \
 ./Application/Src/ADC.d \
@@ -32,7 +34,8 @@ C_DEPS += \
 ./Application/Src/LineSensor.d \
 ./Application/Src/MotorControl.d \
 ./Application/Src/Radio.d \
-./Application/Src/Servo.d 
+./Application/Src/Servo.d \
+./Application/Src/Tasks.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -42,7 +45,7 @@ Application/Src/%.o Application/Src/%.su Application/Src/%.cyclo: ../Application
 clean: clean-Application-2f-Src
 
 clean-Application-2f-Src:
-	-$(RM) ./Application/Src/ADC.cyclo ./Application/Src/ADC.d ./Application/Src/ADC.o ./Application/Src/ADC.su ./Application/Src/DistanceSensor.cyclo ./Application/Src/DistanceSensor.d ./Application/Src/DistanceSensor.o ./Application/Src/DistanceSensor.su ./Application/Src/Encoder.cyclo ./Application/Src/Encoder.d ./Application/Src/Encoder.o ./Application/Src/Encoder.su ./Application/Src/IMU.cyclo ./Application/Src/IMU.d ./Application/Src/IMU.o ./Application/Src/IMU.su ./Application/Src/LineSensor.cyclo ./Application/Src/LineSensor.d ./Application/Src/LineSensor.o ./Application/Src/LineSensor.su ./Application/Src/MotorControl.cyclo ./Application/Src/MotorControl.d ./Application/Src/MotorControl.o ./Application/Src/MotorControl.su ./Application/Src/Radio.cyclo ./Application/Src/Radio.d ./Application/Src/Radio.o ./Application/Src/Radio.su ./Application/Src/Servo.cyclo ./Application/Src/Servo.d ./Application/Src/Servo.o ./Application/Src/Servo.su
+	-$(RM) ./Application/Src/ADC.cyclo ./Application/Src/ADC.d ./Application/Src/ADC.o ./Application/Src/ADC.su ./Application/Src/DistanceSensor.cyclo ./Application/Src/DistanceSensor.d ./Application/Src/DistanceSensor.o ./Application/Src/DistanceSensor.su ./Application/Src/Encoder.cyclo ./Application/Src/Encoder.d ./Application/Src/Encoder.o ./Application/Src/Encoder.su ./Application/Src/IMU.cyclo ./Application/Src/IMU.d ./Application/Src/IMU.o ./Application/Src/IMU.su ./Application/Src/LineSensor.cyclo ./Application/Src/LineSensor.d ./Application/Src/LineSensor.o ./Application/Src/LineSensor.su ./Application/Src/MotorControl.cyclo ./Application/Src/MotorControl.d ./Application/Src/MotorControl.o ./Application/Src/MotorControl.su ./Application/Src/Radio.cyclo ./Application/Src/Radio.d ./Application/Src/Radio.o ./Application/Src/Radio.su ./Application/Src/Servo.cyclo ./Application/Src/Servo.d ./Application/Src/Servo.o ./Application/Src/Servo.su ./Application/Src/Tasks.cyclo ./Application/Src/Tasks.d ./Application/Src/Tasks.o ./Application/Src/Tasks.su
 
 .PHONY: clean-Application-2f-Src
 
