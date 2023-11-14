@@ -70,12 +70,8 @@ const osThreadAttr_t defaultTask_attributes = {
   .stack_size = 128 * 4
 };
 /* USER CODE BEGIN PV */
-uint32_t adc_values_raw[8] = {0u};
+uint16_t adc_values_raw[8] = {0u};
 
-
-osThreadId_t adcTaskHandle;
-const osThreadAttr_t adcTask_attributes =
-{ .name = "ADCTask", .priority = (osPriority_t) osPriorityRealtime, .stack_size = 128 * 4 };
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -158,6 +154,10 @@ int main(void)
 	Radio_Init();
 	HAL_ADC_Start_DMA(&hadc1, adc_values_raw, 8u);
 	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
+
+	HAL_TIM_PWM_Start(&htim5, TIM_CHANNEL_1);
+	HAL_TIM_PWM_Start(&htim5, TIM_CHANNEL_4);
+
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -185,8 +185,7 @@ int main(void)
 
   /* USER CODE BEGIN RTOS_THREADS */
 	/* add threads, ... */
-  adcTaskHandle = osThreadNew(ADCTask, NULL, &adcTask_attributes);
-
+  RegistrateUserTasks();
   /* USER CODE END RTOS_THREADS */
 
   /* USER CODE BEGIN RTOS_EVENTS */
@@ -288,12 +287,12 @@ static void MX_ADC1_Init(void)
   /** Common config
   */
   hadc1.Instance = ADC1;
-  hadc1.Init.ClockPrescaler = ADC_CLOCK_ASYNC_DIV64;
+  hadc1.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV4;
   hadc1.Init.Resolution = ADC_RESOLUTION_12B;
   hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
   hadc1.Init.ScanConvMode = ADC_SCAN_ENABLE;
   hadc1.Init.EOCSelection = ADC_EOC_SEQ_CONV;
-  hadc1.Init.LowPowerAutoWait = DISABLE;
+  hadc1.Init.LowPowerAutoWait = ENABLE;
   hadc1.Init.ContinuousConvMode = DISABLE;
   hadc1.Init.NbrOfConversion = 8;
   hadc1.Init.DiscontinuousConvMode = DISABLE;
@@ -301,7 +300,11 @@ static void MX_ADC1_Init(void)
   hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
   hadc1.Init.DMAContinuousRequests = ENABLE;
   hadc1.Init.Overrun = ADC_OVR_DATA_OVERWRITTEN;
-  hadc1.Init.OversamplingMode = DISABLE;
+  hadc1.Init.OversamplingMode = ENABLE;
+  hadc1.Init.Oversampling.Ratio = ADC_OVERSAMPLING_RATIO_64;
+  hadc1.Init.Oversampling.RightBitShift = ADC_RIGHTBITSHIFT_6;
+  hadc1.Init.Oversampling.TriggeredMode = ADC_TRIGGEREDMODE_SINGLE_TRIGGER;
+  hadc1.Init.Oversampling.OversamplingStopReset = ADC_REGOVERSAMPLING_CONTINUED_MODE;
   if (HAL_ADC_Init(&hadc1) != HAL_OK)
   {
     Error_Handler();
@@ -319,7 +322,7 @@ static void MX_ADC1_Init(void)
   */
   sConfig.Channel = ADC_CHANNEL_1;
   sConfig.Rank = ADC_REGULAR_RANK_1;
-  sConfig.SamplingTime = ADC_SAMPLETIME_640CYCLES_5;
+  sConfig.SamplingTime = ADC_SAMPLETIME_6CYCLES_5;
   sConfig.SingleDiff = ADC_SINGLE_ENDED;
   sConfig.OffsetNumber = ADC_OFFSET_NONE;
   sConfig.Offset = 0;
@@ -809,9 +812,9 @@ static void MX_TIM1_Init(void)
 
   /* USER CODE END TIM1_Init 1 */
   htim1.Instance = TIM1;
-  htim1.Init.Prescaler = 110-1;
+  htim1.Init.Prescaler = 110;
   htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim1.Init.Period = 20000-1;
+  htim1.Init.Period = 5000;
   htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim1.Init.RepetitionCounter = 0;
   htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
@@ -955,7 +958,7 @@ static void MX_TIM5_Init(void)
 
   /* USER CODE END TIM5_Init 1 */
   htim5.Instance = TIM5;
-  htim5.Init.Prescaler = 11;
+  htim5.Init.Prescaler = 0;
   htim5.Init.CounterMode = TIM_COUNTERMODE_CENTERALIGNED1;
   htim5.Init.Period = 1834;
   htim5.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -1150,7 +1153,7 @@ static void MX_GPIO_Init(void)
   HAL_PWREx_EnableVddIO2();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOF, DRIVE_E_Pin|MCU_LED_Pin|MOT_BATT_L_Pin|LV_BATT_L_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOF, DRIVE_ENABLE_Pin|MCU_LED_Pin|MOT_BATT_L_Pin|LV_BATT_L_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, MAX_CS_Pin|UCPD_DBN_Pin|LED_BLUE_Pin, GPIO_PIN_RESET);
@@ -1170,12 +1173,12 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOG, LED_LE_R_Pin|INFRA_LE_R_Pin|LED_OE_R_Pin|INFRA_OE_R_Pin
                           |LED1_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pin : DRIVE_E_Pin */
-  GPIO_InitStruct.Pin = DRIVE_E_Pin;
+  /*Configure GPIO pin : DRIVE_ENABLE_Pin */
+  GPIO_InitStruct.Pin = DRIVE_ENABLE_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
-  HAL_GPIO_Init(DRIVE_E_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(DRIVE_ENABLE_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : MCU_FB_Pin REMOTE_GAS_Pin REMOTE_STEER_Pin */
   GPIO_InitStruct.Pin = MCU_FB_Pin|REMOTE_GAS_Pin|REMOTE_STEER_Pin;

@@ -65,8 +65,8 @@ all: main-build
 main-build: JLBRacing2024.elf secondary-outputs
 
 # Tool invocations
-JLBRacing2024.elf JLBRacing2024.map: $(OBJS) $(USER_OBJS) C:\Users\horgo\STM32CubeIDE\workspace_1.13.2\JLBRacing2024\STM32L552ZETXQ_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "JLBRacing2024.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m33 -T"C:\Users\horgo\STM32CubeIDE\workspace_1.13.2\JLBRacing2024\STM32L552ZETXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="JLBRacing2024.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+JLBRacing2024.elf JLBRacing2024.map: $(OBJS) $(USER_OBJS) C:\Users\Sparrow\Documents\JLB-Embedded\STM32L552ZETXQ_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "JLBRacing2024.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m33 -T"C:\Users\Sparrow\Documents\JLB-Embedded\STM32L552ZETXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="JLBRacing2024.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

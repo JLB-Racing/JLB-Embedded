@@ -7,9 +7,10 @@
 
 #include "ADC.h"
 #include "main.h"
+#include "cmsis_os.h"
 
-extern ADC_HandleTypeDef hadc1;
-extern uint32_t adc_values_raw[8];
+extern osThreadId_t mainTaskHandle;
+extern uint16_t adc_values_raw[8];
 analog_signals_s adc_values = {0u};
 uint8_t channel_idx = 0;
 
@@ -24,5 +25,5 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
 	adc_values.lv_batt_voltage_raw = adc_values_raw[6];
 	adc_values.distance_long2_raw = adc_values_raw[7];
 
-	//TODO: enable run in  analog signal dependent tasks
+	vTaskResume(mainTaskHandle);
 }

@@ -8,8 +8,6 @@
 #ifndef INC_MOTORCONTROL_H_
 #define INC_MOTORCONTROL_H_
 
-#include "main.h"
-#include "ADC.h"
 
 #define ANALOG_TO_MOTOR_BATT		5.7f
 #define MOTOR_CURR_NULL				1.66f

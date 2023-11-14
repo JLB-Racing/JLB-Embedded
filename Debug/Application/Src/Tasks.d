@@ -1,5 +1,5 @@
 Application/Src/Tasks.o: ../Application/Src/Tasks.c \
- C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/Tasks.h \
+ C:/Users/Sparrow/Documents/JLB-Embedded/Application/Inc/Tasks.h \
  ../Core/Inc/main.h ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal.h \
  ../Core/Inc/stm32l5xx_hal_conf.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_rcc.h \
@@ -63,8 +63,10 @@ Application/Src/Tasks.o: ../Application/Src/Tasks.c \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
- ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h
-C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/Tasks.h:
+ ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h \
+ C:/Users/Sparrow/Documents/JLB-Embedded/Application/Inc/Servo.h \
+ C:/Users/Sparrow/Documents/JLB-Embedded/Application/Inc/MotorControl.h
+C:/Users/Sparrow/Documents/JLB-Embedded/Application/Inc/Tasks.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal.h:
 ../Core/Inc/stm32l5xx_hal_conf.h:
@@ -130,3 +132,5 @@ C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/Tasks
 ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h:
+C:/Users/Sparrow/Documents/JLB-Embedded/Application/Inc/Servo.h:
+C:/Users/Sparrow/Documents/JLB-Embedded/Application/Inc/MotorControl.h:

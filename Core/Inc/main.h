@@ -78,8 +78,8 @@ void Delay_Ticks(uint32_t delay);
 #define ENC_CHB_GPIO_Port GPIOE
 #define USER_BUTTON_Pin GPIO_PIN_13
 #define USER_BUTTON_GPIO_Port GPIOC
-#define DRIVE_E_Pin GPIO_PIN_3
-#define DRIVE_E_GPIO_Port GPIOF
+#define DRIVE_ENABLE_Pin GPIO_PIN_3
+#define DRIVE_ENABLE_GPIO_Port GPIOF
 #define MCU_FB_Pin GPIO_PIN_5
 #define MCU_FB_GPIO_Port GPIOF
 #define MOTOR_PWM1_Pin GPIO_PIN_6
