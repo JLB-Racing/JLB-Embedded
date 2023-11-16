@@ -1,3 +1,5 @@
+"./Application/Inc/JLB/lib/can_matrix/butl/jlb-binutil.o"
+"./Application/Inc/JLB/lib/can_matrix/lib/jlb.o"
 "./Application/Src/ADC.o"
 "./Application/Src/DistanceSensor.o"
 "./Application/Src/Encoder.o"

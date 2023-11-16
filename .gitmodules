@@ -1,0 +1,9 @@
+[submodule "robonaut-logic"]
+	path = robonaut-logic
+	url = git@github.com:JLB-Racing/robonaut-logic.git
+[submodule "JLB"]
+	path = JLB
+	url = git@github.com:JLB-Racing/robonaut-logic.git
+[submodule "Application/Inc/JLB"]
+	path = Application/Inc/JLB
+	url = git@github.com:JLB-Racing/robonaut-logic.git

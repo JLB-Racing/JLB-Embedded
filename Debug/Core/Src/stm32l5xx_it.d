@@ -52,7 +52,6 @@ Core/Src/stm32l5xx_it.o: ../Core/Src/stm32l5xx_it.c ../Core/Inc/main.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_dma.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_dmamux.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_exti.h \
- C:/Users/Sparrow/Documents/JLB-Embedded/Application/Inc/Tasks.h \
  ../Core/Inc/stm32l5xx_it.h
 ../Core/Inc/main.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal.h:
@@ -108,5 +107,4 @@ Core/Src/stm32l5xx_it.o: ../Core/Src/stm32l5xx_it.c ../Core/Inc/main.h \
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_dma.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_dmamux.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_exti.h:
-C:/Users/Sparrow/Documents/JLB-Embedded/Application/Inc/Tasks.h:
 ../Core/Inc/stm32l5xx_it.h:

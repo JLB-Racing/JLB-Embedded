@@ -8,9 +8,11 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include "main.h"
+#include "Radio.h"
+
 
 extern UART_HandleTypeDef huart4;
-char radio_rxBuffer[12];
+uint8_t radio_rxBuffer[12];
 uint8_t countdown_value = 6;
 bool flood_active = false;
 uint8_t flood_counter = 0;
@@ -42,13 +44,13 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
     if(length == 6)
     {
     	//FLOOD message received
-    	if(!strcmp("FLOOD!\r", radio_rxBuffer))
+    	if(!strcmp("FLOOD!\r", reinterpret_cast<const char*>(radio_rxBuffer)))
     	{
     		flood_active = true;
     	}
     	else
     	{
-    		sscanf(radio_rxBuffer, "%c%c%c%03d", &pirate_from, &pirate_to, &pirate_next, &pirate_percentage);
+    		sscanf(reinterpret_cast<const char*>(radio_rxBuffer), "%c%c%c%03d", &pirate_from, &pirate_to, &pirate_next, &pirate_percentage);
     	}
     }
 

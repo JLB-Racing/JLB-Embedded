@@ -1,6 +1,6 @@
 Application/Src/DistanceSensor.o: ../Application/Src/DistanceSensor.c \
- C:/Users/Sparrow/Documents/JLB-Embedded/Application/Inc/DistanceSensor.h \
- C:/Users/Sparrow/Documents/JLB-Embedded/Application/Inc/ADC.h \
+ C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/DistanceSensor.h \
+ C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/ADC.h \
  ../Core/Inc/main.h ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal.h \
  ../Core/Inc/stm32l5xx_hal_conf.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_rcc.h \
@@ -53,10 +53,9 @@ Application/Src/DistanceSensor.o: ../Application/Src/DistanceSensor.c \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_gpio.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_dma.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_dmamux.h \
- ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_exti.h \
- C:/Users/Sparrow/Documents/JLB-Embedded/Application/Inc/Tasks.h
-C:/Users/Sparrow/Documents/JLB-Embedded/Application/Inc/DistanceSensor.h:
-C:/Users/Sparrow/Documents/JLB-Embedded/Application/Inc/ADC.h:
+ ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_exti.h
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/DistanceSensor.h:
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/ADC.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal.h:
 ../Core/Inc/stm32l5xx_hal_conf.h:
@@ -111,4 +110,3 @@ C:/Users/Sparrow/Documents/JLB-Embedded/Application/Inc/ADC.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_dma.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_dmamux.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_exti.h:
-C:/Users/Sparrow/Documents/JLB-Embedded/Application/Inc/Tasks.h:

@@ -40,42 +40,6 @@ C_SRCS += \
 ../Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_ll_usb.c \
 ../Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_ll_utils.c 
 
-OBJS += \
-./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal.o \
-./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_adc.o \
-./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_adc_ex.o \
-./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_cortex.o \
-./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_dma.o \
-./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_dma_ex.o \
-./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_exti.o \
-./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_flash.o \
-./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_flash_ex.o \
-./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_flash_ramfunc.o \
-./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_gpio.o \
-./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_i2c.o \
-./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_i2c_ex.o \
-./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_icache.o \
-./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_pcd.o \
-./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_pcd_ex.o \
-./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_pwr.o \
-./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_pwr_ex.o \
-./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_rcc.o \
-./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_rcc_ex.o \
-./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_rtc.o \
-./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_rtc_ex.o \
-./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_spi.o \
-./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_spi_ex.o \
-./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_tim.o \
-./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_tim_ex.o \
-./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_uart.o \
-./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_uart_ex.o \
-./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_ll_dma.o \
-./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_ll_exti.o \
-./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_ll_gpio.o \
-./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_ll_ucpd.o \
-./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_ll_usb.o \
-./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_ll_utils.o 
-
 C_DEPS += \
 ./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal.d \
 ./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_adc.d \
@@ -112,10 +76,46 @@ C_DEPS += \
 ./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_ll_usb.d \
 ./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_ll_utils.d 
 
+OBJS += \
+./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal.o \
+./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_adc.o \
+./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_adc_ex.o \
+./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_cortex.o \
+./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_dma.o \
+./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_dma_ex.o \
+./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_exti.o \
+./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_flash.o \
+./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_flash_ex.o \
+./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_flash_ramfunc.o \
+./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_gpio.o \
+./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_i2c.o \
+./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_i2c_ex.o \
+./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_icache.o \
+./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_pcd.o \
+./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_pcd_ex.o \
+./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_pwr.o \
+./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_pwr_ex.o \
+./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_rcc.o \
+./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_rcc_ex.o \
+./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_rtc.o \
+./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_rtc_ex.o \
+./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_spi.o \
+./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_spi_ex.o \
+./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_tim.o \
+./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_tim_ex.o \
+./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_uart.o \
+./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_hal_uart_ex.o \
+./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_ll_dma.o \
+./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_ll_exti.o \
+./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_ll_gpio.o \
+./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_ll_ucpd.o \
+./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_ll_usb.o \
+./Drivers/STM32L5xx_HAL_Driver/Src/stm32l5xx_ll_utils.o 
+
 
 # Each subdirectory must supply rules for building sources it contributes
 Drivers/STM32L5xx_HAL_Driver/Src/%.o Drivers/STM32L5xx_HAL_Driver/Src/%.su Drivers/STM32L5xx_HAL_Driver/Src/%.cyclo: ../Drivers/STM32L5xx_HAL_Driver/Src/%.c Drivers/STM32L5xx_HAL_Driver/Src/subdir.mk
-	arm-none-eabi-gcc "$<" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_FULL_LL_DRIVER -DUSE_HAL_DRIVER -DSTM32L552xx -c -I../Core/Inc -I../Drivers/STM32L5xx_HAL_Driver/Inc -I../Drivers/STM32L5xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM33_NTZ/non_secure -I../Drivers/CMSIS/Device/ST/STM32L5xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/Sparrow/Documents/JLB-Embedded/Application/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
+	arm-none-eabi-gcc "$<" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_FULL_LL_DRIVER -DUSE_HAL_DRIVER -DSTM32L552xx -c -I../Core/Inc -I../Drivers/STM32L5xx_HAL_Driver/Inc -I../Drivers/STM32L5xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM33_NTZ/non_secure -I../Drivers/CMSIS/Device/ST/STM32L5xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc" -I"C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/lib/can_matrix/conf" -I"C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/lib/can_matrix/butl" -I"C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/lib/can_matrix/lib" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
 
 clean: clean-Drivers-2f-STM32L5xx_HAL_Driver-2f-Src
 
