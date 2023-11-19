@@ -10,11 +10,15 @@
 
 #include "main.h"
 
+#define INFRA_WAIT_TIME			350 //[us]
 
 typedef struct
 {
 	uint16_t adc_values_f[32];
 	uint16_t adc_values_r[32];
+
+	float position_front;
+	float position_rear;
 }LineSensorData_s;
 
 void LineSensorTask(void);

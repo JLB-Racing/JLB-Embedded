@@ -157,6 +157,9 @@ int main(void)
 
 	HAL_TIM_PWM_Start(&htim5, TIM_CHANNEL_1);
 	HAL_TIM_PWM_Start(&htim5, TIM_CHANNEL_4);
+
+	HAL_TIM_Base_Start(&htim6);
+
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -693,7 +696,7 @@ static void MX_SPI1_Init(void)
   hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
   hspi1.Init.NSS = SPI_NSS_SOFT;
   hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_8;
-  hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
+  hspi1.Init.FirstBit = SPI_FIRSTBIT_LSB;
   hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
   hspi1.Init.CRCPolynomial = 7;
@@ -733,7 +736,7 @@ static void MX_SPI2_Init(void)
   hspi2.Init.CLKPhase = SPI_PHASE_1EDGE;
   hspi2.Init.NSS = SPI_NSS_SOFT;
   hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_16;
-  hspi2.Init.FirstBit = SPI_FIRSTBIT_MSB;
+  hspi2.Init.FirstBit = SPI_FIRSTBIT_LSB;
   hspi2.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi2.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
   hspi2.Init.CRCPolynomial = 7;
@@ -1160,7 +1163,7 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOD, ADCF1_CS_Pin|ADCF2_CS_Pin|ADCF3_CS_Pin|ADCF4_CS_Pin
                           |ADCR1_CS_Pin|ADCR2_CS_Pin|ADCR3_CS_Pin|ADCR4_CS_Pin
-                          |LED_LE_F_Pin|INFRA_LE_F_Pin|LED_OE_F_Pin|INFRA_OE_F_Pin, GPIO_PIN_RESET);
+                          |INFRA_LE_F_Pin|LED_LE_F_Pin|INFRA_OE_F_Pin|LED_OE_F_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, GPIO_PIN_RESET);
@@ -1169,7 +1172,7 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOG, LED_LE_R_Pin|INFRA_LE_R_Pin|LED_OE_R_Pin|INFRA_OE_R_Pin
+  HAL_GPIO_WritePin(GPIOG, INFRA_LE_R_Pin|LED_LE_R_Pin|INFRA_OE_R_Pin|LED_OE_R_Pin
                           |LED1_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : DRIVE_ENABLE_Pin */
@@ -1215,10 +1218,10 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pins : ADCF1_CS_Pin ADCF2_CS_Pin ADCF3_CS_Pin ADCF4_CS_Pin
                            ADCR1_CS_Pin ADCR2_CS_Pin ADCR3_CS_Pin ADCR4_CS_Pin
-                           LED_LE_F_Pin INFRA_LE_F_Pin LED_OE_F_Pin INFRA_OE_F_Pin */
+                           INFRA_LE_F_Pin LED_LE_F_Pin INFRA_OE_F_Pin LED_OE_F_Pin */
   GPIO_InitStruct.Pin = ADCF1_CS_Pin|ADCF2_CS_Pin|ADCF3_CS_Pin|ADCF4_CS_Pin
                           |ADCR1_CS_Pin|ADCR2_CS_Pin|ADCR3_CS_Pin|ADCR4_CS_Pin
-                          |LED_LE_F_Pin|INFRA_LE_F_Pin|LED_OE_F_Pin|INFRA_OE_F_Pin;
+                          |INFRA_LE_F_Pin|LED_LE_F_Pin|INFRA_OE_F_Pin|LED_OE_F_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -1244,9 +1247,9 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(LED_RED_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : LED_LE_R_Pin INFRA_LE_R_Pin LED_OE_R_Pin INFRA_OE_R_Pin
+  /*Configure GPIO pins : INFRA_LE_R_Pin LED_LE_R_Pin INFRA_OE_R_Pin LED_OE_R_Pin
                            LED1_Pin */
-  GPIO_InitStruct.Pin = LED_LE_R_Pin|INFRA_LE_R_Pin|LED_OE_R_Pin|INFRA_OE_R_Pin
+  GPIO_InitStruct.Pin = INFRA_LE_R_Pin|LED_LE_R_Pin|INFRA_OE_R_Pin|LED_OE_R_Pin
                           |LED1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
@@ -1274,6 +1277,8 @@ void StartDefaultTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
+	  HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
+	  vTaskDelay(100);
   }
   /* USER CODE END 5 */
 }

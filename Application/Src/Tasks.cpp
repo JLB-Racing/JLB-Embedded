@@ -5,13 +5,15 @@
  *      Author: horgo
  */
 
+#define TESTING
+
 #include "Tasks.h"
 #include "main.h"
 #include "cmsis_os.h"
 #include "Servo.h"
 #include "MotorControl.h"
 #include "JLB/logic.hxx"
-
+#include "LineSensor.h"
 
 extern uint32_t adc_values_raw[8];
 extern ADC_HandleTypeDef hadc1;
@@ -55,8 +57,9 @@ void MainTask(void * argument)
 	for (;;)
 	{
 #ifdef TESTING
-		SetSteeringAngle(5.0f);
-		/*if(pwm_servo_test > 19.0f)
+		LineSensorTask();
+		SetSteeringAngle(pwm_servo_test);
+		if(pwm_servo_test > 19.0f)
 		{
 			direction = 0u;
 		}
@@ -71,7 +74,7 @@ void MainTask(void * argument)
 		else
 		{
 			pwm_servo_test-= 0.1f;
-		}*/
+		}
 		MotorControlTask();
 #else
 		logic.odometry.imu_callback(0.0f);
@@ -92,7 +95,7 @@ void MainTask(void * argument)
 		logic.signal_sender.send_telemetry();
 
 #endif
-		//vTaskSuspend(static_cast<TaskHandle_t>(mainTaskHandle));
+		vTaskSuspend(static_cast<TaskHandle_t>(mainTaskHandle));
 		vTaskDelay(5);
 	}
 }
