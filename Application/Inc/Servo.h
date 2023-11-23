@@ -8,10 +8,10 @@
 #ifndef INC_SERVO_H_
 #define INC_SERVO_H_
 
-#define PWM_PERIOD			5000 //[us]
+#include "main.h"
 #define SERVO_NULL			1500.0f
-#define SERVO_RANGE			700.0f
-
+#define SERVO_RANGE			1500.0f
+#define SERVO_ANGLE_OFFSET	4.0f
 
 void SetSteeringAngle(float angle);
 

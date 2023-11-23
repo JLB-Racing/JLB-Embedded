@@ -1,4 +1,4 @@
-Application/Src/DistanceSensor.o: ../Application/Src/DistanceSensor.c \
+Application/Src/DistanceSensor.o: ../Application/Src/DistanceSensor.cpp \
  C:/RobonAUT/JLB-Embedded/Application/Inc/DistanceSensor.h \
  C:/RobonAUT/JLB-Embedded/Application/Inc/ADC.h ../Core/Inc/main.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal.h \

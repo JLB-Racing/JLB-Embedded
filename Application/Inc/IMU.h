@@ -12,12 +12,12 @@
 #define IMU_I2C_WRITE_ADDRESS 		0b11010110
 
 #define CTRL1_XL_ADDR				0x10
-#define CTRL2_G_ADDR				0x12
+#define CTRL2_G_ADDR				0x11
 #define WHO_AM_I_ADDR				0x0F
 #define STATUS_REG					0x1E
 
 #define AXL_SENSITIVITY				0.061f	//[mg/LSB]
-#define G_SENSITIVITY				8.75f	//[mdps/LSB]
+#define G_SENSITIVITY				3.81469f	//[mdps/LSB]
 
 #define OUTX_L_G					0x22
 #define OUTX_H_G					0x23

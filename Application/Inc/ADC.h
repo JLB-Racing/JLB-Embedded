@@ -10,6 +10,8 @@
 
 #include "main.h"
 
+#define LV_BATERY_VOLTAGE_DIVIDER		1.0f/0.248f
+
 typedef struct
 {
 	uint16_t motor_batt_voltage_raw;

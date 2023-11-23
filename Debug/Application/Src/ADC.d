@@ -1,4 +1,4 @@
-Application/Src/ADC.o: ../Application/Src/ADC.c \
+Application/Src/ADC.o: ../Application/Src/ADC.cpp \
  C:/RobonAUT/JLB-Embedded/Application/Inc/ADC.h ../Core/Inc/main.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal.h \
  ../Core/Inc/stm32l5xx_hal_conf.h \

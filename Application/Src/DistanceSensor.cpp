@@ -26,7 +26,7 @@ void DistanceSensorTask()
 	distance_sensor.voltage_short[0] = ((float)(adc_values.distance_short1_raw)) / 4096.0f * 3.3f;
 	distance_sensor.voltage_short[1] = ((float)(adc_values.distance_short2_raw)) / 4096.0f * 3.3f;
 
-	for(i = 0; i < 2; ++i)
+	for(i = 0; i < 1; ++i)
 	{
 		float x = distance_sensor.voltage_long[i];
 		distance_sensor.distance_long[i] = 0.0f;
@@ -39,18 +39,21 @@ void DistanceSensorTask()
 		x = distance_sensor.voltage_short[i];
 		for(j = 0; j < 6; ++j)
 		{
-			distance_sensor.distance_short[i] += pow(x,5-j) * long_poly_coeff[j];
+			distance_sensor.distance_short[i] += pow(x,5-j) * short_poly_coeff[j];
 		}
 	}
 
 	if((distance_sensor.distance_short[0] >= 20.0f) || (distance_sensor.distance_short[1] >= 20.0f))
 	{
-		distance_sensor.distance = (distance_sensor.distance_long[0] + distance_sensor.distance_long[1]) / 2.0f;
+		//distance_sensor.distance = (distance_sensor.distance_long[0] + distance_sensor.distance_long[1]) / 2.0f;
+		distance_sensor.distance = distance_sensor.distance_long[0];
 	}
 	else
 	{
-		distance_sensor.distance = (distance_sensor.distance_short[0] + distance_sensor.distance_short[1]) / 2.0f;
+		//distance_sensor.distance = (distance_sensor.distance_short[0] + distance_sensor.distance_short[1]) / 2.0f;
+		distance_sensor.distance = distance_sensor.distance_short[0];
 	}
 
-
+	distance_sensor.distance -= 7.0f;
+	distance_sensor.distance /= 100.0f;
 }

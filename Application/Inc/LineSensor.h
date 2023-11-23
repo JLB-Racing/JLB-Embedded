@@ -10,7 +10,7 @@
 
 #include "main.h"
 
-#define INFRA_WAIT_TIME			350 //[us]
+#define INFRA_WAIT_TIME			250 //[us]
 
 typedef struct
 {

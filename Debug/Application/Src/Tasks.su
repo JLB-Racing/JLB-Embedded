@@ -22,9 +22,9 @@ C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.external
 C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/logic.hxx:44:9:jlb::Graph::Graph()	3192	static
 C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/logic.hxx:170:15:jlb::Node& jlb::Graph::operator[](char)	16	static
 C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/logic.hxx:191:9:jlb::Logic::Logic(jlb::Direction, float, float, float)	32	static
-../Application/Src/Tasks.cpp:35:6:void RegistrateUserTasks()	8	static
-../Application/Src/Tasks.cpp:42:6:void ADCTask(void*)	24	static
-../Application/Src/Tasks.cpp:53:6:void MainTask(void*)	616	static
+../Application/Src/Tasks.cpp:52:6:void RegistrateUserTasks()	8	static
+../Application/Src/Tasks.cpp:60:6:void ADCTask(void*)	24	static
+../Application/Src/Tasks.cpp:71:6:void MainTask(void*)	624	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/stl_deque.h:437:7:std::_Deque_base<_Tp, _Alloc>::_Deque_base() [with _Tp = float; _Alloc = std::allocator<float>]	16	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/stl_vector.h:131:2:std::_Vector_base<_Tp, _Alloc>::_Vector_impl::_Vector_impl() [with _Tp = float; _Alloc = std::allocator<float>]	16	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/stl_algobase.h:611:5:constexpr _OI std::copy(_II, _II, _OI) [with _II = const char*; _OI = char*]	32	static

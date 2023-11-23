@@ -1,1 +1,1 @@
-../Application/Src/ADC.c:16:6:HAL_ADC_ConvCpltCallback	1
+../Application/Src/ADC.cpp:16:6:void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef*)	1

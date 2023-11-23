@@ -64,7 +64,8 @@ Core/Src/main.o: ../Core/Src/main.cpp ../Core/Inc/main.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h \
  C:/RobonAUT/JLB-Embedded/Application/Inc/Radio.h \
- C:/RobonAUT/JLB-Embedded/Application/Inc/Tasks.h
+ C:/RobonAUT/JLB-Embedded/Application/Inc/Tasks.h \
+ C:/RobonAUT/JLB-Embedded/Application/Inc/Encoder.h
 ../Core/Inc/main.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal.h:
 ../Core/Inc/stm32l5xx_hal_conf.h:
@@ -132,3 +133,4 @@ Core/Src/main.o: ../Core/Src/main.cpp ../Core/Inc/main.h \
 ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h:
 C:/RobonAUT/JLB-Embedded/Application/Inc/Radio.h:
 C:/RobonAUT/JLB-Embedded/Application/Inc/Tasks.h:
+C:/RobonAUT/JLB-Embedded/Application/Inc/Encoder.h:

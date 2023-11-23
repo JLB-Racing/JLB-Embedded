@@ -1,2 +1,2 @@
-../Application/Src/Encoder.c:14:6:update_encoder	24	static
-../Application/Src/Encoder.c:56:6:Encoder_Task	8	static
+../Application/Src/Encoder.cpp:14:6:void update_encoder(encoder_instance*, TIM_HandleTypeDef*)	24	static
+../Application/Src/Encoder.cpp:56:6:void Encoder_Task(void*)	32	static

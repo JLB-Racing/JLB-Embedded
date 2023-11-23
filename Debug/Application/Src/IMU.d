@@ -1,4 +1,4 @@
-Application/Src/IMU.o: ../Application/Src/IMU.c \
+Application/Src/IMU.o: ../Application/Src/IMU.cpp \
  C:/RobonAUT/JLB-Embedded/Application/Inc/IMU.h ../Core/Inc/main.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal.h \
  ../Core/Inc/stm32l5xx_hal_conf.h \

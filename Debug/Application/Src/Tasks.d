@@ -78,7 +78,11 @@ Application/Src/Tasks.o: ../Application/Src/Tasks.cpp \
  C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/lib/can_matrix/conf/dbccodeconf.h \
  C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/lib/can_matrix/lib/jlb.h \
  C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/lib/can_matrix/conf/jlb-config.h \
- C:/RobonAUT/JLB-Embedded/Application/Inc/LineSensor.h
+ C:/RobonAUT/JLB-Embedded/Application/Inc/LineSensor.h \
+ C:/RobonAUT/JLB-Embedded/Application/Inc/ADC.h \
+ C:/RobonAUT/JLB-Embedded/Application/Inc/IMU.h \
+ C:/RobonAUT/JLB-Embedded/Application/Inc/DistanceSensor.h \
+ C:/RobonAUT/JLB-Embedded/Application/Inc/Encoder.h
 C:/RobonAUT/JLB-Embedded/Application/Inc/Tasks.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal.h:
@@ -160,3 +164,7 @@ C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/lib/can_matrix/conf/dbccodeconf.h:
 C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/lib/can_matrix/lib/jlb.h:
 C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/lib/can_matrix/conf/jlb-config.h:
 C:/RobonAUT/JLB-Embedded/Application/Inc/LineSensor.h:
+C:/RobonAUT/JLB-Embedded/Application/Inc/ADC.h:
+C:/RobonAUT/JLB-Embedded/Application/Inc/IMU.h:
+C:/RobonAUT/JLB-Embedded/Application/Inc/DistanceSensor.h:
+C:/RobonAUT/JLB-Embedded/Application/Inc/Encoder.h:
