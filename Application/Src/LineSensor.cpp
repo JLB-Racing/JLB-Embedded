@@ -9,7 +9,7 @@
 #include "main.h"
 
 //TODO: remove this after LED control has been tested
-#define LINE_SENSOR_LED_TEST
+//#define LINE_SENSOR_LED_TEST
 
 LineSensorData_s ls_data = {0u};
 
@@ -98,16 +98,20 @@ void TurnOffInfraLEDs(GPIO_TypeDef* OE_port[2], uint16_t OE_pin[2])
 /* Reads out from all of the 4 adc ICs on one line sensor card 2 adc values each defined by num and writes it to res */
 void ReadADCValues(GPIO_TypeDef* ports[4], uint16_t pins[4], uint8_t num, uint8_t *res)
 {
-	uint8_t i, data;
+	uint8_t i;
+	uint8_t tmp[2] = {0, 0};
+
 	for(i = 0; i < 4; ++i)
 	{
-		data = num << 3u;
 		HAL_GPIO_WritePin(ports[i], pins[i], GPIO_PIN_RESET);
-		HAL_SPI_Transmit(&hspi1, &data, 1, HAL_MAX_DELAY);
+		uint32_t delay_start = __HAL_TIM_GetCounter(&htim6);
+		while((__HAL_TIM_GetCounter(&htim6) - delay_start) < INFRA_WAIT_TIME);
+		tmp[0] = num << 3u;
+		HAL_SPI_Transmit(&hspi1, tmp, 2, HAL_MAX_DELAY);
 		HAL_SPI_Receive(&hspi1, &res[i*4], 2, HAL_MAX_DELAY);
 
-		data = (4 + num) << 3u;
-		HAL_SPI_Transmit(&hspi1, &data, 1, HAL_MAX_DELAY);
+		tmp[0] = (4 + num) << 3u;
+		HAL_SPI_Transmit(&hspi1, tmp, 2, HAL_MAX_DELAY);
 		HAL_SPI_Receive(&hspi1, &res[i*4 + 2], 2, HAL_MAX_DELAY);
 		HAL_GPIO_WritePin(ports[i], pins[i], GPIO_PIN_SET);
 	}
@@ -126,80 +130,85 @@ void LineSensorTask(void)
 		leds_front = 1u;
 		leds_rear = 0x80000000;
 	}
-	//TurnOnLEDs(led_le_ports, led_le_pins, led_oe_ports, led_oe_pins, leds_front, leds_rear);
 
 	//infra led test
-	TurnOnLEDs(infra_le_ports, infra_le_pins, infra_oe_ports, infra_oe_pins, 0x00000000, 0x80000001);
-	//TurnOffInfraLEDs(infra_oe_ports, infra_oe_pins);
+	TurnOnLEDs(infra_le_ports, infra_le_pins, infra_oe_ports, infra_oe_pins, 0x00000000, 0xFFFFFFFF);
+	TurnOnLEDs(led_le_ports, led_le_pins, led_oe_ports, led_oe_pins, 0x00000000, 0xFFFFFFFF);
 	uint32_t delay_start = __HAL_TIM_GetCounter(&htim6);
 	while((__HAL_TIM_GetCounter(&htim6) - delay_start) < INFRA_WAIT_TIME);
-	uint8_t i,j;
-	uint8_t tmp[2] = {0, 7<<3u};
-	//uint8_t tmp2[2] = {0u};
-	/*for(i = 0; i < 4; ++i)
+	uint8_t i, j;
+	uint8_t tmp[2] = {0, 0};
+	for(i = 0; i < 4; ++i)
 	{
 		HAL_GPIO_WritePin(rear_adc_cs_ports[i], rear_adc_cs_pins[i], GPIO_PIN_RESET);
-		HAL_SPI_TransmitReceive(&hspi1, tmp, tmp2, 2, HAL_MAX_DELAY);
-		while((__HAL_TIM_GetCounter(&htim6) - delay_start) < INFRA_WAIT_TIME);
 		for(j = 0; j < 8; ++j)
 		{
 			tmp[0] = j << 3u;
-			HAL_SPI_TransmitReceive(&hspi1, tmp, &infra_adc_data[i*16 + j*2], 2, HAL_MAX_DELAY);
-			while((__HAL_TIM_GetCounter(&htim6) - delay_start) < INFRA_WAIT_TIME);
+			HAL_SPI_Transmit(&hspi1, tmp, 2, HAL_MAX_DELAY);
+			HAL_SPI_Receive(&hspi1, &infra_adc_data[i*8 + j*2], 2, HAL_MAX_DELAY);
+			infra_adc_values_test[i*8 + j] = (uint16_t)(infra_adc_data[i*8 + j*2] << 8u) | (infra_adc_data[i*8 + j*2 + 1]);
 
 		}
 		HAL_GPIO_WritePin(rear_adc_cs_ports[i], rear_adc_cs_pins[i], GPIO_PIN_SET);
-	}*/
-	for(i = 0; i < 32; ++i)
-	{
-		HAL_GPIO_WritePin(ADCR4_CS_GPIO_Port, ADCR4_CS_Pin, GPIO_PIN_RESET);
-		//HAL_SPI_TransmitReceive(&hspi1, tmp, &infra_adc_data[0], 2, HAL_MAX_DELAY);
-		HAL_SPI_TransmitReceive(&hspi1, tmp, &infra_adc_data[i*2], 1, HAL_MAX_DELAY);
-		HAL_GPIO_WritePin(ADCR4_CS_GPIO_Port, ADCR4_CS_Pin, GPIO_PIN_SET);
-		while((__HAL_TIM_GetCounter(&htim6) - delay_start) < INFRA_WAIT_TIME);
 	}
 
-
-	for(i = 0; i < 32; ++i)
-	{
-		infra_adc_values_test[i] = (uint16_t)(infra_adc_data[2*i] << 8u) | (infra_adc_data[2*i + 1]);
-	}
 
 #else
-	uint8_t i,j = 0;
-	uint8_t temp_res_front[16] = {0xFF};
-	uint8_t temp_res_rear[16] = {0xFF};
-	for(i = 0;i < 16; ++i)
-	{
-		temp_res_front[i] = 0xFF;
-		temp_res_rear[i] = 0xFF;
-	}
+	uint8_t j,k = 0;
+	int8_t i;
 	for(i = 0; i < 4; ++i)
 	{
 		TurnOnInfraLEDs(infra_le_ports, infra_le_pins, infra_oe_ports, infra_le_pins, i);
-		//TODO us delay
 		uint32_t delay_start = __HAL_TIM_GetCounter(&htim6);
 		while((__HAL_TIM_GetCounter(&htim6) - delay_start) < INFRA_WAIT_TIME);
-		ReadADCValues(front_adc_cs_ports, front_adc_cs_pins, i, temp_res_front);
-		ReadADCValues(rear_adc_cs_ports, rear_adc_cs_pins, i, temp_res_rear);
-		TurnOffInfraLEDs(infra_oe_ports, infra_le_pins);
-		for(j = 0; j < 4 ; ++j)
-		{
-			ls_data.adc_values_f[i*8 + j] = (temp_res_front[4*j] << 4u) | (temp_res_front[4*j + 1]);
-			ls_data.adc_values_f[i*8 + j + 4] = (temp_res_front[4*j+2] << 4u) | (temp_res_front[4*j + 3]);
 
-			ls_data.adc_values_r[i*8 + j] = (temp_res_rear[4*j] << 4u) | (temp_res_rear[4*j + 1]);
-			ls_data.adc_values_r[i*8 + j + 4] = (temp_res_rear[4*j+2] << 4u) | (temp_res_rear[4*j + 3]);
+		for(j = 0; j < 4; ++j)
+		{
+			uint8_t tmp[2] = {0, 0};
+			uint8_t adc_ic_values[16];
+			HAL_GPIO_WritePin(rear_adc_cs_ports[j], rear_adc_cs_pins[j], GPIO_PIN_RESET);
+			for(k = 0; k < 8; ++k)
+			{
+				tmp[0] = k << 3u;
+				HAL_SPI_Transmit(&hspi1, tmp, 2, HAL_MAX_DELAY);
+				HAL_SPI_Receive(&hspi1, &adc_ic_values[k*2], 2, HAL_MAX_DELAY);
+			}
+			HAL_GPIO_WritePin(rear_adc_cs_ports[j], rear_adc_cs_pins[j], GPIO_PIN_SET);
+
+			// i = id of LED, j = id of ic, adc_ic_values conotaint the 8 adc values from one ic
+			ls_data.adc_values_r[j*8 + i] = (uint16_t)(adc_ic_values[i*2] << 8u) | (adc_ic_values[i*2+1]);
+			ls_data.adc_values_r[j*8 + i + 4] = (uint16_t)(adc_ic_values[(i*2) + 8] << 8u) | (adc_ic_values[(i*2) + 8 + 1]);
+		}
+
+		TurnOffInfraLEDs(infra_oe_ports, infra_le_pins);
+	}
+	TurnOffInfraLEDs(led_oe_ports, led_oe_pins);
+
+	float denominator_f = 0.0f;
+	float denominator_r = 0.0f;
+	uint32_t led_front = 0u;
+	uint32_t led_rear = 0u;
+	for(i = 2; i <= 31; ++i)
+	{
+		ls_data.position_front += (float)((i - 16 + 0.5f) * ls_data.adc_values_f[i-1]);
+		ls_data.position_rear += (float)((i - 16 + 0.5f) * ls_data.adc_values_r[i-1]);
+		denominator_f += (float)(ls_data.adc_values_f[i-1]);
+		denominator_r += (float)(ls_data.adc_values_r[i-1]);
+		if(ls_data.adc_values_f[i-1] > 1400)
+		{
+			led_front |= 1 << (i-2);
+		}
+
+		if(ls_data.adc_values_r[i-1] > 1400)
+		{
+			led_rear |= 0x70000000 >> (i-2);
 		}
 	}
 
-	for(i = 1; i <= 32; ++i)
-	{
-		ls_data.position_front += (float)(i * ls_data.adc_values_f[i]);
-		ls_data.position_rear += (float)(i * ls_data.adc_values_r[i]);
-	}
-	ls_data.position_front /= 528.0f;
-	ls_data.position_rear /= 528.0f;
+	TurnOnLEDs(led_le_ports, led_le_pins, led_oe_ports, led_oe_pins, led_front, led_rear);
+
+	ls_data.position_front /= denominator_f;
+	ls_data.position_rear /= denominator_r;
 
 
 #endif
