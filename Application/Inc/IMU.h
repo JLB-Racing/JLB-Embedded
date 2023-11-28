@@ -41,7 +41,7 @@ typedef struct
 	float acc_y;	//[mg]
 	float acc_z;	//[mg]
 
-	float yaw;		//[dps]
+	float yaw;		//[rad/s]
 	float pitch;	//[dps]
 	float roll;		//[dps]
 } IMU_signals_s;

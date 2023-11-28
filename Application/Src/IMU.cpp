@@ -10,7 +10,7 @@
 
 extern I2C_HandleTypeDef hi2c1;
 uint8_t IMU_initialized = 0u;
-IMU_signals_s imu = {0};
+IMU_signals_s imu;
 
 uint8_t readByteFromIMU(uint8_t address)
 {
@@ -79,7 +79,7 @@ void IMU_Task()
 
 			tmp_low = readByteFromIMU(OUTZ_L_G);
 			tmp_high = readByteFromIMU(OUTZ_H_G);
-			imu.yaw = ((int16_t)((tmp_high << 8u)| tmp_low)) * G_SENSITIVITY / 1000.0f * 0.017453;
+			imu.yaw = ((int16_t)((tmp_high << 8u)| tmp_low)) * G_SENSITIVITY / 1000.0f * 0.017453f;
 
 			//tmp_low = readByteFromIMU(OUTX_L_G);
 			//tmp_high = readByteFromIMU(OUTX_H_G);

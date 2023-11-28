@@ -17,6 +17,9 @@ typedef struct
 	uint16_t adc_values_f[32];
 	uint16_t adc_values_r[32];
 
+	bool front_detection[32];
+	bool rear_detection[32];
+
 	float position_front;
 	float position_rear;
 }LineSensorData_s;

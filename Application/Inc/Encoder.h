@@ -22,5 +22,7 @@ typedef struct{
 }encoder_instance;
 
 void Encoder_Task(void * argument);
+float CalculateRPM();
+
 
 #endif /* INC_ENCODER_H_ */

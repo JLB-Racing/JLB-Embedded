@@ -5,7 +5,7 @@
  *      Author: horgo
  */
 
-#define TESTING
+//#define TESTING
 
 #include "Tasks.h"
 #include "main.h"
@@ -25,14 +25,15 @@ extern ADC_HandleTypeDef hadc1;
 extern MotorControData_s motorcontrol;
 extern analog_signals_s adc_values;
 extern encoder_instance enc_instance_mot;
-
+extern IMU_signals_s imu;
+extern LineSensorData_s ls_data;
 float motor_battery_voltage, lv_battery_voltage, motor_current;
+float wheel_rpm;
 
-float rpm_averaging_array[5];
-float averaged_rpm = 0.0f;
 
 #ifdef TESTING
 float pwm_servo_test = 0.0f;
+extern uint32_t usWidth_throttle;
 #endif
 osThreadId_t adcTaskHandle;
 const osThreadAttr_t adcTask_attributes =
@@ -40,7 +41,7 @@ const osThreadAttr_t adcTask_attributes =
 
 osThreadId_t mainTaskHandle;
 const osThreadAttr_t mainTask_attributes =
-{ .name = "MainTask", .stack_size = 1024 * 5, .priority = (osPriority_t) osPriorityRealtime1 };
+{ .name = "MainTask", .stack_size = 1024 * 6, .priority = (osPriority_t) osPriorityRealtime1 };
 
 
 osThreadId_t encoderTaskHandle;
@@ -71,9 +72,8 @@ void ADCTask(void *argument)
 void MainTask(void * argument)
 {
 	static uint8_t direction = 1u;
-	static uint8_t index = 0u;
-	uint8_t i;
 	jlb::Logic logic;
+	logic.controller.mission = jlb::Mission::FAST;
 	for (;;)
 	{
 		lv_battery_voltage = adc_values.lv_batt_voltage_raw / 4096.0f * 3.3f * LV_BATERY_VOLTAGE_DIVIDER * 1.04447;
@@ -81,21 +81,7 @@ void MainTask(void * argument)
 		MotorControlTask();
 		IMU_Task();
 		DistanceSensorTask();
-
-		rpm_averaging_array[index++] = enc_instance_mot.rpm;
-
-		if(index == 5)
-		{
-			index = 0;
-		}
-
-		averaged_rpm = 0.0f;
-		for(i = 0 ; i < 5; ++i)
-		{
-			averaged_rpm += rpm_averaging_array[i] / 5.0f;
-		}
-
-		averaged_rpm *= -1.36f;
+		wheel_rpm = CalculateRPM();
 
 #ifdef TESTING
 		SetSteeringAngle(0.0f);
@@ -115,21 +101,33 @@ void MainTask(void * argument)
 		{
 			pwm_servo_test-= 0.5f;
 		}
+
+		motorcontrol.actual_velocity = wheel_rpm;
+		motorcontrol.target_velocity = 400.0f;
+		if(motorcontrol.target_velocity < 0.0f)
+		{
+			motorcontrol.target_velocity = 0.0f;
+		}
 #else
-		logic.odometry.imu_callback(0.0f);
-		logic.odometry.rpm_callback(averaged_rpm);
 
-		bool kisfaszom[32] = {false};
-		std::vector<float> nagyfaszom;
+		logic.odometry.imu_callback(imu.yaw);
+		logic.odometry.rpm_callback(wheel_rpm);
 
-		logic.controller.set_detection_front(kisfaszom, nagyfaszom);
-		logic.controller.set_detection_rear(kisfaszom, nagyfaszom);
+		std::vector<float> front;
+		std::vector<float> rear;
+
+		front.push_back(ls_data.position_front);
+		rear.push_back(ls_data.position_rear);
+
+		logic.controller.set_detection_front(ls_data.front_detection, front);
+		logic.controller.set_detection_rear(ls_data.rear_detection, rear);
 
 		auto [target_angle, target_speed] = logic.update();
 		SetSteeringAngle(target_angle);
 		motorcontrol.actual_velocity = logic.odometry.vx_t;
 		motorcontrol.target_velocity = target_speed;
 		MotorControlTask();
+		SetSteeringAngle(target_angle * 180.0f / 3.14f);
 
 		logic.signal_sender.send_telemetry();
 

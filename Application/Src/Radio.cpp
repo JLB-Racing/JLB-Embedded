@@ -27,7 +27,6 @@ void Radio_Init()
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
 	uint8_t i, length;
-    HAL_UART_Receive_IT(&huart4, radio_rxBuffer, 12);
     // Check to see where is the termination character to determine what type of message is received
     for(i = 0; i < 12; ++i)
     {
@@ -63,5 +62,6 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
     {
     	flood_active = false;
     }
+    HAL_UART_Receive_IT(&huart4, radio_rxBuffer, 12);
 
 }

@@ -70,7 +70,9 @@ Application/Src/Tasks.o: ../Application/Src/Tasks.cpp \
  C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/odometry.hxx \
  C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/common.hxx \
  C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/controller.hxx \
+ C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/pid.hxx \
  C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/as_state.hxx \
+ C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/graph.hxx \
  C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/signals.hxx \
  C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/udp.hxx \
  C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/common.hxx \
@@ -155,7 +157,9 @@ C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/logic.hxx:
 C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/odometry.hxx:
 C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/common.hxx:
 C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/controller.hxx:
+C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/pid.hxx:
 C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/as_state.hxx:
+C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/graph.hxx:
 C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/signals.hxx:
 C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/udp.hxx:
 C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/common.hxx:
