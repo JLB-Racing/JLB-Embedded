@@ -200,28 +200,28 @@ void LineSensorTask(void)
 	ls_data.rear_detection[31] = true;
 	for(i = 1; i < 31; ++i)
 	{
-		ls_data.position_front += (float)((i - 15.5f/* - front_max_index*/) * ls_data.adc_values_f[i]);
-		ls_data.position_rear += (float)((i - 15.5f/* - rear_max_index*/) * ls_data.adc_values_r[i]);
+		ls_data.position_front += (float)((i - 16.0f/* - front_max_index*/) * ls_data.adc_values_f[i]);
+		ls_data.position_rear += (float)((i - 16.0f/* - rear_max_index*/) * ls_data.adc_values_r[i]);
 		denominator_f += (float)(ls_data.adc_values_f[i]);
 		denominator_r += (float)(ls_data.adc_values_r[i]);
-		if(ls_data.adc_values_f[i] > 1400)
+		if(ls_data.adc_values_f[i] > 2000)
 		{
-			led_front |= 0x70000000 >> (i-1);
+			led_front |= 0x80000000 >> (i);
 			ls_data.front_detection[i] = false;
 
 		}
 
-		if(ls_data.adc_values_r[i] > 1400)
+		if(ls_data.adc_values_r[i] > 2000)
 		{
-			led_rear |= 0x70000000 >> (i-1);
+			led_rear |= 0x80000000 >> (i);
 			ls_data.rear_detection[i] = false;
 		}
 	}
 
 	TurnOnLEDs(led_le_ports, led_le_pins, led_oe_ports, led_oe_pins, led_front, led_rear);
 
-	ls_data.position_front = ls_data.position_front * 2.5f / 100.0f / denominator_f;
-	ls_data.position_rear = -1.0f * ls_data.position_rear * 2.5f / 100.0f / denominator_r;
+	ls_data.position_front = -1.0f * ls_data.position_front * 2.5f / 100.0f / denominator_f;
+	ls_data.position_rear = ls_data.position_rear * 2.5f / 100.0f / denominator_r;
 
 
 #endif

@@ -25,7 +25,8 @@ uint8_t Is_First_Captured = 0;
 /* Angle in +90 to -90 degree */
 void SetSteeringAngle(float angle)
 {
-	uint16_t compare = SERVO_NULL + ((angle)/ 90.0f * SERVO_RANGE);
+	uint16_t compare = SERVO_NULL + (angle/ 21.5f * SERVO_RANGE);
+	//uint16_t compare = (uint16_t)(angle);
     __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, compare);
 }
 

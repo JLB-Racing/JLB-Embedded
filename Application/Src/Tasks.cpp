@@ -27,6 +27,7 @@ extern analog_signals_s adc_values;
 extern encoder_instance enc_instance_mot;
 extern IMU_signals_s imu;
 extern LineSensorData_s ls_data;
+extern DistanceSensorData_s distance_sensor;
 float motor_battery_voltage, lv_battery_voltage, motor_current;
 float wheel_rpm;
 
@@ -84,22 +85,22 @@ void MainTask(void * argument)
 		wheel_rpm = CalculateRPM();
 
 #ifdef TESTING
-		SetSteeringAngle(0.0f);
-		if(pwm_servo_test > 22.0f)
+		SetSteeringAngle(pwm_servo_test);
+		if(pwm_servo_test > 90.0f)
 		{
 			direction = 0u;
 		}
-		else if(pwm_servo_test < -22.0f)
+		else if(pwm_servo_test < -90.0f)
 		{
 			direction = 1u;
 		}
 		if(direction == 1u)
 		{
-			pwm_servo_test+= 0.5f;
+			pwm_servo_test+= 2.0f;
 		}
 		else
 		{
-			pwm_servo_test-= 0.5f;
+			pwm_servo_test-= 2.0f;
 		}
 
 		motorcontrol.actual_velocity = wheel_rpm;
@@ -119,15 +120,17 @@ void MainTask(void * argument)
 		front.push_back(ls_data.position_front);
 		rear.push_back(ls_data.position_rear);
 
-		logic.controller.set_detection_front(ls_data.front_detection, front);
+		std::reverse(std::begin(ls_data.front_detection), std::end(ls_data.front_detection));
+		//std::reverse(std::begin(ls_data.rear_detection), std::end(ls_data.rear_detection));
+		logic.controller.set_detection_front( ls_data.front_detection, front);
 		logic.controller.set_detection_rear(ls_data.rear_detection, rear);
-
+		logic.controller.set_object_range(distance_sensor.distance);
 		auto [target_angle, target_speed] = logic.update();
 		SetSteeringAngle(target_angle);
 		motorcontrol.actual_velocity = logic.odometry.vx_t;
 		motorcontrol.target_velocity = target_speed;
 		MotorControlTask();
-		SetSteeringAngle(target_angle * 180.0f / 3.14f);
+		SetSteeringAngle(target_angle * -180.0f / 3.14f);
 
 		logic.signal_sender.send_telemetry();
 

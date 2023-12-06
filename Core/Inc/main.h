@@ -71,7 +71,7 @@ void Delay_Ticks(uint32_t delay);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define PWM_PERIOD 20000
+#define PWM_PERIOD 10000
 #define ENC_CH_A_Pin GPIO_PIN_3
 #define ENC_CH_A_GPIO_Port GPIOE
 #define ENC_CHB_Pin GPIO_PIN_4
