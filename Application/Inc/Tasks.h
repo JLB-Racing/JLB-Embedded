@@ -12,5 +12,5 @@ void RegistrateUserTasks();
 
 void ADCTask(void *argument);
 void MainTask(void * argument);
-
+void LoggerTask(void *argument);
 #endif /* INC_TASKS_H_ */

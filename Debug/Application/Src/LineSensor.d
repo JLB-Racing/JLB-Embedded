@@ -52,7 +52,9 @@ Application/Src/LineSensor.o: ../Application/Src/LineSensor.cpp \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_gpio.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_dma.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_dmamux.h \
- ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_exti.h
+ ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_exti.h \
+ C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/common.hxx \
+ C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/types.hxx
 C:/RobonAUT/JLB-Embedded/Application/Inc/LineSensor.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal.h:
@@ -108,3 +110,5 @@ C:/RobonAUT/JLB-Embedded/Application/Inc/LineSensor.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_dma.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_dmamux.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_exti.h:
+C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/common.hxx:
+C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/types.hxx:

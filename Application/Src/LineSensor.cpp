@@ -7,10 +7,11 @@
 
 #include "LineSensor.h"
 #include "main.h"
-
+#include "JLB/common.hxx"
 //TODO: remove this after LED control has been tested
 //#define LINE_SENSOR_LED_TEST
 
+using namespace jlb;
 LineSensorData_s ls_data = {0u};
 
 GPIO_TypeDef* front_adc_cs_ports[4] = {ADCF1_CS_GPIO_Port, ADCF2_CS_GPIO_Port, ADCF3_CS_GPIO_Port, ADCF4_CS_GPIO_Port};
@@ -206,22 +207,105 @@ void LineSensorTask(void)
 		denominator_r += (float)(ls_data.adc_values_r[i]);
 		if(ls_data.adc_values_f[i] > 2000)
 		{
-			led_front |= 0x80000000 >> (i);
 			ls_data.front_detection[i] = false;
 
 		}
 
 		if(ls_data.adc_values_r[i] > 2000)
 		{
-			led_rear |= 0x80000000 >> (i);
 			ls_data.rear_detection[i] = false;
 		}
 	}
 
+	for(i = 2; i < SENSOR_COUNT - 2; ++i)
+	{
+		if((ls_data.front_detection[i - 1] == true) && (ls_data.front_detection[i + 1] == true))
+		{
+			ls_data.front_detection[i] = true;
+		}
+
+		if((ls_data.rear_detection[i - 1] == true) && (ls_data.rear_detection[i + 1] == true))
+		{
+			ls_data.rear_detection[i] = true;
+		}
+	}
+
+	for(i = 1; i < 31; ++i)
+	{
+		if(ls_data.front_detection[i] == false)
+		{
+			led_front |= 0x80000000 >> (i);
+		}
+		if(ls_data.rear_detection[i] == false)
+		{
+			led_rear |= 0x80000000 >> (i);
+		}
+	}
+	uint8_t cluster_start_front = SENSOR_COUNT + 1;
+	uint8_t cluster_end_front = SENSOR_COUNT + 1;
+	uint8_t cluster_start_rear = SENSOR_COUNT + 1;
+	uint8_t cluster_end_rear = SENSOR_COUNT + 1;
+	uint8_t current_idx;
+	ls_data.front.clear();
+	ls_data.rear.clear();
+	for (current_idx = 0; current_idx < SENSOR_COUNT; current_idx++)
+	{
+		if (!ls_data.front_detection[current_idx])
+		{
+			if (cluster_start_front == SENSOR_COUNT + 1)
+			{
+				cluster_start_front = current_idx;
+			}
+			cluster_end_front = current_idx;
+		}
+		else
+		{
+			if (cluster_start_front != SENSOR_COUNT + 1)
+			{
+				// calculate the center of mass of the cluster
+				float cluster_center = (cluster_start_front + 1 + cluster_end_front + 1) / 2.0f;
+				// calculate the position of the line relative to the center of the sensor
+				float line_position = cluster_center - 16.5f;
+				line_position = -1.0f * line_position * SENSOR_WIDTH / (SENSOR_COUNT - 1);
+				// add the line position to the vector
+				ls_data.front.push_back(line_position);
+				// reset the cluster start and end
+				cluster_start_front = SENSOR_COUNT + 1;
+				cluster_end_front = SENSOR_COUNT + 1;
+			}
+		}
+
+		if (!ls_data.rear_detection[current_idx])
+		{
+			if (cluster_start_rear == SENSOR_COUNT + 1)
+			{
+				cluster_start_rear = current_idx;
+			}
+			cluster_end_rear = current_idx;
+		}
+		else
+		{
+			if (cluster_start_rear != SENSOR_COUNT + 1)
+			{
+				// calculate the center of mass of the cluster
+				float cluster_center = (cluster_start_rear + 1 + cluster_end_rear + 1) / 2.0f;
+				// calculate the position of the line relative to the center of the sensor
+				float line_position = cluster_center - 16.5f;
+				line_position = line_position * SENSOR_WIDTH / (SENSOR_COUNT - 1);
+				// add the line position to the vector
+				ls_data.rear.push_back(line_position);
+				// reset the cluster start and end
+				cluster_start_rear = SENSOR_COUNT + 1;
+				cluster_end_rear = SENSOR_COUNT + 1;
+			}
+		}
+	}
+
+
 	TurnOnLEDs(led_le_ports, led_le_pins, led_oe_ports, led_oe_pins, led_front, led_rear);
 
-	ls_data.position_front = -1.0f * ls_data.position_front * 2.5f / 100.0f / denominator_f;
-	ls_data.position_rear = ls_data.position_rear * 2.5f / 100.0f / denominator_r;
+	//ls_data.position_front = -1.0f * ls_data.position_front * 2.5f / 100.0f / denominator_f;
+	//ls_data.position_rear = ls_data.position_rear * 2.5f / 100.0f / denominator_r;
 
 
 #endif

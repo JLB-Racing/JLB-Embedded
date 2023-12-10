@@ -9,6 +9,7 @@
 #define INC_LINESENSOR_H_
 
 #include "main.h"
+#include <vector>
 
 #define INFRA_WAIT_TIME			150 //[us]
 
@@ -22,6 +23,9 @@ typedef struct
 
 	float position_front;
 	float position_rear;
+
+	std::vector<float> front;
+	std::vector<float> rear;
 }LineSensorData_s;
 
 void LineSensorTask(void);

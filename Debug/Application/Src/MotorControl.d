@@ -53,7 +53,8 @@ Application/Src/MotorControl.o: ../Application/Src/MotorControl.cpp \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_dma.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_dmamux.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_exti.h \
- C:/RobonAUT/JLB-Embedded/Application/Inc/ADC.h
+ C:/RobonAUT/JLB-Embedded/Application/Inc/ADC.h \
+ C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/pid.hxx
 C:/RobonAUT/JLB-Embedded/Application/Inc/MotorControl.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal.h:
@@ -110,3 +111,4 @@ C:/RobonAUT/JLB-Embedded/Application/Inc/MotorControl.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_dmamux.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_exti.h:
 C:/RobonAUT/JLB-Embedded/Application/Inc/ADC.h:
+C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/pid.hxx:
