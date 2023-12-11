@@ -124,7 +124,6 @@ void MainTask(void * argument)
 		logic.set_detection_rear(ls_data.rear_detection, ls_data.rear);
 		logic.set_object_range(distance_sensor.distance);
 		auto [target_angle, target_speed] = logic.update();
-		SetSteeringAngle(target_angle);
 		auto [vx_t, x_t, y_t, theta_t] = logic.get_odometry();
 		motorcontrol.actual_velocity = vx_t;
 		motorcontrol.target_velocity = target_speed;

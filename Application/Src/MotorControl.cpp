@@ -34,6 +34,7 @@ void MotorControlTask()
 	else
 	{
 		HAL_GPIO_WritePin(DRIVE_ENABLE_GPIO_Port, DRIVE_ENABLE_Pin, GPIO_PIN_RESET);
+		motorcontrol.target_velocity = 0.0f;
 		pi_integral_error = 0.0f;
 	}
 	motorcontrol.battery_voltage = ((float)(adc_values.motor_batt_voltage_raw)) / 4096.0f * 3.3f * ANALOG_TO_MOTOR_BATT;
