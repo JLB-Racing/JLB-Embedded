@@ -52,7 +52,7 @@ Application/Src/Radio.o: ../Application/Src/Radio.cpp ../Core/Inc/main.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_dma.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_dmamux.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_exti.h \
- C:/RobonAUT/JLB-Embedded/Application/Inc/Radio.h
+ C:/Users/flieg/git/JLBracing_Robonaut/JLB-Embedded/Application/Inc/Radio.h
 ../Core/Inc/main.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal.h:
 ../Core/Inc/stm32l5xx_hal_conf.h:
@@ -107,4 +107,4 @@ Application/Src/Radio.o: ../Application/Src/Radio.cpp ../Core/Inc/main.h \
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_dma.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_dmamux.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_exti.h:
-C:/RobonAUT/JLB-Embedded/Application/Inc/Radio.h:
+C:/Users/flieg/git/JLBracing_Robonaut/JLB-Embedded/Application/Inc/Radio.h:

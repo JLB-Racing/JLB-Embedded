@@ -1,2 +1,2 @@
-../Application/Src/IMU.cpp:15:9:uint8_t readByteFromIMU(uint8_t)	1
-../Application/Src/IMU.cpp:24:6:void IMU_Task()	5
+IMU.cpp:15:9:uint8_t readByteFromIMU(uint8_t)	1
+IMU.cpp:24:6:void IMU_Task()	5

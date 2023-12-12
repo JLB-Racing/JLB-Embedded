@@ -1,6 +1,6 @@
 Application/Src/ADC.o: ../Application/Src/ADC.cpp \
- C:/RobonAUT/JLB-Embedded/Application/Inc/ADC.h ../Core/Inc/main.h \
- ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal.h \
+ C:/Users/flieg/git/JLBracing_Robonaut/JLB-Embedded/Application/Inc/ADC.h \
+ ../Core/Inc/main.h ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal.h \
  ../Core/Inc/stm32l5xx_hal_conf.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_rcc.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_def.h \
@@ -64,7 +64,7 @@ Application/Src/ADC.o: ../Application/Src/ADC.cpp \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h
-C:/RobonAUT/JLB-Embedded/Application/Inc/ADC.h:
+C:/Users/flieg/git/JLBracing_Robonaut/JLB-Embedded/Application/Inc/ADC.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal.h:
 ../Core/Inc/stm32l5xx_hal_conf.h:

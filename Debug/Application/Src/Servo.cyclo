@@ -1,2 +1,2 @@
-../Application/Src/Servo.cpp:23:6:void SetSteeringAngle(float)	3
-../Application/Src/Servo.cpp:38:6:void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef*)	3
+Servo.cpp:23:6:void SetSteeringAngle(float)	3
+Servo.cpp:38:6:void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef*)	3
