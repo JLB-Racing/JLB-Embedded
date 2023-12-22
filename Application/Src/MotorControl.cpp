@@ -11,22 +11,15 @@
 #include "JLB/pid.hxx"
 
 extern analog_signals_s adc_values;
-MotorControData_s motorcontrol = {0};
+extern MotorControData_s motorcontrol = {0};
 extern TIM_HandleTypeDef htim5;
 extern uint32_t usWidth_throttle;
-uint8_t first_run = 1u;
 float pi_integral_error = 0.0f;
 
-PID motorcontrol_pid;
+PID motorcontrol_pid{SPEED_CONTROLER_KP,SPEED_CONTROLLER_KI, SPEED_CONTROLLER_KD, SPEED_CONTROLLER_TAU, SPEED_CONTROLLER_T, SPEED_CONTROLLER_MIN, SPEED_CONTROLLER_MAX, SPEED_CONTROLLER_DEADBAND,SPEED_CONTROLLER_DERIVATIVE_FILTER_ALPHA};
 
 void MotorControlTask()
 {
-	if(first_run == 1u)
-	{
-		motorcontrol_pid.init(SPEED_CONTROLER_KP,SPEED_CONTROLLER_KI, SPEED_CONTROLLER_KD, SPEED_CONTROLLER_TAU, SPEED_CONTROLLER_T, SPEED_CONTROLLER_MIN, SPEED_CONTROLLER_MAX, SPEED_CONTROLLER_DEADBAND);
-		first_run = 0u;
-	}
-
 	if((usWidth_throttle > 1800) && (usWidth_throttle < 2800))
 	{
 		HAL_GPIO_WritePin(DRIVE_ENABLE_GPIO_Port, DRIVE_ENABLE_Pin, GPIO_PIN_SET);
@@ -55,6 +48,12 @@ void MotorControlTask()
 	if((motorcontrol.target_velocity == 0.0f) && (motorcontrol.actual_velocity < 1.0f) && (motorcontrol.actual_velocity >= -1.0f))
 	{
 		motorcontrol.duty_cycle = 0.5f;
+	}
+
+	if(motorcontrol.target_velocity >= motorcontrol.actual_velocity && motorcontrol.duty_cycle < 0.5f)
+	{
+		motorcontrol.duty_cycle = 0.5f;
+
 	}
 
 	//float duty_cycle = 0.6f;

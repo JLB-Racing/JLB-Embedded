@@ -56,6 +56,6 @@ C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.external
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/stl_algobase.h:313:5:constexpr _Iterator std::__niter_base(_Iterator) [with _Iterator = float*]	1
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\arm-none-eabi\include\c++\11.3.1\bits\stl_uninitialized.h:1006:5:std::__enable_if_t<std::__is_bitwise_relocatable<_Tp>::value, _Tp*> std::__relocate_a_1(_Tp*, _Tp*, _Tp*, std::allocator<_T2>&) [with _Tp = float; _Up = float]	2
 C:/RobonAUT/JLB-Embedded/Application/Inc/LineSensor.h:29:2:LineSensorData_s::~LineSensorData_s()	1
-../Application/Src/LineSensor.cpp:312:1:void __static_initialization_and_destruction_0(int, int)	5
-../Application/Src/LineSensor.cpp:312:1:cpp)	1
-../Application/Src/LineSensor.cpp:312:1:cpp)	1
+../Application/Src/LineSensor.cpp:330:1:void __static_initialization_and_destruction_0(int, int)	5
+../Application/Src/LineSensor.cpp:330:1:cpp)	1
+../Application/Src/LineSensor.cpp:330:1:cpp)	1

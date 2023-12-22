@@ -74,13 +74,15 @@ Application/Src/Tasks.o: ../Application/Src/Tasks.cpp \
  C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/pid.hxx \
  C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/graph.hxx \
  C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/odometry.hxx \
+ C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/measurements.hxx \
  C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/signals.hxx \
- C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/udp.hxx \
- C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/common.hxx \
  C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/lib/can_matrix/butl/jlb-binutil.h \
  C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/lib/can_matrix/conf/dbccodeconf.h \
  C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/lib/can_matrix/lib/jlb.h \
  C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/lib/can_matrix/conf/jlb-config.h \
+ C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/udp.hxx \
+ C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/common.hxx \
+ C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/measurements.hxx \
  C:/RobonAUT/JLB-Embedded/Application/Inc/LineSensor.h \
  C:/RobonAUT/JLB-Embedded/Application/Inc/ADC.h \
  C:/RobonAUT/JLB-Embedded/Application/Inc/IMU.h \
@@ -162,13 +164,15 @@ C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/controller.hxx:
 C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/pid.hxx:
 C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/graph.hxx:
 C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/odometry.hxx:
+C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/measurements.hxx:
 C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/signals.hxx:
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/udp.hxx:
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/common.hxx:
 C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/lib/can_matrix/butl/jlb-binutil.h:
 C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/lib/can_matrix/conf/dbccodeconf.h:
 C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/lib/can_matrix/lib/jlb.h:
 C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/lib/can_matrix/conf/jlb-config.h:
+C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/udp.hxx:
+C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/common.hxx:
+C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/measurements.hxx:
 C:/RobonAUT/JLB-Embedded/Application/Inc/LineSensor.h:
 C:/RobonAUT/JLB-Embedded/Application/Inc/ADC.h:
 C:/RobonAUT/JLB-Embedded/Application/Inc/IMU.h:

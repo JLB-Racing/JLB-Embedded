@@ -13,6 +13,7 @@
 #include "Servo.h"
 #include "MotorControl.h"
 #include "JLB/logic.hxx"
+#include "JLB/measurements.hxx"
 #include "LineSensor.h"
 #include "ADC.h"
 #include "IMU.h"
@@ -126,6 +127,12 @@ void MainTask(void * argument)
 		logic.set_detection_front( ls_data.front_detection, ls_data.front);
 		logic.set_detection_rear(ls_data.rear_detection, ls_data.rear);
 		logic.set_object_range(distance_sensor.distance);
+		Measurements meas;
+		meas.duty_cycle = motorcontrol.duty_cycle;
+		meas.motor_current = motorcontrol.motor_current;
+		meas.object_range = distance_sensor.distance;
+		meas.wheel_rpm = wheel_rpm;
+		logic.set_measurements(meas);
 		auto [target_angle, target_speed] = logic.update();
 		auto [vx_t, x_t, y_t, theta_t] = logic.get_odometry();
 		motorcontrol.actual_velocity = vx_t;
