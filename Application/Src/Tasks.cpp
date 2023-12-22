@@ -61,7 +61,7 @@ void RegistrateUserTasks()
 	adcTaskHandle = osThreadNew(ADCTask, NULL, &adcTask_attributes);
 	mainTaskHandle = osThreadNew(MainTask, NULL, &mainTask_attributes);
 	encoderTaskHandle = osThreadNew(Encoder_Task, NULL, &encoderTask_attributes);
-	loggerTaskHandle = osThreadNew(LoggerTask, NULL, &loggerTask_attributes);
+	//loggerTaskHandle = osThreadNew(LoggerTask, NULL, &loggerTask_attributes);
 
 }
 
@@ -78,6 +78,9 @@ void ADCTask(void *argument)
 
 void MainTask(void * argument)
 {
+	TickType_t xLastWakeTime;
+	xLastWakeTime = xTaskGetTickCount();
+
 	static uint8_t direction = 1u;
 	logic.set_states({jlb::FastState::OUT_ACCEL_ZONE});
 	for (;;)
@@ -132,7 +135,8 @@ void MainTask(void * argument)
 		logic.send_telemetry();
 
 #endif
-		vTaskSuspend(static_cast<TaskHandle_t>(mainTaskHandle));
+		//vTaskSuspend(static_cast<TaskHandle_t>(mainTaskHandle));
+		vTaskDelayUntil(&xLastWakeTime, 20u);
 	}
 }
 

@@ -24,5 +24,5 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
 	adc_values.lv_batt_voltage_raw = adc_values_raw[6];
 	adc_values.distance_long2_raw = adc_values_raw[7];
 
-	vTaskResume(static_cast<TaskHandle_t>(mainTaskHandle));
+	//vTaskResume(static_cast<TaskHandle_t>(mainTaskHandle));
 }
