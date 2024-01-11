@@ -93,7 +93,7 @@ void MainTask(void * argument)
 		wheel_rpm = CalculateRPM();
 
 #ifdef TESTING
-		SetSteeringAngle(pwm_servo_test);
+		SetSteeringAngle(0.0f);
 		if(pwm_servo_test > 90.0f)
 		{
 			direction = 0u;
@@ -127,17 +127,17 @@ void MainTask(void * argument)
 		logic.set_detection_front( ls_data.front_detection, ls_data.front);
 		logic.set_detection_rear(ls_data.rear_detection, ls_data.rear);
 		logic.set_object_range(distance_sensor.distance);
+		auto [target_angle, target_speed] = logic.update();
+		auto [vx_t, x_t, y_t, theta_t] = logic.get_odometry();
+		motorcontrol.actual_velocity = vx_t;
+		motorcontrol.target_velocity = target_speed;
+		MotorControlTask();
 		Measurements meas;
 		meas.duty_cycle = motorcontrol.duty_cycle;
 		meas.motor_current = motorcontrol.motor_current;
 		meas.object_range = distance_sensor.distance;
 		meas.wheel_rpm = wheel_rpm;
 		logic.set_measurements(meas);
-		auto [target_angle, target_speed] = logic.update();
-		auto [vx_t, x_t, y_t, theta_t] = logic.get_odometry();
-		motorcontrol.actual_velocity = vx_t;
-		motorcontrol.target_velocity = target_speed;
-		MotorControlTask();
 		SetSteeringAngle(target_angle * -180.0f / 3.14f);
 		logic.send_telemetry();
 
