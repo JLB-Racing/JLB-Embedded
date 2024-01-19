@@ -265,9 +265,9 @@ void LineSensorTask(void)
 				// calculate the center of mass of the cluster
 				float cluster_center = (cluster_start_front + 1 + cluster_end_front + 1) / 2.0f;
 				// calculate the position of the line relative to the center of the sensor
-				float line_position = cluster_center - 16.5f;
-				line_position = -1.0f * line_position * SENSOR_WIDTH / (SENSOR_COUNT - 1);
-				/*float line_position = 0.0f;
+				//float line_position = cluster_center - 16.5f;
+				//line_position = -1.0f * line_position * SENSOR_WIDTH / (SENSOR_COUNT - 1);
+				float line_position = 0.0f;
 				float denominator = 0.0f;
 				for(i = cluster_start_front + 1; i <= cluster_end_front + 1; ++i)
 				{
@@ -275,7 +275,7 @@ void LineSensorTask(void)
 					denominator += ls_data.adc_values_f[i];
 				}
 				line_position = -1.0f * (((line_position / denominator) - 16.5f) * SENSOR_WIDTH / (SENSOR_COUNT - 1));
-				*/
+
 				// add the line position to the vector
 				ls_data.front.push_back(line_position);
 				// reset the cluster start and end
@@ -299,10 +299,10 @@ void LineSensorTask(void)
 				// calculate the center of mass of the cluster
 				float cluster_center = (cluster_start_rear + 1 + cluster_end_rear + 1) / 2.0f;
 				// calculate the position of the line relative to the center of the sensor
-				float line_position = cluster_center - 16.5f;
-				line_position = line_position * SENSOR_WIDTH / (SENSOR_COUNT - 1);
+				//float line_position = cluster_center - 16.5f;
+				//line_position = line_position * SENSOR_WIDTH / (SENSOR_COUNT - 1);
 				// add the line position to the vector
-				/*float line_position = 0.0f;
+				float line_position = 0.0f;
 				float denominator = 0.0f;
 				for(i = cluster_start_rear + 1; i <= cluster_end_rear + 1; ++i)
 				{
@@ -310,7 +310,7 @@ void LineSensorTask(void)
 					denominator += ls_data.adc_values_r[i];
 				}
 				line_position = ((line_position / denominator) - 16.5f) * SENSOR_WIDTH / (SENSOR_COUNT - 1);
-				*/
+
 				ls_data.rear.push_back(line_position);
 				// reset the cluster start and end
 				cluster_start_rear = SENSOR_COUNT + 1;

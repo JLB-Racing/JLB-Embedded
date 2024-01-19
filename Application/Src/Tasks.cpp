@@ -19,7 +19,7 @@
 #include "IMU.h"
 #include "DistanceSensor.h"
 #include "Encoder.h"
-
+#include "Radio.h"
 
 extern uint32_t adc_values_raw[8];
 extern ADC_HandleTypeDef hadc1;
@@ -31,6 +31,10 @@ extern LineSensorData_s ls_data;
 extern DistanceSensorData_s distance_sensor;
 float motor_battery_voltage, lv_battery_voltage, motor_current;
 float wheel_rpm;
+
+extern bool flood_arrived;
+bool flood_active = false;
+uint8_t flood_counter = 40u;
 
 jlb::Logic logic;
 
@@ -62,7 +66,6 @@ void RegistrateUserTasks()
 	adcTaskHandle = osThreadNew(ADCTask, NULL, &adcTask_attributes);
 	mainTaskHandle = osThreadNew(MainTask, NULL, &mainTask_attributes);
 	encoderTaskHandle = osThreadNew(Encoder_Task, NULL, &encoderTask_attributes);
-	//loggerTaskHandle = osThreadNew(LoggerTask, NULL, &loggerTask_attributes);
 
 }
 
@@ -73,7 +76,7 @@ void ADCTask(void *argument)
 	for (;;)
 	{
 		HAL_ADC_Start_DMA(&hadc1, adc_values_raw, 8u);
-		vTaskDelayUntil(&xLastWakeTime, 5u);
+		vTaskDelayUntil(&xLastWakeTime, 20u);
 	}
 }
 
@@ -82,7 +85,6 @@ void MainTask(void * argument)
 	TickType_t xLastWakeTime;
 	xLastWakeTime = xTaskGetTickCount();
 
-	static uint8_t direction = 1u;
 	logic.set_states({jlb::FastState::OUT_ACCEL_ZONE});
 	for (;;)
 	{
@@ -92,69 +94,53 @@ void MainTask(void * argument)
 		DistanceSensorTask();
 		wheel_rpm = CalculateRPM();
 
-#ifdef TESTING
-		SetSteeringAngle(0.0f);
-		if(pwm_servo_test > 90.0f)
-		{
-			direction = 0u;
-		}
-		else if(pwm_servo_test < -90.0f)
-		{
-			direction = 1u;
-		}
-		if(direction == 1u)
-		{
-			pwm_servo_test+= 2.0f;
-		}
-		else
-		{
-			pwm_servo_test-= 2.0f;
-		}
-
-		motorcontrol.actual_velocity = wheel_rpm;
-		motorcontrol.target_velocity = 400.0f;
-		if(motorcontrol.target_velocity < 0.0f)
-		{
-			motorcontrol.target_velocity = 0.0f;
-		}
-#else
 
 		logic.imu_callback(imu.yaw);
 		logic.rpm_callback(wheel_rpm);
 
 		std::reverse(std::begin(ls_data.front_detection), std::end(ls_data.front_detection));
-		//std::reverse(std::begin(ls_data.rear_detection), std::end(ls_data.rear_detection));
 		logic.set_detection_front( ls_data.front_detection, ls_data.front);
 		logic.set_detection_rear(ls_data.rear_detection, ls_data.rear);
 		logic.set_object_range(distance_sensor.distance);
+
 		auto [target_angle, target_speed] = logic.update();
 		auto [vx_t, x_t, y_t, theta_t] = logic.get_odometry();
+
 		motorcontrol.actual_velocity = vx_t;
 		motorcontrol.target_velocity = target_speed;
 		MotorControlTask();
+
 		Measurements meas;
 		meas.duty_cycle = motorcontrol.duty_cycle;
 		meas.motor_current = motorcontrol.motor_current;
 		meas.object_range = distance_sensor.distance;
 		meas.wheel_rpm = wheel_rpm;
 		logic.set_measurements(meas);
+
 		SetSteeringAngle(target_angle * -180.0f / 3.14f);
+
 		logic.send_telemetry();
 
-#endif
+		// If flood message arrives reset counter and set flood to active
+		if((flood_arrived == true) && (flood_counter > 0))
+		{
+			flood_active = true;
+			flood_arrived = false;
+			flood_counter = 40u;
+		}
+		//If flood message was not sent decrement counter
+		else
+		{
+			flood_counter--;
+		}
+		//If decrement reaches zero flood is no longer active
+		if(flood_counter == 0)
+		{
+			flood_active = false;
+		}
+
 		//vTaskSuspend(static_cast<TaskHandle_t>(mainTaskHandle));
 		vTaskDelayUntil(&xLastWakeTime, 20u);
 	}
-}
-
-void LoggerTask(void *argument)
-{
-	TickType_t xLastWakeTime;
-	xLastWakeTime = xTaskGetTickCount();
-	for(;;)
-	{
-		vTaskDelayUntil(&xLastWakeTime, 50u);
-	}
-
 }
 
