@@ -9,14 +9,17 @@
 #include <stdio.h>
 #include "main.h"
 #include "Radio.h"
+#include "Tasks.h"
+
 
 extern UART_HandleTypeDef huart4;
 uint8_t radio_rxBuffer[12];
 uint8_t character_pointer = 0u;
 uint8_t countdown_value = 6u;
-bool flood_arived = false;
 char pirate_from, pirate_to, pirate_next;
 int pirate_percentage = 0;
+bool flood_arrived = false;
+
 
 void Radio_Init()
 {
@@ -26,7 +29,7 @@ void Radio_Init()
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
-	uint8_t length = cahracter_pointer;
+	uint8_t length = character_pointer;
 	if (radio_rxBuffer[character_pointer] == '\r')
 	{
 		// Labirinth countdown message received
@@ -39,7 +42,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 			//FLOOD message received
 			if (!strcmp("FLOOD!\r", reinterpret_cast<const char*>(radio_rxBuffer)))
 			{
-				flood_arived = true;
+				flood_arrived = true;
 			}
 			else
 			{

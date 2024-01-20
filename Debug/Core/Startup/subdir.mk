@@ -16,7 +16,7 @@ OBJS += \
 
 # Each subdirectory must supply rules for building sources it contributes
 Core/Startup/%.o: ../Core/Startup/%.s Core/Startup/subdir.mk
-	arm-none-eabi-gcc -mcpu=cortex-m33 -g3 -DDEBUG -c -I"C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc" -I"C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/lib/can_matrix/conf" -I"C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/lib/can_matrix/butl" -I"C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/lib/can_matrix/lib" -x assembler-with-cpp -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "$@" "$<"
+	arm-none-eabi-gcc -mcpu=cortex-m33 -g3 -DDEBUG -c -I"C:/RobonAUT/JLB-Embedded/Application/Inc" -I"C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/lib/can_matrix/conf" -I"C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/lib/can_matrix/butl" -I"C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/lib/can_matrix/lib" -x assembler-with-cpp -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "$@" "$<"
 
 clean: clean-Core-2f-Startup
 

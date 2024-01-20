@@ -26,13 +26,11 @@ void MotorControlTask()
 	{
 		HAL_GPIO_WritePin(DRIVE_ENABLE_GPIO_Port, DRIVE_ENABLE_Pin, GPIO_PIN_SET);
 	}
-	else
+	else if((motorcontrol.actual_velocity < 0.3f) && (motorcontrol.target_velocity < 0.3f))
 	{
 		HAL_GPIO_WritePin(DRIVE_ENABLE_GPIO_Port, DRIVE_ENABLE_Pin, GPIO_PIN_RESET);
-		motorcontrol.target_velocity = 0.0f;
-		pi_integral_error = 0.0f;
-		motorcontrol.duty_cycle = 0.5f;
 	}
+
 	motorcontrol.battery_voltage = ((float)(adc_values.motor_batt_voltage_raw)) / 4096.0f * 3.3f * ANALOG_TO_MOTOR_BATT;
 	motorcontrol.motor_current = (((float)((adc_values.motor_curr_raw)) / 4096.0f) * 3.3f - MOTOR_CURR_NULL) / MOTOR_CURR_SENSITIVITY;
 
@@ -44,6 +42,7 @@ void MotorControlTask()
 	motorcontrol.duty_cycle += 0.5f;
 	motorcontrol.duty_cycle = (motorcontrol.duty_cycle > 0.95f) ? 0.95f : motorcontrol.duty_cycle;
 	motorcontrol.duty_cycle = (motorcontrol.duty_cycle < 0.05f) ? 0.05f : motorcontrol.duty_cycle;
+	motorcontrol.duty_cycle = ((motorcontrol.duty_cycle > 0.47f) && (motorcontrol.duty_cycle < 0.53f)) ? 0.50f : motorcontrol.duty_cycle;
 
 /*
 	if((motorcontrol.target_velocity == 0.0f) && (motorcontrol.actual_velocity < 1.0f) && (motorcontrol.actual_velocity >= -1.0f))

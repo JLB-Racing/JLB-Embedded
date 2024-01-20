@@ -24,6 +24,7 @@
 extern uint32_t adc_values_raw[8];
 extern ADC_HandleTypeDef hadc1;
 extern MotorControData_s motorcontrol;
+extern PID motorcontrol_pid;
 extern analog_signals_s adc_values;
 extern encoder_instance enc_instance_mot;
 extern IMU_signals_s imu;
@@ -95,7 +96,9 @@ void MainTask(void * argument)
 		wheel_rpm = CalculateRPM();
 
 
-		logic.imu_callback(imu.yaw);
+		auto [derivative, integral, prev_error] = motorcontrol_pid.get_debug();
+
+		logic.imu_callback(lv_battery_voltage,motorcontrol.battery_voltage,imu.yaw,derivative, integral, prev_error);
 		logic.rpm_callback(wheel_rpm);
 
 		std::reverse(std::begin(ls_data.front_detection), std::end(ls_data.front_detection));
