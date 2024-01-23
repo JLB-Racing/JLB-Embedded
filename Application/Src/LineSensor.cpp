@@ -263,7 +263,7 @@ void LineSensorTask(void)
 			if (cluster_start_front != SENSOR_COUNT + 1)
 			{
 				// calculate the center of mass of the cluster
-				float cluster_center = (cluster_start_front + 1 + cluster_end_front + 1) / 2.0f;
+				//float cluster_center = (cluster_start_front + 1 + cluster_end_front + 1) / 2.0f;
 				// calculate the position of the line relative to the center of the sensor
 				//float line_position = cluster_center - 16.5f;
 				//line_position = -1.0f * line_position * SENSOR_WIDTH / (SENSOR_COUNT - 1);
@@ -297,7 +297,7 @@ void LineSensorTask(void)
 			if (cluster_start_rear != SENSOR_COUNT + 1)
 			{
 				// calculate the center of mass of the cluster
-				float cluster_center = (cluster_start_rear + 1 + cluster_end_rear + 1) / 2.0f;
+				//float cluster_center = (cluster_start_rear + 1 + cluster_end_rear + 1) / 2.0f;
 				// calculate the position of the line relative to the center of the sensor
 				//float line_position = cluster_center - 16.5f;
 				//line_position = line_position * SENSOR_WIDTH / (SENSOR_COUNT - 1);

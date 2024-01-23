@@ -33,6 +33,9 @@ extern DistanceSensorData_s distance_sensor;
 float motor_battery_voltage, lv_battery_voltage, motor_current;
 float wheel_rpm;
 
+uint32_t tick_counter_main, tick_counter_main_prev, tick_counter_before, tick_counter_after;
+float dt_main, dt_update, dt_odo;
+
 extern bool flood_arrived;
 bool flood_active = false;
 uint8_t flood_counter = 40u;
@@ -49,17 +52,24 @@ const osThreadAttr_t adcTask_attributes =
 
 osThreadId_t mainTaskHandle;
 const osThreadAttr_t mainTask_attributes =
-{ .name = "MainTask", .stack_size = 1024 * 6, .priority = (osPriority_t) osPriorityRealtime1 };
+{ .name = "MainTask", .stack_size = 1024 * 6, .priority = (osPriority_t) osPriorityRealtime7 };
 
 
 osThreadId_t encoderTaskHandle;
 const osThreadAttr_t encoderTask_attributes =
 { .name = "EncoderTask", .stack_size = 128 * 2, .priority = (osPriority_t) osPriorityRealtime2 };
 
-osThreadId_t loggerTaskHandle;
-const osThreadAttr_t loggerTask_attributes =
-{ .name = "LoggerTask", .stack_size = 128 * 5, .priority = (osPriority_t) osPriorityHigh };
+osThreadId_t IMUTaskHandle;
+const osThreadAttr_t IMUTask_attributes =
+{ .name = "IMUTask", .stack_size = 128 * 4, .priority = (osPriority_t) osPriorityRealtime3 };
 
+osThreadId_t LSTaskHandle;
+const osThreadAttr_t LSTask_attributes =
+{ .name = "LSTask", .stack_size = 128 * 4, .priority = (osPriority_t) osPriorityRealtime4 };
+
+osThreadId_t TelemetryTaskHandle;
+const osThreadAttr_t TelemetryTask_attributes =
+{ .name = "TelemetryTask", .stack_size = 128 * 4, .priority = (osPriority_t) osPriorityHigh };
 
 
 void RegistrateUserTasks()
@@ -67,6 +77,9 @@ void RegistrateUserTasks()
 	adcTaskHandle = osThreadNew(ADCTask, NULL, &adcTask_attributes);
 	mainTaskHandle = osThreadNew(MainTask, NULL, &mainTask_attributes);
 	encoderTaskHandle = osThreadNew(Encoder_Task, NULL, &encoderTask_attributes);
+	IMUTaskHandle = osThreadNew(IMUTask, NULL, &IMUTask_attributes);
+	LSTaskHandle = osThreadNew(LSTask, NULL, &LSTask_attributes);
+	TelemetryTaskHandle = osThreadNew(TelemetryTask, NULL, &TelemetryTask_attributes);
 
 }
 
@@ -81,6 +94,39 @@ void ADCTask(void *argument)
 	}
 }
 
+void IMUTask(void *argument)
+{
+	TickType_t xLastWakeTime;
+	xLastWakeTime = xTaskGetTickCount();
+	for (;;)
+	{
+		IMU_Task();
+		vTaskDelayUntil(&xLastWakeTime, 20u);
+	}
+}
+
+void LSTask(void *argument)
+{
+	TickType_t xLastWakeTime;
+	xLastWakeTime = xTaskGetTickCount();
+	for (;;)
+	{
+		LineSensorTask();
+		vTaskDelayUntil(&xLastWakeTime, 20u);
+	}
+}
+
+void TelemetryTask(void *argument)
+{
+	TickType_t xLastWakeTime;
+	xLastWakeTime = xTaskGetTickCount();
+	for (;;)
+	{
+		logic.send_telemetry();
+		vTaskDelayUntil(&xLastWakeTime, 20u);
+	}
+}
+
 void MainTask(void * argument)
 {
 	TickType_t xLastWakeTime;
@@ -90,11 +136,10 @@ void MainTask(void * argument)
 	for (;;)
 	{
 		lv_battery_voltage = adc_values.lv_batt_voltage_raw / 4096.0f * 3.3f * LV_BATERY_VOLTAGE_DIVIDER * 1.04447;
-		LineSensorTask();
-		IMU_Task();
+		//LineSensorTask();
+		//IMU_Task();
 		DistanceSensorTask();
 		wheel_rpm = CalculateRPM();
-
 
 		auto [derivative, integral, prev_error] = motorcontrol_pid.get_debug();
 
@@ -106,8 +151,15 @@ void MainTask(void * argument)
 		logic.set_detection_rear(ls_data.rear_detection, ls_data.rear);
 		logic.set_object_range(distance_sensor.distance);
 
+    	tick_counter_before = HAL_GetTick();
 		auto [target_angle, target_speed] = logic.update();
+    	tick_counter_after = HAL_GetTick();
+        dt_update = (((float)tick_counter_after) - ((float)(tick_counter_before)));
+
+    	tick_counter_before = HAL_GetTick();
 		auto [vx_t, x_t, y_t, theta_t] = logic.get_odometry();
+    	tick_counter_after = HAL_GetTick();
+        dt_odo = (((float)tick_counter_after) - ((float)(tick_counter_before)));
 
 		motorcontrol.actual_velocity = vx_t;
 		motorcontrol.target_velocity = target_speed;
@@ -122,7 +174,7 @@ void MainTask(void * argument)
 
 		SetSteeringAngle(target_angle * -180.0f / 3.14f);
 
-		logic.send_telemetry();
+		//logic.send_telemetry();
 
 		// If flood message arrives reset counter and set flood to active
 		if((flood_arrived == true) && (flood_counter > 0))
@@ -142,8 +194,10 @@ void MainTask(void * argument)
 			flood_active = false;
 		}
 
-		//vTaskSuspend(static_cast<TaskHandle_t>(mainTaskHandle));
-		vTaskDelayUntil(&xLastWakeTime, 20u);
+		tick_counter_main_prev = tick_counter_main;
+    	tick_counter_main = HAL_GetTick();
+        dt_main = (((float)tick_counter_main) - ((float)(tick_counter_main_prev)));
+		vTaskDelayUntil(&xLastWakeTime, 5u);
 	}
 }
 

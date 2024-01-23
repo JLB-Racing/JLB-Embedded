@@ -11,6 +11,9 @@
 void RegistrateUserTasks();
 
 void ADCTask(void *argument);
+void IMUTask(void *argument);
+void LSTask(void *argument);
+void TelemetryTask(void *argument);
 void MainTask(void * argument);
 void LoggerTask(void *argument);
 #endif /* INC_TASKS_H_ */
