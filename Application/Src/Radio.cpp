@@ -7,6 +7,8 @@
 #include <string.h>
 #include <stdbool.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "main.h"
 #include "Radio.h"
 #include "Tasks.h"
@@ -29,15 +31,16 @@ void Radio_Init()
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
-	uint8_t length = character_pointer;
-	if (radio_rxBuffer[character_pointer] == '\r')
+	uint8_t length = character_pointer - 1;
+	uint8_t i;
+	if (radio_rxBuffer[character_pointer - 1] == '\r')
 	{
 		// Labirinth countdown message received
 		if (length == 1)
 		{
-			countdown_value = radio_rxBuffer[0];
+			countdown_value = radio_rxBuffer[0] - '0';
 		}
-		if (length == 7)
+		if (length == 6)
 		{
 			//FLOOD message received
 			if (!strcmp("FLOOD!\r", reinterpret_cast<const char*>(radio_rxBuffer)))
@@ -47,15 +50,18 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 			else
 			{
 				sscanf(reinterpret_cast<const char*>(radio_rxBuffer), "%c%c%c%03d", &pirate_from, &pirate_to, &pirate_next, &pirate_percentage);
+				/*pirate_from = radio_rxBuffer[0];
+				pirate_to = radio_rxBuffer[1];
+				pirate_next = radio_rxBuffer[2];
+				pirate_percentage = (uint8_t)(radio_rxBuffer[3] - '0' + 1) * 100;
+				pirate_percentage += (uint8_t)(radio_rxBuffer[4] - '0' + 1) * 10;
+				pirate_percentage += (uint8_t)(radio_rxBuffer[5] - '0' + 1);*/
+
 			}
 		}
 
 		character_pointer = 0u;
 	}
-	else
-	{
-		character_pointer++;
-	}
-	HAL_UART_Receive_IT(&huart4, &radio_rxBuffer[character_pointer], 1);
+	HAL_UART_Receive_IT(&huart4, &radio_rxBuffer[character_pointer++], 1);
 
 }
