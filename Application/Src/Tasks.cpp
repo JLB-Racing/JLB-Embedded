@@ -69,7 +69,7 @@ const osThreadAttr_t LSTask_attributes =
 
 osThreadId_t TelemetryTaskHandle;
 const osThreadAttr_t TelemetryTask_attributes =
-{ .name = "TelemetryTask", .stack_size = 128 * 4, .priority = (osPriority_t) osPriorityHigh };
+{ .name = "TelemetryTask", .stack_size = 128 * 8, .priority = (osPriority_t) osPriorityHigh };
 
 
 void RegistrateUserTasks()
@@ -90,7 +90,7 @@ void ADCTask(void *argument)
 	for (;;)
 	{
 		HAL_ADC_Start_DMA(&hadc1, adc_values_raw, 8u);
-		vTaskDelayUntil(&xLastWakeTime, 20u);
+		vTaskDelayUntil(&xLastWakeTime, 10u);
 	}
 }
 
@@ -122,8 +122,8 @@ void TelemetryTask(void *argument)
 	xLastWakeTime = xTaskGetTickCount();
 	for (;;)
 	{
-		logic.send_telemetry();
-		vTaskDelayUntil(&xLastWakeTime, 20u);
+		//logic.send_telemetry();
+		vTaskDelayUntil(&xLastWakeTime, 40u);
 	}
 }
 
@@ -136,8 +136,6 @@ void MainTask(void * argument)
 	for (;;)
 	{
 		lv_battery_voltage = adc_values.lv_batt_voltage_raw / 4096.0f * 3.3f * LV_BATERY_VOLTAGE_DIVIDER * 1.04447;
-		//LineSensorTask();
-		//IMU_Task();
 		DistanceSensorTask();
 		wheel_rpm = CalculateRPM();
 
@@ -174,7 +172,6 @@ void MainTask(void * argument)
 
 		SetSteeringAngle(target_angle * -180.0f / 3.14f);
 
-		//logic.send_telemetry();
 
 		// If flood message arrives reset counter and set flood to active
 		if((flood_arrived == true) && (flood_counter > 0))
@@ -197,7 +194,7 @@ void MainTask(void * argument)
 		tick_counter_main_prev = tick_counter_main;
     	tick_counter_main = HAL_GetTick();
         dt_main = (((float)tick_counter_main) - ((float)(tick_counter_main_prev)));
-		vTaskDelayUntil(&xLastWakeTime, 5u);
+		vTaskDelayUntil(&xLastWakeTime, 10u);
 	}
 }
 

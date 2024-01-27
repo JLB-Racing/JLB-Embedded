@@ -42,7 +42,7 @@ void MotorControlTask()
 	motorcontrol.duty_cycle += 0.5f;
 	motorcontrol.duty_cycle = (motorcontrol.duty_cycle > 0.95f) ? 0.95f : motorcontrol.duty_cycle;
 	motorcontrol.duty_cycle = (motorcontrol.duty_cycle < 0.05f) ? 0.05f : motorcontrol.duty_cycle;
-	motorcontrol.duty_cycle = ((motorcontrol.duty_cycle > 0.47f) && (motorcontrol.duty_cycle < 0.53f)) ? 0.50f : motorcontrol.duty_cycle;
+	//motorcontrol.duty_cycle = ((motorcontrol.duty_cycle > 0.47f) && (motorcontrol.duty_cycle < 0.53f)) ? 0.50f : motorcontrol.duty_cycle;
 
 /*
 	if((motorcontrol.target_velocity == 0.0f) && (motorcontrol.actual_velocity < 1.0f) && (motorcontrol.actual_velocity >= -1.0f))
@@ -56,6 +56,7 @@ void MotorControlTask()
 
 	}
 */
+
     __HAL_TIM_SET_COMPARE(&htim5, TIM_CHANNEL_4, motorcontrol.duty_cycle * PWM_COUNTER_PREIOD);
     __HAL_TIM_SET_COMPARE(&htim5, TIM_CHANNEL_1, PWM_COUNTER_PREIOD - (motorcontrol.duty_cycle * PWM_COUNTER_PREIOD));
 

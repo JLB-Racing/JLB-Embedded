@@ -47,13 +47,15 @@ void DistanceSensorTask()
 	{
 		//distance_sensor.distance = (distance_sensor.distance_long[0] + distance_sensor.distance_long[1]) / 2.0f;
 		distance_sensor.distance = distance_sensor.distance_long[0];
+		distance_sensor.distance -= 5.0f;
 	}
 	else
 	{
-		//distance_sensor.distance = (distance_sensor.distance_short[0] + distance_sensor.distance_short[1]) / 2.0f;
-		distance_sensor.distance = distance_sensor.distance_short[0];
+		distance_sensor.distance = (distance_sensor.distance_short[0] + distance_sensor.distance_short[1]) / 2.0f;
+		distance_sensor.distance -= 8.0f;
+
+		//distance_sensor.distance = distance_sensor.distance_short[0];
 	}
 
-	distance_sensor.distance -= 7.0f;
 	distance_sensor.distance /= 100.0f;
 }

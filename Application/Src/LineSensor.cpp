@@ -51,7 +51,7 @@ void TurnOnInfraLEDs(GPIO_TypeDef* LE_port[2], uint16_t LE_pin[2],GPIO_TypeDef* 
 
 	for(i = 0; i < 4; ++i)
 	{
-		HAL_SPI_Transmit(&hspi2, &data, 1, HAL_MAX_DELAY);
+		HAL_SPI_Transmit(&hspi2, &data, 1, 100);
 	}
 	//TODO: maybe add a delay to let the latch in
 	HAL_GPIO_WritePin(LE_port[0], LE_pin[0], GPIO_PIN_SET);
@@ -71,7 +71,7 @@ void TurnOnLEDs(GPIO_TypeDef *LE_port[2], uint16_t LE_pin[2], GPIO_TypeDef *OE_p
 	for (i = 0; i < 4; ++i)
 	{
 		uint8_t data_front = (front >> (8u*i)) & 0xFF;
-		HAL_SPI_Transmit(&hspi2, &data_front, 1, HAL_MAX_DELAY);
+		HAL_SPI_Transmit(&hspi2, &data_front, 1, 100);
 	}
 	//TODO: maybe add a delay to let the latch in
 	HAL_GPIO_WritePin(LE_port[0], LE_pin[0], GPIO_PIN_SET);
@@ -80,7 +80,7 @@ void TurnOnLEDs(GPIO_TypeDef *LE_port[2], uint16_t LE_pin[2], GPIO_TypeDef *OE_p
 	for (i = 0; i < 4; ++i)
 	{
 		uint8_t data_rear = (rear >> (8u*i)) & 0xFF;
-		HAL_SPI_Transmit(&hspi2, &data_rear, 1, HAL_MAX_DELAY);
+		HAL_SPI_Transmit(&hspi2, &data_rear, 1, 100);
 	}
 
 	//TODO: maybe add a delay to let the latch in
@@ -105,8 +105,8 @@ void ReadADCValues(GPIO_TypeDef* ports[4], uint16_t pins[4], uint8_t adc_ic_inde
 	for(i = 0; i < 8; ++i)
 	{
 		tmp[0] = i << 3u;
-		HAL_SPI_Transmit(&hspi1, tmp, 2, HAL_MAX_DELAY);
-		HAL_SPI_Receive(&hspi1, &res[i*2], 2, HAL_MAX_DELAY);
+		HAL_SPI_Transmit(&hspi1, tmp, 2, 100);
+		HAL_SPI_Receive(&hspi1, &res[i*2], 2, 100);
 	}
 	HAL_GPIO_WritePin(ports[adc_ic_index], pins[adc_ic_index], GPIO_PIN_SET);
 

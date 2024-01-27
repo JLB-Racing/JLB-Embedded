@@ -25,7 +25,8 @@ void SetSteeringAngle(float angle)
 	if((usWidth_throttle > 1800) && (usWidth_throttle < 2800))
 	{
 		uint16_t compare = SERVO_NULL + (angle/ 22.5f * SERVO_RANGE);
-	    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, compare);	}
+	    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, compare);
+	}
 	else
 	{
 	    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, 0);
