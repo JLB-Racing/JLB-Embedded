@@ -37,6 +37,8 @@ uint32_t tick_counter_main, tick_counter_main_prev, tick_counter_before, tick_co
 float dt_main, dt_update, dt_odo;
 
 extern bool flood_arrived;
+extern char pirate_from, pirate_to, pirate_next;
+extern int pirate_percentage;
 bool flood_active = false;
 uint8_t flood_counter = 40u;
 
@@ -52,7 +54,7 @@ const osThreadAttr_t adcTask_attributes =
 
 osThreadId_t mainTaskHandle;
 const osThreadAttr_t mainTask_attributes =
-{ .name = "MainTask", .stack_size = 1024 * 6, .priority = (osPriority_t) osPriorityRealtime7 };
+{ .name = "MainTask", .stack_size = 1024 * 10, .priority = (osPriority_t) osPriorityRealtime7 };
 
 
 osThreadId_t encoderTaskHandle;
@@ -69,7 +71,7 @@ const osThreadAttr_t LSTask_attributes =
 
 osThreadId_t TelemetryTaskHandle;
 const osThreadAttr_t TelemetryTask_attributes =
-{ .name = "TelemetryTask", .stack_size = 128 * 8, .priority = (osPriority_t) osPriorityHigh };
+{ .name = "TelemetryTask", .stack_size = 128 *18, .priority = (osPriority_t) osPriorityHigh };
 
 
 void RegistrateUserTasks()
@@ -122,8 +124,10 @@ void TelemetryTask(void *argument)
 	xLastWakeTime = xTaskGetTickCount();
 	for (;;)
 	{
-		//logic.send_telemetry();
-		vTaskDelayUntil(&xLastWakeTime, 40u);
+		taskENTER_CRITICAL();
+		logic.send_telemetry();
+		taskEXIT_CRITICAL();
+		vTaskDelayUntil(&xLastWakeTime, 50u);
 	}
 }
 
@@ -148,6 +152,9 @@ void MainTask(void * argument)
 		logic.set_detection_front( ls_data.front_detection, ls_data.front);
 		logic.set_detection_rear(ls_data.rear_detection, ls_data.rear);
 		logic.set_object_range(distance_sensor.distance);
+		logic.set_flood(flood_active);
+		logic.pirate_callback(pirate_from, pirate_to, pirate_next, pirate_percentage);
+		logic.start_signal();
 
     	tick_counter_before = HAL_GetTick();
 		auto [target_angle, target_speed] = logic.update();

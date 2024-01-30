@@ -11,7 +11,7 @@ extern TIM_HandleTypeDef htim8;
 extern TIM_HandleTypeDef htim1;
 /* Measure Width */
 uint32_t usWidth_throttle = 0;
-uint32_t usWidth_steering = 0;
+uint32_t usWidth_throttle_prev = 0;
 
 
 uint32_t falling_value = 0;
@@ -52,6 +52,11 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 		float refClock = TIMCLOCK/(PRESCALAR);
 		float mFactor = 1000000/refClock;
 
+		usWidth_throttle_prev = usWidth_throttle;
 		usWidth_throttle = falling_value*mFactor;
+
+		usWidth_throttle = (usWidth_throttle + usWidth_throttle_prev) / 2;
+
+
 	}
 }
