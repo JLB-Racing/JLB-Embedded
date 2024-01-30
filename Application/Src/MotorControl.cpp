@@ -57,6 +57,7 @@ void MotorControlTask()
 	}
 */
 
+
     __HAL_TIM_SET_COMPARE(&htim5, TIM_CHANNEL_4, motorcontrol.duty_cycle * PWM_COUNTER_PREIOD);
     __HAL_TIM_SET_COMPARE(&htim5, TIM_CHANNEL_1, PWM_COUNTER_PREIOD - (motorcontrol.duty_cycle * PWM_COUNTER_PREIOD));
 

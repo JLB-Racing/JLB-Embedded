@@ -124,10 +124,8 @@ void TelemetryTask(void *argument)
 	xLastWakeTime = xTaskGetTickCount();
 	for (;;)
 	{
-		taskENTER_CRITICAL();
-		logic.send_telemetry();
-		taskEXIT_CRITICAL();
-		vTaskDelayUntil(&xLastWakeTime, 50u);
+		//logic.send_telemetry();
+		vTaskDelayUntil(&xLastWakeTime, 100u);
 	}
 }
 
@@ -136,7 +134,6 @@ void MainTask(void * argument)
 	TickType_t xLastWakeTime;
 	xLastWakeTime = xTaskGetTickCount();
 
-	logic.set_states({jlb::FastState::OUT_ACCEL_ZONE});
 	for (;;)
 	{
 		lv_battery_voltage = adc_values.lv_batt_voltage_raw / 4096.0f * 3.3f * LV_BATERY_VOLTAGE_DIVIDER * 1.04447;

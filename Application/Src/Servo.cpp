@@ -52,11 +52,7 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 		float refClock = TIMCLOCK/(PRESCALAR);
 		float mFactor = 1000000/refClock;
 
-		usWidth_throttle_prev = usWidth_throttle;
 		usWidth_throttle = falling_value*mFactor;
-
-		usWidth_throttle = (usWidth_throttle + usWidth_throttle_prev) / 2;
-
 
 	}
 }
