@@ -26,51 +26,51 @@ C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.external
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/complex:1158:7:constexpr std::complex<float>& std::complex<float>::operator*=(float)	16	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/complex:1220:36:constexpr std::complex<float>::_ComplexT std::complex<float>::__rep() const	16	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/stl_algobase.h:230:5:constexpr const _Tp& std::min(const _Tp&, const _Tp&) [with _Tp = unsigned int]	16	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/pid.hxx:18:5:PID::PID(float, float, float, float, float, float, float, float, float)	48	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/pid.hxx:31:5:PID::~PID()	16	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/pid.hxx:56:11:float PID::update(float, float, float)	48	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/pid.hxx:132:17:DebugOutput PID::get_debug()	48	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/pid.hxx:18:5:PID::PID(float, float, float, float, float, float, float, float, float)	48	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/pid.hxx:31:5:PID::~PID()	16	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/pid.hxx:56:11:float PID::update(float, float, float)	48	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/pid.hxx:132:17:DebugOutput PID::get_debug()	48	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/stl_vector.h:128:14:constexpr std::_Vector_base<float, std::allocator<float> >::_Vector_impl::~_Vector_impl()	16	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/stl_vector.h:288:7:std::_Vector_base<_Tp, _Alloc>::_Vector_base() [with _Tp = float; _Alloc = std::allocator<float>]	16	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/stl_vector.h:487:7:std::vector<_Tp, _Alloc>::vector() [with _Tp = float; _Alloc = std::allocator<float>]	16	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/controller.hxx:63:9:jlb::Controller::Controller()	16	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/controller.hxx:65:9:jlb::Controller::~Controller()	16	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/controller.hxx:67:15:float jlb::Controller::select_control_point(std::vector<float>, float)	48	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/controller.hxx:163:23:jlb::ControlParams jlb::Controller::get_control_params()	152	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/controller.hxx:189:85:jlb::Controller::lateral_control(float)::<lambda(bool)>	16	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/controller.hxx:190:83:jlb::Controller::lateral_control(float)::<lambda(bool)>	16	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/controller.hxx:187:14:void jlb::Controller::lateral_control(float)	72	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/controller.hxx:226:14:void jlb::Controller::longitudinal_control(float, bool)	32	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/controller.hxx:256:23:jlb::ControlSignal jlb::Controller::update(bool)	40	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/controller.hxx:275:23:jlb::ControlSignal jlb::Controller::update_balancer()	40	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/controller.hxx:296:14:void jlb::Controller::set_object_range(float)	16	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/controller.hxx:298:14:void jlb::Controller::set_detection_front(bool*, std::vector<float>)	32	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/controller.hxx:304:14:void jlb::Controller::set_detection_rear(bool*, std::vector<float>)	32	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/controller.hxx:63:9:jlb::Controller::Controller()	16	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/controller.hxx:65:9:jlb::Controller::~Controller()	16	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/controller.hxx:67:15:float jlb::Controller::select_control_point(std::vector<float>, float)	48	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/controller.hxx:163:23:jlb::ControlParams jlb::Controller::get_control_params()	152	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/controller.hxx:189:85:jlb::Controller::lateral_control(float)::<lambda(bool)>	16	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/controller.hxx:190:83:jlb::Controller::lateral_control(float)::<lambda(bool)>	16	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/controller.hxx:187:14:void jlb::Controller::lateral_control(float)	72	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/controller.hxx:226:14:void jlb::Controller::longitudinal_control(float, bool)	32	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/controller.hxx:256:23:jlb::ControlSignal jlb::Controller::update(bool)	40	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/controller.hxx:275:23:jlb::ControlSignal jlb::Controller::update_balancer()	40	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/controller.hxx:296:14:void jlb::Controller::set_object_range(float)	16	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/controller.hxx:298:14:void jlb::Controller::set_detection_front(bool*, std::vector<float>)	32	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/controller.hxx:304:14:void jlb::Controller::set_detection_rear(bool*, std::vector<float>)	32	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/ext/alloc_traits.h:112:27:static constexpr bool __gnu_cxx::__alloc_traits<_Alloc, <template-parameter-1-2> >::_S_always_equal() [with _Alloc = std::allocator<float>; <template-parameter-1-2> = float]	4	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/controller.hxx:321:117:jlb::Controller::swap_front_rear()::<lambda(float)>	16	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/controller.hxx:321:117:jlb::Controller::swap_front_rear()::<lambda(float)>	16	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/stl_iterator.h:1104:7:constexpr const _Iterator& __gnu_cxx::__normal_iterator<_Iterator, _Container>::base() const [with _Iterator = float*; _Container = std::vector<float>]	16	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/stl_iterator.h:1051:7:constexpr __gnu_cxx::__normal_iterator<_Iterator, _Container>& __gnu_cxx::__normal_iterator<_Iterator, _Container>::operator++() [with _Iterator = float*; _Container = std::vector<float>]	16	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/stl_iterator.h:1135:5:constexpr bool __gnu_cxx::operator==(const __gnu_cxx::__normal_iterator<_Iterator, _Container>&, const __gnu_cxx::__normal_iterator<_Iterator, _Container>&) requires requires{{__gnu_cxx::operator==::__lhs->base() == __gnu_cxx::operator==::__rhs->base()} -> decltype(auto) [requires std::convertible_to<<placeholder>, bool>];} [with _Iterator = float*; _Container = std::vector<float>]	24	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/stl_algo.h:4285:5:constexpr _OIter std::transform(_IIter, _IIter, _OIter, _UnaryOperation) [with _IIter = __gnu_cxx::__normal_iterator<float*, std::vector<float> >; _OIter = __gnu_cxx::__normal_iterator<float*, std::vector<float> >; _UnaryOperation = jlb::Controller::swap_front_rear()::<lambda(float)>]	32	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/controller.hxx:323:114:jlb::Controller::swap_front_rear()::<lambda(float)>	16	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/controller.hxx:323:114:jlb::Controller::swap_front_rear()::<lambda(float)>	16	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/stl_algo.h:4285:5:constexpr _OIter std::transform(_IIter, _IIter, _OIter, _UnaryOperation) [with _IIter = __gnu_cxx::__normal_iterator<float*, std::vector<float> >; _OIter = __gnu_cxx::__normal_iterator<float*, std::vector<float> >; _UnaryOperation = jlb::Controller::swap_front_rear()::<lambda(float)>]	32	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/controller.hxx:310:14:void jlb::Controller::swap_front_rear()	32	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/controller.hxx:326:14:void jlb::Controller::set_current_velocity(float)	16	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/controller.hxx:328:14:void jlb::Controller::set_direction(jlb::Direction, bool)	24	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/controller.hxx:347:14:void jlb::Controller::set_reference_speed(float)	16	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/controller.hxx:349:14:void jlb::Controller::set_passed_half(bool)	16	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/controller.hxx:310:14:void jlb::Controller::swap_front_rear()	32	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/controller.hxx:326:14:void jlb::Controller::set_current_velocity(float)	16	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/controller.hxx:328:14:void jlb::Controller::set_direction(jlb::Direction, bool)	24	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/controller.hxx:347:14:void jlb::Controller::set_reference_speed(float)	16	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/controller.hxx:349:14:void jlb::Controller::set_passed_half(bool)	16	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/stl_tree.h:173:5:std::_Rb_tree_header::_Rb_tree_header()	16	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/stl_tree.h:206:5:void std::_Rb_tree_header::_M_reset()	16	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/stl_deque.h:96:3:constexpr std::size_t std::__deque_buf_size(std::size_t)	16	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/graph.hxx:37:9:jlb::Edge::Edge(char, char, jlb::Direction, const std::vector<char>&, float)	24	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/graph.hxx:44:15:float jlb::Edge::get_weight() const	48	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/graph.hxx:37:9:jlb::Edge::Edge(char, char, jlb::Direction, const std::vector<char>&, float)	24	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/graph.hxx:44:15:float jlb::Edge::get_weight() const	48	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/stl_vector.h:128:14:constexpr std::_Vector_base<jlb::Edge, std::allocator<jlb::Edge> >::_Vector_impl::~_Vector_impl()	16	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/stl_vector.h:288:7:std::_Vector_base<_Tp, _Alloc>::_Vector_base() [with _Tp = jlb::Edge; _Alloc = std::allocator<jlb::Edge>]	16	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/stl_vector.h:487:7:std::vector<_Tp, _Alloc>::vector() [with _Tp = jlb::Edge; _Alloc = std::allocator<jlb::Edge>]	16	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/graph.hxx:150:9:jlb::Node::Node(char, float, float)	24	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/graph.hxx:151:9:jlb::Node::~Node()	16	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/graph.hxx:21:12:jlb::Edge::~Edge()	16	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/graph.hxx:153:14:void jlb::Node::add_edge(char, jlb::Direction, const std::vector<char>&, float)	72	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/graph.hxx:150:9:jlb::Node::Node(char, float, float)	24	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/graph.hxx:151:9:jlb::Node::~Node()	16	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/graph.hxx:21:12:jlb::Edge::~Edge()	16	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/graph.hxx:153:14:void jlb::Node::add_edge(char, jlb::Direction, const std::vector<char>&, float)	72	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/stl_iterator.h:1104:7:constexpr const _Iterator& __gnu_cxx::__normal_iterator<_Iterator, _Container>::base() const [with _Iterator = jlb::Edge*; _Container = std::vector<jlb::Edge>]	16	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/stl_vector.h:128:14:constexpr std::_Vector_base<jlb::Node, std::allocator<jlb::Node> >::_Vector_impl::~_Vector_impl()	16	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/stl_vector.h:288:7:std::_Vector_base<_Tp, _Alloc>::_Vector_base() [with _Tp = jlb::Node; _Alloc = std::allocator<jlb::Node>]	16	static
@@ -78,10 +78,10 @@ C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.external
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/stl_vector.h:128:14:constexpr std::_Vector_base<char, std::allocator<char> >::_Vector_impl::~_Vector_impl()	16	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/stl_vector.h:288:7:std::_Vector_base<_Tp, _Alloc>::_Vector_base() [with _Tp = char; _Alloc = std::allocator<char>]	16	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/stl_vector.h:487:7:std::vector<_Tp, _Alloc>::vector() [with _Tp = char; _Alloc = std::allocator<char>]	16	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/graph.hxx:181:9:jlb::Graph::Graph()	2888	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/graph.hxx:519:9:jlb::Graph::~Graph()	16	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/graph.hxx:521:15:jlb::Node& jlb::Graph::operator[](char)	16	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/graph.hxx:543:14:void jlb::Graph::pirate_callback(char, char, char, int)	16	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/graph.hxx:181:9:jlb::Graph::Graph()	2888	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/graph.hxx:519:9:jlb::Graph::~Graph()	16	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/graph.hxx:521:15:jlb::Node& jlb::Graph::operator[](char)	16	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/graph.hxx:543:14:void jlb::Graph::pirate_callback(char, char, char, int)	16	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/stl_tree.h:660:9:constexpr std::_Rb_tree<char, std::pair<const char, std::pair<float, std::vector<char> > >, std::_Select1st<std::pair<const char, std::pair<float, std::vector<char> > > >, std::less<char>, std::allocator<std::pair<const char, std::pair<float, std::vector<char> > > > >::_Rb_tree_impl<std::less<char>, true>::~_Rb_tree_impl()	16	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/stl_tree.h:928:7:std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::_Rb_tree() [with _Key = char; _Val = std::pair<const char, std::pair<float, std::vector<char> > >; _KeyOfValue = std::_Select1st<std::pair<const char, std::pair<float, std::vector<char> > > >; _Compare = std::less<char>; _Alloc = std::allocator<std::pair<const char, std::pair<float, std::vector<char> > > >]	16	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/stl_map.h:185:7:std::map<_Key, _Tp, _Compare, _Alloc>::map() [with _Key = char; _Tp = std::pair<float, std::vector<char> >; _Compare = std::less<char>; _Alloc = std::allocator<std::pair<const char, std::pair<float, std::vector<char> > > >]	16	static
@@ -109,68 +109,68 @@ C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.external
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/stl_algo.h:3876:5:constexpr _IIter std::find(_IIter, _IIter, const _Tp&) [with _IIter = const char*; _Tp = char]	24	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/range_access.h:90:5:constexpr _Tp* std::begin(_Tp (&)[_Nm]) [with _Tp = const char; unsigned int _Nm = 17]	16	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/range_access.h:100:5:constexpr _Tp* std::end(_Tp (&)[_Nm]) [with _Tp = const char; unsigned int _Nm = 17]	16	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/graph.hxx:14:12:jlb::DijkstraResult::~DijkstraResult()	16	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/graph.hxx:567:24:jlb::DijkstraResult jlb::Graph::Dijkstra(char, char, char, bool)	304	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/graph.hxx:14:12:jlb::DijkstraResult::~DijkstraResult()	16	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/graph.hxx:567:24:jlb::DijkstraResult jlb::Graph::Dijkstra(char, char, char, bool)	304	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/stl_deque.h:834:7:std::deque<_Tp, _Alloc>::deque() [with _Tp = float; _Alloc = std::allocator<float>]	16	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/odometry.hxx:44:9:jlb::Odometry::Odometry(float, float, float)	24	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/odometry.hxx:49:9:jlb::Odometry::~Odometry()	16	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/odometry.hxx:51:14:void jlb::Odometry::rpm_callback(float)	64	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/odometry.hxx:64:14:void jlb::Odometry::imu_callback(float, float, float, float, float, float)	80	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/odometry.hxx:82:14:jlb::Odom jlb::Odometry::update_odom()	64	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/odometry.hxx:44:9:jlb::Odometry::Odometry(float, float, float)	24	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/odometry.hxx:49:9:jlb::Odometry::~Odometry()	16	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/odometry.hxx:51:14:void jlb::Odometry::rpm_callback(float)	64	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/odometry.hxx:64:14:void jlb::Odometry::imu_callback(float, float, float, float, float, float)	80	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/odometry.hxx:82:14:jlb::Odom jlb::Odometry::update_odom()	64	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/cmath:290:5:constexpr typename __gnu_cxx::__promote_2<_Tp, _Up>::__type std::fmod(_Tp, _Up) [with _Tp = float; _Up = double]	24	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/odometry.hxx:122:15:float jlb::Odometry::normalize_angle(float)	16	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/odometry.hxx:129:14:void jlb::Odometry::correction(float, float)	112	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/odometry.hxx:154:14:void jlb::Odometry::reset_local(bool)	16	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/as_state.hxx:39:9:jlb::CompositeState::CompositeState(jlb::Mission, jlb::LabyrinthState, jlb::MissionSwitchState, jlb::FastState, float)	32	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/as_state.hxx:91:14:bool jlb::ASState::pirate_intersecting(char)	16	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/as_state.hxx:93:9:jlb::ASState::ASState(jlb::Odometry&, jlb::Controller&, jlb::Graph&)	24	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/as_state.hxx:133:14:void jlb::ASState::pirate_callback(char, char, char, int)	32	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/as_state.hxx:142:14:void jlb::ASState::apply_path(const jlb::DijkstraResult&)	32	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/as_state.hxx:159:14:void jlb::ASState::apply_path_reverse(const jlb::DijkstraResult&)	32	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/as_state.hxx:181:14:void jlb::ASState::exploring_callback()	88	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/as_state.hxx:240:14:void jlb::ASState::flood_to_balancer_callback()	80	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/as_state.hxx:283:14:void jlb::ASState::flood_solving_callback()	64	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/as_state.hxx:306:14:void jlb::ASState::flood_to_labyrinth_callback()	80	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/as_state.hxx:347:14:void jlb::ASState::finished_callback()	96	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/as_state.hxx:408:14:void jlb::ASState::error_callback()	16	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/as_state.hxx:410:14:void jlb::ASState::standby_callback()	160	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/as_state.hxx:510:14:void jlb::ASState::escape_callback()	64	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/as_state.hxx:526:14:void jlb::ASState::reverse_escape_callback()	64	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/as_state.hxx:538:14:void jlb::ASState::mission_switch_callback()	16	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/as_state.hxx:612:24:jlb::CompositeState jlb::ASState::update()	80	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/signals.hxx:39:9:jlb::SignalSender::SignalSender(const jlb::Odometry&, const jlb::Controller&, const jlb::ASState&, const jlb::Graph&, const Measurements&)	24	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/signals.hxx:63:9:jlb::SignalSender::~SignalSender()	16	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/signals.hxx:65:14:void jlb::SignalSender::send_telemetry()	32	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/signals.hxx:101:13:int jlb::SignalSender::send(char*, size_t)	24	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/signals.hxx:111:14:void jlb::SignalSender::measurements_1()	48	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/signals.hxx:183:14:void jlb::SignalSender::measurements_2()	48	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/signals.hxx:261:14:void jlb::SignalSender::measurements_3()	48	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/signals.hxx:276:14:void jlb::SignalSender::measurements_4()	48	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/signals.hxx:291:14:void jlb::SignalSender::measurements_5()	48	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/signals.hxx:307:14:void jlb::SignalSender::odometry_1()	48	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/signals.hxx:322:14:void jlb::SignalSender::odometry_2()	48	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/signals.hxx:336:14:void jlb::SignalSender::logic_1()	48	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/signals.hxx:352:14:void jlb::SignalSender::logic_2()	48	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/signals.hxx:371:14:void jlb::SignalSender::logic3()	48	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/logic.hxx:19:9:jlb::Logic::Logic()	32	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/logic.hxx:21:23:jlb::ControlSignal jlb::Logic::update()	160	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/logic.hxx:123:14:void jlb::Logic::set_detection_front(bool*, std::vector<float>)	48	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/logic.hxx:128:14:void jlb::Logic::set_detection_rear(bool*, std::vector<float>)	48	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/logic.hxx:134:14:void jlb::Logic::imu_callback(float, float, float, float, float, float)	40	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/logic.hxx:139:14:void jlb::Logic::rpm_callback(float)	16	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/logic.hxx:140:14:void jlb::Logic::pirate_callback(char, char, char, int)	32	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/logic.hxx:144:14:void jlb::Logic::set_object_range(float)	16	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/logic.hxx:146:14:void jlb::Logic::send_telemetry()	16	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/logic.hxx:147:14:void jlb::Logic::set_measurements(const Measurements&)	16	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/logic.hxx:148:14:void jlb::Logic::set_flood(bool)	16	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/logic.hxx:153:14:jlb::Odom jlb::Logic::get_odometry()	48	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/logic.hxx:154:14:void jlb::Logic::start_signal()	16	static
-../Application/Src/Tasks.cpp:79:6:void RegistrateUserTasks()	8	static
-../Application/Src/Tasks.cpp:90:6:void ADCTask(void*)	24	static
-../Application/Src/Tasks.cpp:101:6:void IMUTask(void*)	24	static
-../Application/Src/Tasks.cpp:112:6:void LSTask(void*)	24	static
-../Application/Src/Tasks.cpp:123:6:void TelemetryTask(void*)	24	static
-../Application/Src/Tasks.cpp:133:6:void MainTask(void*)	112	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/odometry.hxx:122:15:float jlb::Odometry::normalize_angle(float)	16	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/odometry.hxx:129:14:void jlb::Odometry::correction(float, float)	112	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/odometry.hxx:154:14:void jlb::Odometry::reset_local(bool)	16	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/as_state.hxx:39:9:jlb::CompositeState::CompositeState(jlb::Mission, jlb::LabyrinthState, jlb::MissionSwitchState, jlb::FastState, float)	32	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/as_state.hxx:91:14:bool jlb::ASState::pirate_intersecting(char)	16	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/as_state.hxx:93:9:jlb::ASState::ASState(jlb::Odometry&, jlb::Controller&, jlb::Graph&)	24	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/as_state.hxx:133:14:void jlb::ASState::pirate_callback(char, char, char, int)	32	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/as_state.hxx:142:14:void jlb::ASState::apply_path(const jlb::DijkstraResult&)	32	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/as_state.hxx:159:14:void jlb::ASState::apply_path_reverse(const jlb::DijkstraResult&)	32	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/as_state.hxx:181:14:void jlb::ASState::exploring_callback()	88	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/as_state.hxx:240:14:void jlb::ASState::flood_to_balancer_callback()	80	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/as_state.hxx:283:14:void jlb::ASState::flood_solving_callback()	64	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/as_state.hxx:306:14:void jlb::ASState::flood_to_labyrinth_callback()	80	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/as_state.hxx:347:14:void jlb::ASState::finished_callback()	96	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/as_state.hxx:408:14:void jlb::ASState::error_callback()	16	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/as_state.hxx:410:14:void jlb::ASState::standby_callback()	160	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/as_state.hxx:510:14:void jlb::ASState::escape_callback()	64	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/as_state.hxx:526:14:void jlb::ASState::reverse_escape_callback()	64	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/as_state.hxx:538:14:void jlb::ASState::mission_switch_callback()	16	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/as_state.hxx:612:24:jlb::CompositeState jlb::ASState::update()	80	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/signals.hxx:23:6:void HAL_UART_TxCpltCallback(UART_HandleTypeDef*)	16	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/signals.hxx:47:9:jlb::SignalSender::SignalSender(const jlb::Odometry&, const jlb::Controller&, const jlb::ASState&, const jlb::Graph&, const Measurements&)	24	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/signals.hxx:71:9:jlb::SignalSender::~SignalSender()	16	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/signals.hxx:73:14:void jlb::SignalSender::send_telemetry()	32	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/signals.hxx:109:13:int jlb::SignalSender::send(char*, size_t)	24	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/signals.hxx:123:14:void jlb::SignalSender::measurements_1()	48	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/signals.hxx:195:14:void jlb::SignalSender::measurements_2()	48	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/signals.hxx:273:14:void jlb::SignalSender::measurements_3()	48	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/signals.hxx:288:14:void jlb::SignalSender::measurements_4()	48	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/signals.hxx:303:14:void jlb::SignalSender::measurements_5()	48	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/signals.hxx:319:14:void jlb::SignalSender::odometry_1()	48	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/signals.hxx:334:14:void jlb::SignalSender::odometry_2()	48	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/signals.hxx:348:14:void jlb::SignalSender::logic_1()	48	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/signals.hxx:364:14:void jlb::SignalSender::logic_2()	48	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/signals.hxx:383:14:void jlb::SignalSender::logic3()	48	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/logic.hxx:19:9:jlb::Logic::Logic()	32	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/logic.hxx:21:23:jlb::ControlSignal jlb::Logic::update()	160	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/logic.hxx:123:14:void jlb::Logic::set_detection_front(bool*, std::vector<float>)	48	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/logic.hxx:128:14:void jlb::Logic::set_detection_rear(bool*, std::vector<float>)	48	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/logic.hxx:134:14:void jlb::Logic::imu_callback(float, float, float, float, float, float)	40	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/logic.hxx:139:14:void jlb::Logic::rpm_callback(float)	16	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/logic.hxx:140:14:void jlb::Logic::pirate_callback(char, char, char, int)	32	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/logic.hxx:144:14:void jlb::Logic::set_object_range(float)	16	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/logic.hxx:146:14:void jlb::Logic::send_telemetry()	16	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/logic.hxx:147:14:void jlb::Logic::set_measurements(const Measurements&)	16	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/logic.hxx:148:14:void jlb::Logic::set_flood(bool)	16	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/logic.hxx:153:14:jlb::Odom jlb::Logic::get_odometry()	48	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/logic.hxx:154:14:void jlb::Logic::start_signal()	16	static
+../Application/Src/Tasks.cpp:75:6:void RegistrateUserTasks()	8	static
+../Application/Src/Tasks.cpp:85:6:void ADCTask(void*)	24	static
+../Application/Src/Tasks.cpp:96:6:void IMUTask(void*)	24	static
+../Application/Src/Tasks.cpp:107:6:void LSTask(void*)	32	static
+../Application/Src/Tasks.cpp:122:6:void MainTask(void*)	112	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/stl_algobase.h:611:5:constexpr _OI std::copy(_II, _II, _OI) [with _II = const char*; _OI = char*]	32	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/stl_algobase.h:254:5:constexpr const _Tp& std::max(const _Tp&, const _Tp&) [with _Tp = unsigned int]	16	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/stl_algo.h:3656:5:constexpr const _Tp& std::clamp(const _Tp&, const _Tp&, const _Tp&) [with _Tp = float]	24	static
@@ -500,7 +500,7 @@ C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.external
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/alloc_traits.h:495:7:static constexpr void std::allocator_traits<std::allocator<_CharT> >::deallocate(std::allocator_traits<std::allocator<_CharT> >::allocator_type&, std::allocator_traits<std::allocator<_CharT> >::pointer, std::allocator_traits<std::allocator<_CharT> >::size_type) [with _Tp = jlb::Edge]	40	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\arm-none-eabi\include\c++\11.3.1\bits\stl_construct.h:182:5:constexpr void std::_Destroy(_ForwardIterator, _ForwardIterator) [with _ForwardIterator = jlb::Edge*]	16	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/move.h:77:5:constexpr _Tp&& std::forward(typename std::remove_reference<_Tp>::type&) [with _Tp = jlb::Edge]	16	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/graph.hxx:21:12:jlb::Edge::Edge(jlb::Edge&&)	16	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/graph.hxx:21:12:jlb::Edge::Edge(jlb::Edge&&)	16	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\arm-none-eabi\include\c++\11.3.1\bits\stl_construct.h:94:5:) [with _Tp = jlb::Edge; _Args = {jlb::Edge}]	24	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/alloc_traits.h:511:2:) [with _Up = jlb::Edge; _Args = {jlb::Edge}; _Tp = jlb::Edge]	24	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/vector.tcc:426:7:) [with _Args = {jlb::Edge}; _Tp = jlb::Edge; _Alloc = std::allocator<jlb::Edge>]	64	static
@@ -513,7 +513,7 @@ C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.external
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\arm-none-eabi\include\c++\11.3.1\bits\stl_construct.h:182:5:constexpr void std::_Destroy(_ForwardIterator, _ForwardIterator) [with _ForwardIterator = jlb::Node*]	16	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/alloc_traits.h:495:7:static constexpr void std::allocator_traits<std::allocator<_CharT> >::deallocate(std::allocator_traits<std::allocator<_CharT> >::allocator_type&, std::allocator_traits<std::allocator<_CharT> >::pointer, std::allocator_traits<std::allocator<_CharT> >::size_type) [with _Tp = char]	40	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/move.h:77:5:constexpr _Tp&& std::forward(typename std::remove_reference<_Tp>::type&) [with _Tp = jlb::Node]	16	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/graph.hxx:142:11:jlb::Node::Node(const jlb::Node&)	16	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/graph.hxx:142:11:jlb::Node::Node(const jlb::Node&)	16	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\arm-none-eabi\include\c++\11.3.1\bits\stl_construct.h:94:5:) [with _Tp = jlb::Node; _Args = {jlb::Node}]	24	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/alloc_traits.h:511:2:) [with _Up = jlb::Node; _Args = {jlb::Node}; _Tp = jlb::Node]	24	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/vector.tcc:426:7:) [with _Args = {jlb::Node}; _Tp = jlb::Node; _Alloc = std::allocator<jlb::Node>]	64	static
@@ -869,7 +869,7 @@ C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.external
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/ext/new_allocator.h:82:7:constexpr __gnu_cxx::new_allocator<_Tp>::new_allocator(const __gnu_cxx::new_allocator<_Tp>&) [with _Tp = jlb::Edge]	16	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/stl_iterator.h:1135:5:constexpr bool __gnu_cxx::operator==(const __gnu_cxx::__normal_iterator<_Iterator, _Container>&, const __gnu_cxx::__normal_iterator<_Iterator, _Container>&) requires requires{{__gnu_cxx::operator==::__lhs->base() == __gnu_cxx::operator==::__rhs->base()} -> decltype(auto) [requires std::convertible_to<<placeholder>, bool>];} [with _Iterator = const jlb::Edge*; _Container = std::vector<jlb::Edge>]	24	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/stl_iterator.h:1041:7:constexpr __gnu_cxx::__normal_iterator<_Iterator, _Container>::reference __gnu_cxx::__normal_iterator<_Iterator, _Container>::operator*() const [with _Iterator = const jlb::Edge*; _Container = std::vector<jlb::Edge>]	16	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/graph.hxx:21:12:jlb::Edge::Edge(const jlb::Edge&)	16	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/graph.hxx:21:12:jlb::Edge::Edge(const jlb::Edge&)	16	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\arm-none-eabi\include\c++\11.3.1\bits\stl_construct.h:109:5:) [with _Tp = jlb::Edge; _Args = {const jlb::Edge&}]	24	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\arm-none-eabi\include\c++\11.3.1\bits\stl_construct.h:109:5:) [with _Tp = jlb::Node; _Args = {const jlb::Node&}]	24	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/tuple:1377:5:>&) [with unsigned int __i = 0; _Head = const char&; _Tail = {}]	16	static
@@ -894,7 +894,7 @@ C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.external
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/stl_algobase.h:486:5:constexpr _OI std::__copy_move_a2(_II, _II, _OI) [with bool _IsMove = true; _II = char*; _OI = char*]	24	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/stl_algobase.h:400:2:static constexpr _OI std::__copy_move<true, false, std::random_access_iterator_tag>::__copy_m(_II, _II, _OI) [with _II = char*; _OI = char*]	32	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/stl_algobase.h:420:2:static constexpr _Tp* std::__copy_move<_IsMove, true, std::random_access_iterator_tag>::__copy_m(const _Tp*, const _Tp*, _Tp*) [with _Tp = char; bool _IsMove = true]	32	static
-C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/logic.hxx:16:11:jlb::Logic::~Logic()	16	static
-../Application/Src/Tasks.cpp:213:1:void __static_initialization_and_destruction_0(int, int)	16	static
-../Application/Src/Tasks.cpp:213:1:cpp)	8	static
-../Application/Src/Tasks.cpp:213:1:cpp)	8	static
+C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/JLB/logic.hxx:16:11:jlb::Logic::~Logic()	16	static
+../Application/Src/Tasks.cpp:196:1:void __static_initialization_and_destruction_0(int, int)	16	static
+../Application/Src/Tasks.cpp:196:1:cpp)	8	static
+../Application/Src/Tasks.cpp:196:1:cpp)	8	static

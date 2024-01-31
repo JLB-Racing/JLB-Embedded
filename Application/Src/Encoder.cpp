@@ -84,25 +84,5 @@ void Encoder_Task(void * argument)
 
 float CalculateRPM()
 {
-	uint8_t i;
-	static uint8_t index = 0u;
-	static float rpm_averaging_array[10];
-	float averaged_rpm = 0.0f;
-	/*rpm_averaging_array[index++] = enc_instance_mot.rpm;
-
-	if(index == 10)
-	{
-		index = 0;
-	}
-
-	averaged_rpm = 0.0f;
-	for(i = 0 ; i < 10; ++i)
-	{
-		averaged_rpm += rpm_averaging_array[i] / 10.0f;
-	}*/
-
-	averaged_rpm = enc_instance_mot.rpm;
-	averaged_rpm *= -1.36f;
-
-	return averaged_rpm;
+	return enc_instance_mot.rpm * -1.36f;
 }

@@ -35,8 +35,8 @@ float wheel_rpm;
 
 uint8_t telemetry_delayer = 0u;
 
-uint32_t tick_counter_main, tick_counter_main_prev, tick_counter_before, tick_counter_after;
-float dt_main, dt_update, dt_odo;
+uint32_t tick_counter_main, tick_counter_main_prev;
+float dt_main;
 
 extern bool flood_arrived;
 extern char pirate_from, pirate_to, pirate_next;
@@ -52,16 +52,16 @@ extern uint32_t usWidth_throttle;
 #endif
 osThreadId_t adcTaskHandle;
 const osThreadAttr_t adcTask_attributes =
-{ .name = "ADCTask", .stack_size = 128 * 2, .priority = (osPriority_t) osPriorityRealtime };
+{ .name = "ADCTask", .stack_size = 128 * 4, .priority = (osPriority_t) osPriorityRealtime };
 
 osThreadId_t mainTaskHandle;
 const osThreadAttr_t mainTask_attributes =
-{ .name = "MainTask", .stack_size = 1024 * 10, .priority = (osPriority_t) osPriorityRealtime7 };
+{ .name = "MainTask", .stack_size = 1024 * 12, .priority = (osPriority_t) osPriorityRealtime7 };
 
 
 osThreadId_t encoderTaskHandle;
 const osThreadAttr_t encoderTask_attributes =
-{ .name = "EncoderTask", .stack_size = 128 * 6, .priority = (osPriority_t) osPriorityRealtime2 };
+{ .name = "EncoderTask", .stack_size = 128 * 10, .priority = (osPriority_t) osPriorityRealtime2 };
 
 osThreadId_t IMUTaskHandle;
 const osThreadAttr_t IMUTask_attributes =
@@ -69,11 +69,7 @@ const osThreadAttr_t IMUTask_attributes =
 
 osThreadId_t LSTaskHandle;
 const osThreadAttr_t LSTask_attributes =
-{ .name = "LSTask", .stack_size = 128 * 4, .priority = (osPriority_t) osPriorityRealtime4 };
-
-osThreadId_t TelemetryTaskHandle;
-const osThreadAttr_t TelemetryTask_attributes =
-{ .name = "TelemetryTask", .stack_size = 128 *18, .priority = (osPriority_t) osPriorityHigh };
+{ .name = "LSTask", .stack_size = 128 * 8, .priority = (osPriority_t) osPriorityRealtime4 };
 
 
 void RegistrateUserTasks()
@@ -83,7 +79,6 @@ void RegistrateUserTasks()
 	encoderTaskHandle = osThreadNew(Encoder_Task, NULL, &encoderTask_attributes);
 	IMUTaskHandle = osThreadNew(IMUTask, NULL, &IMUTask_attributes);
 	LSTaskHandle = osThreadNew(LSTask, NULL, &LSTask_attributes);
-	TelemetryTaskHandle = osThreadNew(TelemetryTask, NULL, &TelemetryTask_attributes);
 
 }
 
@@ -113,22 +108,16 @@ void LSTask(void *argument)
 {
 	TickType_t xLastWakeTime;
 	xLastWakeTime = xTaskGetTickCount();
+	uint32_t tick_before, tick_after;
 	for (;;)
 	{
+		tick_before = HAL_GetTick();
 		LineSensorTask();
-		vTaskDelayUntil(&xLastWakeTime, 20u);
+		tick_after = HAL_GetTick();
+		vTaskDelayUntil(&xLastWakeTime, 15u);
 	}
 }
 
-void TelemetryTask(void *argument)
-{
-	TickType_t xLastWakeTime;
-	xLastWakeTime = xTaskGetTickCount();
-	for (;;)
-	{
-		vTaskDelayUntil(&xLastWakeTime, 100u);
-	}
-}
 
 void MainTask(void * argument)
 {
@@ -154,15 +143,9 @@ void MainTask(void * argument)
 		logic.pirate_callback(pirate_from, pirate_to, pirate_next, pirate_percentage);
 		logic.start_signal();
 
-    	tick_counter_before = HAL_GetTick();
 		auto [target_angle, target_speed] = logic.update();
-    	tick_counter_after = HAL_GetTick();
-        dt_update = (((float)tick_counter_after) - ((float)(tick_counter_before)));
-
-    	tick_counter_before = HAL_GetTick();
 		auto [vx_t, x_t, y_t, theta_t] = logic.get_odometry();
-    	tick_counter_after = HAL_GetTick();
-        dt_odo = (((float)tick_counter_after) - ((float)(tick_counter_before)));
+
 
 		motorcontrol.actual_velocity = vx_t;
 		motorcontrol.target_velocity = target_speed;
