@@ -33,6 +33,8 @@ extern DistanceSensorData_s distance_sensor;
 float motor_battery_voltage, lv_battery_voltage, motor_current;
 float wheel_rpm;
 
+uint8_t telemetry_delayer = 0u;
+
 uint32_t tick_counter_main, tick_counter_main_prev, tick_counter_before, tick_counter_after;
 float dt_main, dt_update, dt_odo;
 
@@ -59,7 +61,7 @@ const osThreadAttr_t mainTask_attributes =
 
 osThreadId_t encoderTaskHandle;
 const osThreadAttr_t encoderTask_attributes =
-{ .name = "EncoderTask", .stack_size = 128 * 2, .priority = (osPriority_t) osPriorityRealtime2 };
+{ .name = "EncoderTask", .stack_size = 128 * 6, .priority = (osPriority_t) osPriorityRealtime2 };
 
 osThreadId_t IMUTaskHandle;
 const osThreadAttr_t IMUTask_attributes =
@@ -124,7 +126,6 @@ void TelemetryTask(void *argument)
 	xLastWakeTime = xTaskGetTickCount();
 	for (;;)
 	{
-		//logic.send_telemetry();
 		vTaskDelayUntil(&xLastWakeTime, 100u);
 	}
 }
@@ -198,6 +199,15 @@ void MainTask(void * argument)
 		tick_counter_main_prev = tick_counter_main;
     	tick_counter_main = HAL_GetTick();
         dt_main = (((float)tick_counter_main) - ((float)(tick_counter_main_prev)));
+
+        telemetry_delayer++;
+
+        if(telemetry_delayer == 8u)
+        {
+    		logic.send_telemetry();
+    		telemetry_delayer = 0u;
+        }
+
 		vTaskDelayUntil(&xLastWakeTime, 10u);
 	}
 }

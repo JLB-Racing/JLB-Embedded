@@ -56,7 +56,7 @@ void update_encoder(encoder_instance *encoder_value, TIM_HandleTypeDef *htim)
 void Encoder_Task(void * argument)
 {
 	// measure velocity, position
-	int16_t velocity_values[5] = {0};
+	int16_t velocity_values[60] = {0};
 	uint8_t index = 0;
 	uint8_t i;
 
@@ -67,15 +67,15 @@ void Encoder_Task(void * argument)
 		update_encoder(&enc_instance_mot, &htim3);
 		velocity_values[index++] = enc_instance_mot.velocity;
 
-		if(index == 5)
+		if(index == 60)
 		{
 			index = 0;
 		}
 
 		enc_instance_mot.rpm = 0.0f;
-		for(i = 0 ; i < 5; ++i)
+		for(i = 0 ; i < 60; ++i)
 		{
-			enc_instance_mot.rpm += ((float)(velocity_values[i])) / 5.0f;
+			enc_instance_mot.rpm += ((float)(velocity_values[i])) / 60.0f;
 		}
 
 		vTaskDelayUntil(&xLastWakeTime, 1u);
@@ -85,22 +85,23 @@ void Encoder_Task(void * argument)
 float CalculateRPM()
 {
 	uint8_t i;
-	static uint8_t index = 0u;;
-	static float rpm_averaging_array[5];
+	static uint8_t index = 0u;
+	static float rpm_averaging_array[10];
 	float averaged_rpm = 0.0f;
-	rpm_averaging_array[index++] = enc_instance_mot.rpm;
+	/*rpm_averaging_array[index++] = enc_instance_mot.rpm;
 
-	if(index == 5)
+	if(index == 10)
 	{
 		index = 0;
 	}
 
 	averaged_rpm = 0.0f;
-	for(i = 0 ; i < 5; ++i)
+	for(i = 0 ; i < 10; ++i)
 	{
-		averaged_rpm += rpm_averaging_array[i] / 5.0f;
-	}
+		averaged_rpm += rpm_averaging_array[i] / 10.0f;
+	}*/
 
+	averaged_rpm = enc_instance_mot.rpm;
 	averaged_rpm *= -1.36f;
 
 	return averaged_rpm;
