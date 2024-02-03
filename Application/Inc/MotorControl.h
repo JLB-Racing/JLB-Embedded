@@ -13,10 +13,10 @@
 #define MOTOR_CURR_NULL				1.59f
 #define	MOTOR_CURR_SENSITIVITY		0.0086f
 
-#define SPEED_CONTROLER_KP			0.315f
-#define SPEED_CONTROLLER_KI			0.70f
+#define SPEED_CONTROLER_KP			0.30f
+#define SPEED_CONTROLLER_KI			0.69f
 #define SPEED_CONTROLLER_KD			0.0f
-#define SPEED_CONTROLLER_TAU		0.02f
+#define SPEED_CONTROLLER_TAU		0.05f
 #define SPEED_CONTROLLER_T			0.01f
 #define SPEED_CONTROLLER_MIN		-0.5f
 #define SPEED_CONTROLLER_MAX		0.5f
@@ -34,6 +34,7 @@ typedef struct
 	float actual_velocity;
 	float target_velocity;
 	float duty_cycle;
+	float duty_cycle_prev;
 } MotorControData_s;
 
 void MotorControlTask();

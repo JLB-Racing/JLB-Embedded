@@ -1,6 +1,6 @@
 Application/Src/IMU.o: ../Application/Src/IMU.cpp \
- C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/IMU.h \
- ../Core/Inc/main.h ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal.h \
+ C:/RobonAUT/JLB-Embedded/Application/Inc/IMU.h ../Core/Inc/main.h \
+ ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal.h \
  ../Core/Inc/stm32l5xx_hal_conf.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_rcc.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_def.h \
@@ -53,7 +53,7 @@ Application/Src/IMU.o: ../Application/Src/IMU.cpp \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_dma.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_dmamux.h \
  ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_ll_exti.h
-C:/Users/horgo/STM32CubeIDE/workspace_1.13.2/JLBRacing2024/Application/Inc/IMU.h:
+C:/RobonAUT/JLB-Embedded/Application/Inc/IMU.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal.h:
 ../Core/Inc/stm32l5xx_hal_conf.h:

@@ -114,7 +114,7 @@ void LSTask(void *argument)
 		tick_before = HAL_GetTick();
 		LineSensorTask();
 		tick_after = HAL_GetTick();
-		vTaskDelayUntil(&xLastWakeTime, 15u);
+		vTaskDelayUntil(&xLastWakeTime, 20u);
 	}
 }
 
@@ -127,7 +127,6 @@ void MainTask(void * argument)
 	for (;;)
 	{
 		lv_battery_voltage = adc_values.lv_batt_voltage_raw / 4096.0f * 3.3f * LV_BATERY_VOLTAGE_DIVIDER * 1.04447;
-		DistanceSensorTask();
 		wheel_rpm = CalculateRPM();
 
 		auto [derivative, integral, prev_error] = motorcontrol_pid.get_debug();
@@ -135,7 +134,6 @@ void MainTask(void * argument)
 		logic.imu_callback(lv_battery_voltage,motorcontrol.battery_voltage,imu.yaw,derivative, integral, prev_error);
 		logic.rpm_callback(wheel_rpm);
 
-		std::reverse(std::begin(ls_data.front_detection), std::end(ls_data.front_detection));
 		logic.set_detection_front( ls_data.front_detection, ls_data.front);
 		logic.set_detection_rear(ls_data.rear_detection, ls_data.rear);
 		logic.set_object_range(distance_sensor.distance);
@@ -143,8 +141,13 @@ void MainTask(void * argument)
 		logic.pirate_callback(pirate_from, pirate_to, pirate_next, pirate_percentage);
 		logic.start_signal();
 
+
+
 		auto [target_angle, target_speed] = logic.update();
+		//target_angle += 0.02f;
 		auto [vx_t, x_t, y_t, theta_t] = logic.get_odometry();
+
+		DistanceSensorTask(target_angle * -180.0f / 3.14f);
 
 
 		motorcontrol.actual_velocity = vx_t;

@@ -23,7 +23,7 @@ typedef struct
 	float distance;
 } DistanceSensorData_s;
 
-void DistanceSensorTask();
+void DistanceSensorTask(float steering_angle);
 
 
 #endif /* INC_DISTANCESENSOR_H_ */

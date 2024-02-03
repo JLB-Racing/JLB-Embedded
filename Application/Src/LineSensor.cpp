@@ -46,10 +46,13 @@ uint8_t infra_adc_data[32*2];
 /* Turns on every #num and #num + 4 Infraled on every led driving IC.*/
 void TurnOnInfraLEDs(GPIO_TypeDef* LE_port[2], uint16_t LE_pin[2],GPIO_TypeDef* OE_port[2], uint16_t OE_pin[2], uint8_t num)
 {
-	uint8_t data[4] = {0x11, 0x22, 0x44, 0x88};
+	uint8_t i;
+	uint8_t data = 0x11 << num;
 
-	HAL_SPI_Transmit(&hspi2, data, 4, 100);
-
+	for(i = 0; i < 4; ++i)
+	{
+		HAL_SPI_Transmit(&hspi2, &data, 1, 100);
+	}
 	//TODO: maybe add a delay to let the latch in
 	HAL_GPIO_WritePin(LE_port[0], LE_pin[0], GPIO_PIN_SET);
 	HAL_GPIO_WritePin(LE_port[1], LE_pin[1], GPIO_PIN_SET);
@@ -96,7 +99,7 @@ void TurnOffInfraLEDs(GPIO_TypeDef* OE_port[2], uint16_t OE_pin[2])
 /* Reads out from all of the 4 adc ICs on one line sensor card 2 adc values each defined by num and writes it to res */
 void ReadADCValues(GPIO_TypeDef* ports[4], uint16_t pins[4], uint8_t adc_ic_index, uint8_t *res)
 {
-	uint8_t i = 0;
+	uint8_t i;
 	uint8_t tmp[2] = {0, 0};
 	HAL_GPIO_WritePin(ports[adc_ic_index], pins[adc_ic_index], GPIO_PIN_RESET);
 	for(i = 0; i < 8; ++i)
@@ -147,7 +150,6 @@ void LineSensorTask(void)
 #else
 	uint8_t j;
 	int8_t i;
-	uint32_t tick_before = HAL_GetTick();
 	for(i = 0; i < 4; ++i)
 	{
 		TurnOnInfraLEDs(infra_le_ports, infra_le_pins, infra_oe_ports, infra_le_pins, i);
@@ -172,8 +174,6 @@ void LineSensorTask(void)
 
 		TurnOffInfraLEDs(infra_oe_ports, infra_le_pins);
 	}
-	uint32_t tick_after = HAL_GetTick();
-
 
 	float denominator_f = 0.0f;
 	float denominator_r = 0.0f;
@@ -207,7 +207,7 @@ void LineSensorTask(void)
 		denominator_r += (float)(ls_data.adc_values_r[i]);
 		if(ls_data.adc_values_f[i] > 2000)
 		{
-			ls_data.front_detection[i] = false;
+			ls_data.front_detection[31-i] = false;
 
 		}
 
@@ -232,7 +232,7 @@ void LineSensorTask(void)
 
 	for(i = 1; i < 31; ++i)
 	{
-		if(ls_data.front_detection[i] == false)
+		if(ls_data.front_detection[31-i] == false)
 		{
 			led_front |= 0x80000000 >> (i);
 		}
@@ -241,6 +241,7 @@ void LineSensorTask(void)
 			led_rear |= 0x80000000 >> (i);
 		}
 	}
+
 	uint8_t cluster_start_front = SENSOR_COUNT + 1;
 	uint8_t cluster_end_front = SENSOR_COUNT + 1;
 	uint8_t cluster_start_rear = SENSOR_COUNT + 1;
@@ -274,15 +275,19 @@ void LineSensorTask(void)
 					line_position += ls_data.adc_values_f[i] * i;
 					denominator += ls_data.adc_values_f[i];
 				}
-				line_position = -1.0f * (((line_position / denominator) - 16.5f) * SENSOR_WIDTH / (SENSOR_COUNT - 1));
+				line_position = (((line_position / denominator) - 16.5f) * SENSOR_WIDTH / (SENSOR_COUNT - 1));
 
 				// add the line position to the vector
-				ls_data.front.push_back(line_position);
+				//ls_data.front.push_back(line_position);
+				ls_data.front.insert(ls_data.front.begin(), line_position);
 				// reset the cluster start and end
 				cluster_start_front = SENSOR_COUNT + 1;
 				cluster_end_front = SENSOR_COUNT + 1;
 			}
 		}
+
+		//std::reverse(std::begin(ls_data.front), std::end(ls_data.front));
+		//std::reverse(std::begin(ls_data.front_detection), std::end(ls_data.front_detection));
 
 		if (!ls_data.rear_detection[current_idx])
 		{

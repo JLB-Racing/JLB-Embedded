@@ -7,9 +7,15 @@
 
 #include "Encoder.h"
 #include "cmsis_os.h"
+#include "math.h"
+#include <deque>
 
-encoder_instance enc_instance_mot;
+#define ENCODER_AVERAGE 4
+#define ALPHA 0.1f
+
+encoder_instance enc_instance_mot = {0, 0, 0.0f};
 extern TIM_HandleTypeDef htim3;
+int64_t median_array[10];
 
 void update_encoder(encoder_instance *encoder_value, TIM_HandleTypeDef *htim)
 {
@@ -49,40 +55,35 @@ void update_encoder(encoder_instance *encoder_value, TIM_HandleTypeDef *htim)
 			}
 		}
 	}
+	//__HAL_TIM_SET_COUNTER(htim, 0);
 	//encoder_value->rpm = ((float) (encoder_value->velocity) / ENCODER_TASK_TIMESTEP) / 2 * 1000.0f * AB_ROT_PER_PULSE * GEAR_RATIO * 60;
 	encoder_value->last_counter_value = temp_counter;
 }
 
 void Encoder_Task(void * argument)
 {
-	// measure velocity, position
-	int16_t velocity_values[60] = {0};
-	uint8_t index = 0;
-	uint8_t i;
-
 	TickType_t xLastWakeTime;
 	xLastWakeTime = xTaskGetTickCount();
+	uint8_t circular_index = 0;
 	for(;;)
 	{
-		update_encoder(&enc_instance_mot, &htim3);
-		velocity_values[index++] = enc_instance_mot.velocity;
+		//update_encoder(&enc_instance_mot, &htim3);
+		median_array[circular_index++] = enc_instance_mot.velocity;
 
-		if(index == 60)
+		if(circular_index == 5u)
 		{
-			index = 0;
+			circular_index = 0u;
 		}
-
-		enc_instance_mot.rpm = 0.0f;
-		for(i = 0 ; i < 60; ++i)
-		{
-			enc_instance_mot.rpm += ((float)(velocity_values[i])) / 60.0f;
-		}
-
-		vTaskDelayUntil(&xLastWakeTime, 1u);
+		vTaskDelayUntil(&xLastWakeTime, 2u);
 	}
 }
 
 float CalculateRPM()
 {
-	return enc_instance_mot.rpm * -1.36f;
+	update_encoder(&enc_instance_mot, &htim3);
+	enc_instance_mot.rpm = ((1.0f - ALPHA) * enc_instance_mot.rpm) + (ALPHA * enc_instance_mot.velocity);
+
+	return enc_instance_mot.velocity * -1.0f / 10.0f* 1.29230F;
+
+
 }

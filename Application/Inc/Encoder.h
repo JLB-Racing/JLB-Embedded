@@ -16,8 +16,8 @@
 #define GEAR_RATIO				0.27085f
 
 typedef struct{
-	int16_t velocity;
-	uint32_t last_counter_value;
+	int64_t velocity;
+	uint64_t last_counter_value;
 	float rpm;
 }encoder_instance;
 

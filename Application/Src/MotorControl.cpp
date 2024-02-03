@@ -10,8 +10,10 @@
 #include "ADC.h"
 #include "JLB/pid.hxx"
 
+#define ALPHA 0.15f
+
 extern analog_signals_s adc_values;
-MotorControData_s motorcontrol = {0};
+MotorControData_s motorcontrol = {0.0f};
 extern TIM_HandleTypeDef htim5;
 extern uint32_t usWidth_throttle;
 float pi_integral_error = 0.0f;
@@ -57,6 +59,9 @@ void MotorControlTask()
 	}
 */
 
+	//motorcontrol.duty_cycle = 0.7;
+
+	//motorcontrol.duty_cycle = motorcontrol.duty_cycle * (1.0f - ALPHA) + (motorcontrol.duty_cycle_prev * ALPHA);
 
     __HAL_TIM_SET_COMPARE(&htim5, TIM_CHANNEL_4, motorcontrol.duty_cycle * PWM_COUNTER_PREIOD);
     __HAL_TIM_SET_COMPARE(&htim5, TIM_CHANNEL_1, PWM_COUNTER_PREIOD - (motorcontrol.duty_cycle * PWM_COUNTER_PREIOD));
