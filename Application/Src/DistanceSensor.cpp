@@ -57,12 +57,12 @@ void DistanceSensorTask(float steering_angle)
 	short_left = distance_sensor.distance_short[0];
 	short_left -= 8.0f;
 
-	if(steering_angle > 22.5f / 3.0f)
+	if((steering_angle > 22.5f / 3.0f) && (short_left < 20.0f))
 	{
 		distance_sensor.distance = std::min(short_left, long_middle);
 
 	}
-	else if(steering_angle < -22.5f / 3.0f)
+	else if((steering_angle < -22.5f / 3.0f) && (short_right < 20.0f))
 	{
 		distance_sensor.distance = std::min(short_right, long_middle);
 	}

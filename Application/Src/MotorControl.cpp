@@ -58,8 +58,10 @@ void MotorControlTask()
 
 	}
 */
-
-	//motorcontrol.duty_cycle = 0.7;
+	if(motorcontrol.target_velocity < 0.0f)
+	{
+		motorcontrol.duty_cycle = 0.40;
+	}
 
 	//motorcontrol.duty_cycle = motorcontrol.duty_cycle * (1.0f - ALPHA) + (motorcontrol.duty_cycle_prev * ALPHA);
 

@@ -76,7 +76,7 @@ void RegistrateUserTasks()
 {
 	adcTaskHandle = osThreadNew(ADCTask, NULL, &adcTask_attributes);
 	mainTaskHandle = osThreadNew(MainTask, NULL, &mainTask_attributes);
-	encoderTaskHandle = osThreadNew(Encoder_Task, NULL, &encoderTask_attributes);
+	//encoderTaskHandle = osThreadNew(Encoder_Task, NULL, &encoderTask_attributes);
 	IMUTaskHandle = osThreadNew(IMUTask, NULL, &IMUTask_attributes);
 	LSTaskHandle = osThreadNew(LSTask, NULL, &LSTask_attributes);
 
@@ -131,7 +131,7 @@ void MainTask(void * argument)
 
 		auto [derivative, integral, prev_error] = motorcontrol_pid.get_debug();
 
-		logic.imu_callback(lv_battery_voltage,motorcontrol.battery_voltage,imu.yaw,derivative, integral, prev_error);
+		logic.imu_callback(imu.roll,imu.pitch,imu.yaw,imu.acc_x, imu.acc_y, imu.acc_y);
 		logic.rpm_callback(wheel_rpm);
 
 		logic.set_detection_front( ls_data.front_detection, ls_data.front);
@@ -159,6 +159,8 @@ void MainTask(void * argument)
 		meas.motor_current = motorcontrol.motor_current;
 		meas.object_range = distance_sensor.distance;
 		meas.wheel_rpm = wheel_rpm;
+		meas.lv_battery_voltage = lv_battery_voltage;
+	    meas.hv_battery_voltage = motorcontrol.battery_voltage;
 		logic.set_measurements(meas);
 
 		SetSteeringAngle(target_angle * -180.0f / 3.14f);
