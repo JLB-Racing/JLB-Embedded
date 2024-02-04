@@ -29,5 +29,5 @@ typedef struct
 }LineSensorData_s;
 
 void LineSensorTask(void);
-
+float getPercentageFront(void);
 #endif /* INC_LINESENSOR_H_ */

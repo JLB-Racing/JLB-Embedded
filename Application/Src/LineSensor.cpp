@@ -333,3 +333,18 @@ void LineSensorTask(void)
 
 #endif
 }
+
+float getPercentageFront(void)
+{
+	uint8_t i;
+	uint8_t on = 0u;
+	for(i = 1; i < 31; ++i)
+	{
+		if(ls_data.front_detection[i] == false)
+		{
+			on++;
+		}
+	}
+	return ((float)(on) / 31.0f);
+}
+

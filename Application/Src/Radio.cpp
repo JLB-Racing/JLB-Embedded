@@ -43,7 +43,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 		if (length == 6)
 		{
 			//FLOOD message received
-			if (!strcmp("FLOOD!\r", reinterpret_cast<const char*>(radio_rxBuffer)))
+			if (!strncmp("FLOOD!\r", reinterpret_cast<const char*>(radio_rxBuffer),6))
 			{
 				flood_arrived = true;
 			}
