@@ -22,7 +22,7 @@ PID motorcontrol_pid{SPEED_CONTROLER_KP,SPEED_CONTROLLER_KI, SPEED_CONTROLLER_KD
 uint32_t tick_counter = 0u;
 uint32_t tick_counter_prev = 0u;
 
-void MotorControlTask()
+void MotorControlTask(jlb::Mission mission)
 {
 	if((usWidth_throttle > 1800) && (usWidth_throttle < 2800))
 	{
@@ -61,6 +61,11 @@ void MotorControlTask()
 	if(motorcontrol.target_velocity < 0.0f)
 	{
 		motorcontrol.duty_cycle = 0.40;
+	}
+
+	if((mission == jlb::Mission::LABYRINTH) && (usWidth_throttle > 1800) && (usWidth_throttle < 2800))
+	{
+		motorcontrol.duty_cycle = 0.62;
 	}
 
 	//motorcontrol.duty_cycle = motorcontrol.duty_cycle * (1.0f - ALPHA) + (motorcontrol.duty_cycle_prev * ALPHA);

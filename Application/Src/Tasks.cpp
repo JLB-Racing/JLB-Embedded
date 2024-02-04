@@ -137,8 +137,8 @@ void MainTask(void * argument)
 		logic.set_detection_front( ls_data.front_detection, ls_data.front);
 		logic.set_detection_rear(ls_data.rear_detection, ls_data.rear);
 		logic.set_object_range(distance_sensor.distance);
-		logic.set_under_gate(ls_data.front.size() == 4u);
-		logic.set_at_cross_section(getPercentageFront() > jlb::CROSS_SECTION_THRESHOLD);
+		logic.set_under_gate(ls_data.front.size() >= 4u);
+		logic.set_at_cross_section((getPercentageFront() > jlb::CROSS_SECTION_THRESHOLD) && (ls_data.front.size() <= 2));
 		logic.set_flood(flood_active);
 		logic.pirate_callback(pirate_from, pirate_to, pirate_next, pirate_percentage);
 		logic.start_signal();
@@ -147,14 +147,14 @@ void MainTask(void * argument)
 
 		auto [target_angle, target_speed] = logic.update();
 		//target_angle += 0.02f;
-		auto [vx_t, x_t, y_t, theta_t] = logic.get_odometry();
+		auto [vx_t, x_t, y_t, theta_t, distance_local] = logic.get_odometry();
 
 		DistanceSensorTask(target_angle * -180.0f / 3.14f);
 
 
 		motorcontrol.actual_velocity = vx_t;
 		motorcontrol.target_velocity = target_speed;
-		MotorControlTask();
+		MotorControlTask(logic.as_state.mission);
 
 		Measurements meas;
 		meas.duty_cycle = motorcontrol.duty_cycle;

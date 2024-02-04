@@ -1331,6 +1331,8 @@ __weak void StartDefaultTask(void *argument)
   for(;;)
   {
 	  HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
+	  HAL_GPIO_TogglePin(LED_BLUE_GPIO_Port, LED_BLUE_Pin);
+
 	  vTaskDelay(100);
   }
   /* USER CODE END 5 */

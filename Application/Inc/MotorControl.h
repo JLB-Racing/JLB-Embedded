@@ -8,6 +8,7 @@
 #ifndef INC_MOTORCONTROL_H_
 #define INC_MOTORCONTROL_H_
 
+#include "JLB/types.hxx"
 
 #define ANALOG_TO_MOTOR_BATT		6.0f
 #define MOTOR_CURR_NULL				1.59f
@@ -37,6 +38,6 @@ typedef struct
 	float duty_cycle_prev;
 } MotorControData_s;
 
-void MotorControlTask();
+void MotorControlTask(jlb::Mission mission);
 
 #endif /* INC_MOTORCONTROL_H_ */
