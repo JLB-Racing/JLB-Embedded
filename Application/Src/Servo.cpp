@@ -22,16 +22,8 @@ uint8_t Is_First_Captured = 0;
 /* Angle in +90 to -90 degree */
 void SetSteeringAngle(float angle)
 {
-	if((usWidth_throttle > 1800) && (usWidth_throttle < 2800))
-	{
-		uint16_t compare = SERVO_NULL + (angle/ 22.5f * SERVO_RANGE);
-	    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, compare);
-	}
-	else
-	{
-	    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, 0);
-	}
-
+	uint16_t compare = SERVO_NULL + (angle/ 22.5f * SERVO_RANGE);
+	__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, compare);
 }
 
 
@@ -47,7 +39,6 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 	else if (htim->Channel == HAL_TIM_ACTIVE_CHANNEL_4)
 	{
 		falling_value = HAL_TIM_ReadCapturedValue(htim, TIM_CHANNEL_4);  // read second value
-
 
 		float refClock = TIMCLOCK/(PRESCALAR);
 		float mFactor = 1000000/refClock;

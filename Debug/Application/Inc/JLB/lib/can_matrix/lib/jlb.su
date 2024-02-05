@@ -23,3 +23,5 @@
 ../Application/Inc/JLB/lib/can_matrix/lib/jlb.c:933:10:Pack_logic_3_jlb	32	static
 ../Application/Inc/JLB/lib/can_matrix/lib/jlb.c:959:10:Unpack_logic_4_jlb	24	static
 ../Application/Inc/JLB/lib/can_matrix/lib/jlb.c:1024:10:Pack_logic_4_jlb	32	static
+../Application/Inc/JLB/lib/can_matrix/lib/jlb.c:1050:10:Unpack_logic_5_jlb	24	static
+../Application/Inc/JLB/lib/can_matrix/lib/jlb.c:1092:10:Pack_logic_5_jlb	32	static

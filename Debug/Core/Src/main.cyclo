@@ -22,5 +22,5 @@
 ../Core/Src/main.cpp:1169:13:void MX_DMA_Init()	1
 ../Core/Src/main.cpp:1194:13:void MX_GPIO_Init()	1
 ../Core/Src/main.cpp:1327:13:void StartDefaultTask(void*)	1
-../Core/Src/main.cpp:1347:6:void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef*)	2
-../Core/Src/main.cpp:1363:6:void Error_Handler()	1
+../Core/Src/main.cpp:1349:6:void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef*)	2
+../Core/Src/main.cpp:1365:6:void Error_Handler()	1

@@ -66,6 +66,7 @@ Application/Src/Tasks.o: ../Application/Src/Tasks.cpp \
  ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h \
  C:/RobonAUT/JLB-Embedded/Application/Inc/Servo.h \
  C:/RobonAUT/JLB-Embedded/Application/Inc/MotorControl.h \
+ C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/types.hxx \
  C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/logic.hxx \
  C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/as_state.hxx \
  C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/common.hxx \
@@ -89,7 +90,8 @@ Application/Src/Tasks.o: ../Application/Src/Tasks.cpp \
  C:/RobonAUT/JLB-Embedded/Application/Inc/IMU.h \
  C:/RobonAUT/JLB-Embedded/Application/Inc/DistanceSensor.h \
  C:/RobonAUT/JLB-Embedded/Application/Inc/Encoder.h \
- C:/RobonAUT/JLB-Embedded/Application/Inc/Radio.h
+ C:/RobonAUT/JLB-Embedded/Application/Inc/Radio.h \
+ C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/types.hxx
 C:/RobonAUT/JLB-Embedded/Application/Inc/Tasks.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal.h:
@@ -158,6 +160,7 @@ C:/RobonAUT/JLB-Embedded/Application/Inc/Tasks.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h:
 C:/RobonAUT/JLB-Embedded/Application/Inc/Servo.h:
 C:/RobonAUT/JLB-Embedded/Application/Inc/MotorControl.h:
+C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/types.hxx:
 C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/logic.hxx:
 C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/as_state.hxx:
 C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/common.hxx:
@@ -182,3 +185,4 @@ C:/RobonAUT/JLB-Embedded/Application/Inc/IMU.h:
 C:/RobonAUT/JLB-Embedded/Application/Inc/DistanceSensor.h:
 C:/RobonAUT/JLB-Embedded/Application/Inc/Encoder.h:
 C:/RobonAUT/JLB-Embedded/Application/Inc/Radio.h:
+C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/types.hxx:

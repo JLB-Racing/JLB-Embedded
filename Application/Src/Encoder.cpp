@@ -10,12 +10,12 @@
 #include "math.h"
 #include <deque>
 
-#define ENCODER_AVERAGE 4
 #define ALPHA 0.1f
 
-encoder_instance enc_instance_mot = {0, 0, 0.0f};
+encoder_instance enc_instance_mot = {0, 0, 0, 0.0f};
 extern TIM_HandleTypeDef htim3;
-int64_t median_array[10];
+int64_t median_array[11];
+uint8_t median_index = 0;
 
 void update_encoder(encoder_instance *encoder_value, TIM_HandleTypeDef *htim)
 {
@@ -48,6 +48,7 @@ void update_encoder(encoder_instance *encoder_value, TIM_HandleTypeDef *htim)
 			if (__HAL_TIM_IS_TIM_COUNTING_DOWN(htim))
 			{
 				encoder_value->velocity = temp_counter - encoder_value->last_counter_value;
+
 			}
 			else
 			{
@@ -55,7 +56,7 @@ void update_encoder(encoder_instance *encoder_value, TIM_HandleTypeDef *htim)
 			}
 		}
 	}
-	//__HAL_TIM_SET_COUNTER(htim, 0);
+
 	//encoder_value->rpm = ((float) (encoder_value->velocity) / ENCODER_TASK_TIMESTEP) / 2 * 1000.0f * AB_ROT_PER_PULSE * GEAR_RATIO * 60;
 	encoder_value->last_counter_value = temp_counter;
 }
@@ -81,9 +82,29 @@ void Encoder_Task(void * argument)
 float CalculateRPM()
 {
 	update_encoder(&enc_instance_mot, &htim3);
-	enc_instance_mot.rpm = ((1.0f - ALPHA) * enc_instance_mot.rpm) + (ALPHA * enc_instance_mot.velocity);
+	/*if(std::abs(enc_instance_mot.velocity * -1.0f / 10.0f* 1.29230f) < 950)
+	{
+		int64_t tmp = enc_instance_mot.velocity_prev;
+		enc_instance_mot.velocity_prev = enc_instance_mot.velocity;
+		return (enc_instance_mot.velocity * -1.0f / 10.0f* 1.29230f * 0.8f) + (tmp * -1.0f / 10.0f* 1.29230f *0.2f);
+	}
+	return enc_instance_mot.velocity_prev * -1.0f / 10.0f* 1.29230f;
+	*/
+	median_array[median_index++] = enc_instance_mot.velocity;
 
-	return enc_instance_mot.velocity * -1.0f / 10.0f* 1.29230F;
+	if(median_index == 11)
+	{
+		median_index = 0;
+	}
 
+	float sorted_arr[11];
+	uint8_t i;
+	for(i = 0; i < 11; ++i)
+	{
+		sorted_arr[i] = median_array[i] * -1.0f / 10.0f* 1.29230f;
+	}
+	std::sort(std::begin(sorted_arr), std::end(sorted_arr));
+
+	return sorted_arr[5];
 
 }

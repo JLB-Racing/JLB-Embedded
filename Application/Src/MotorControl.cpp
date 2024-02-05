@@ -24,14 +24,9 @@ uint32_t tick_counter_prev = 0u;
 
 void MotorControlTask(jlb::Mission mission)
 {
-	if((usWidth_throttle > 1800) && (usWidth_throttle < 2800))
-	{
-		HAL_GPIO_WritePin(DRIVE_ENABLE_GPIO_Port, DRIVE_ENABLE_Pin, GPIO_PIN_SET);
-	}
-	else if((motorcontrol.actual_velocity < 0.3f) && (motorcontrol.target_velocity < 0.3f))
-	{
-		HAL_GPIO_WritePin(DRIVE_ENABLE_GPIO_Port, DRIVE_ENABLE_Pin, GPIO_PIN_RESET);
-	}
+
+	HAL_GPIO_WritePin(DRIVE_ENABLE_GPIO_Port, DRIVE_ENABLE_Pin, GPIO_PIN_SET);
+
 
 	motorcontrol.battery_voltage = ((float)(adc_values.motor_batt_voltage_raw)) / 4096.0f * 3.3f * ANALOG_TO_MOTOR_BATT;
 	motorcontrol.motor_current = (((float)((adc_values.motor_curr_raw)) / 4096.0f) * 3.3f - MOTOR_CURR_NULL) / MOTOR_CURR_SENSITIVITY;
@@ -63,10 +58,6 @@ void MotorControlTask(jlb::Mission mission)
 		motorcontrol.duty_cycle = 0.40;
 	}
 
-	if((mission == jlb::Mission::LABYRINTH) && (usWidth_throttle > 1800) && (usWidth_throttle < 2800))
-	{
-		motorcontrol.duty_cycle = 0.62;
-	}
 
 	//motorcontrol.duty_cycle = motorcontrol.duty_cycle * (1.0f - ALPHA) + (motorcontrol.duty_cycle_prev * ALPHA);
 

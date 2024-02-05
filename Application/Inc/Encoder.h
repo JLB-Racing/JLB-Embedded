@@ -17,6 +17,7 @@
 
 typedef struct{
 	volatile int64_t velocity;
+	volatile int64_t velocity_prev;
 	uint64_t last_counter_value;
 	float rpm;
 }encoder_instance;

@@ -8,6 +8,7 @@ C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.external
 ../Application/Src/LineSensor.cpp:93:6:void TurnOffInfraLEDs(GPIO_TypeDef**, uint16_t*)	16	static
 ../Application/Src/LineSensor.cpp:100:6:void ReadADCValues(GPIO_TypeDef**, uint16_t*, uint8_t, uint8_t*)	32	static
 ../Application/Src/LineSensor.cpp:114:6:void LineSensorTask()	104	static
+../Application/Src/LineSensor.cpp:337:7:float getPercentageFront()	16	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/stl_vector.h:131:2:std::_Vector_base<_Tp, _Alloc>::_Vector_impl::_Vector_impl() [with _Tp = float; _Alloc = std::allocator<float>]	16	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/allocator.h:174:7:constexpr std::allocator< <template-parameter-1-1> >::~allocator() [with _Tp = float]	16	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/bits/stl_vector.h:333:7:std::_Vector_base<_Tp, _Alloc>::~_Vector_base() [with _Tp = float; _Alloc = std::allocator<float>]	16	static
@@ -84,6 +85,6 @@ C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.external
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/c++/11.3.1/ext/new_allocator.h:103:7:_Tp* __gnu_cxx::new_allocator<_Tp>::allocate(__gnu_cxx::new_allocator<_Tp>::size_type, const void*) [with _Tp = float]	24	static
 C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\arm-none-eabi\include\c++\11.3.1\bits\stl_uninitialized.h:1006:5:std::__enable_if_t<std::__is_bitwise_relocatable<_Tp>::value, _Tp*> std::__relocate_a_1(_Tp*, _Tp*, _Tp*, std::allocator<_T2>&) [with _Tp = float; _Up = float]	32	static
 C:/RobonAUT/JLB-Embedded/Application/Inc/LineSensor.h:29:2:LineSensorData_s::~LineSensorData_s()	16	static
-../Application/Src/LineSensor.cpp:335:1:void __static_initialization_and_destruction_0(int, int)	16	static
-../Application/Src/LineSensor.cpp:335:1:cpp)	8	static
-../Application/Src/LineSensor.cpp:335:1:cpp)	8	static
+../Application/Src/LineSensor.cpp:349:1:void __static_initialization_and_destruction_0(int, int)	16	static
+../Application/Src/LineSensor.cpp:349:1:cpp)	8	static
+../Application/Src/LineSensor.cpp:349:1:cpp)	8	static

@@ -20,6 +20,8 @@
 #include "DistanceSensor.h"
 #include "Encoder.h"
 #include "Radio.h"
+#include "JLB/types.hxx"
+
 
 extern uint32_t adc_values_raw[8];
 extern ADC_HandleTypeDef hadc1;
@@ -34,6 +36,7 @@ float motor_battery_voltage, lv_battery_voltage, motor_current;
 float wheel_rpm;
 
 uint8_t telemetry_delayer = 0u;
+uint8_t start_button = 0u;
 
 uint32_t tick_counter_main, tick_counter_main_prev;
 float dt_main;
@@ -41,8 +44,10 @@ float dt_main;
 extern bool flood_arrived;
 extern char pirate_from, pirate_to, pirate_next;
 extern int pirate_percentage;
+extern uint8_t countdown_value;
+
 bool flood_active = false;
-uint8_t flood_counter = 40u;
+uint16_t flood_counter = 300u;
 
 jlb::Logic logic;
 
@@ -126,6 +131,12 @@ void MainTask(void * argument)
 
 	for (;;)
 	{
+		start_button = HAL_GPIO_ReadPin(SET_BUTTON_GPIO_Port, SET_BUTTON_Pin);
+        if((start_button) || (countdown_value == 0u))
+        {
+    		logic.start_signal();
+        }
+
 		lv_battery_voltage = adc_values.lv_batt_voltage_raw / 4096.0f * 3.3f * LV_BATERY_VOLTAGE_DIVIDER * 1.04447;
 		wheel_rpm = CalculateRPM();
 
@@ -141,7 +152,6 @@ void MainTask(void * argument)
 		logic.set_at_cross_section((getPercentageFront() > jlb::CROSS_SECTION_THRESHOLD) && (ls_data.front.size() <= 2));
 		logic.set_flood(flood_active);
 		logic.pirate_callback(pirate_from, pirate_to, pirate_next, pirate_percentage);
-		logic.start_signal();
 
 
 
@@ -154,6 +164,10 @@ void MainTask(void * argument)
 
 		motorcontrol.actual_velocity = vx_t;
 		motorcontrol.target_velocity = target_speed;
+        if (((usWidth_throttle > 1600) && (usWidth_throttle < 2800)))
+        {
+    		motorcontrol.target_velocity = 0.0f;
+        }
 		MotorControlTask(logic.as_state.mission);
 
 		Measurements meas;
@@ -169,16 +183,19 @@ void MainTask(void * argument)
 
 
 		// If flood message arrives reset counter and set flood to active
-		if((flood_arrived == true) && (flood_counter > 0))
+		if((flood_arrived == true))
 		{
 			flood_active = true;
 			flood_arrived = false;
-			flood_counter = 40u;
+			flood_counter = 300u;
 		}
 		//If flood message was not sent decrement counter
 		else
 		{
-			flood_counter--;
+			if(flood_counter > 0u)
+			{
+				flood_counter--;
+			}
 		}
 		//If decrement reaches zero flood is no longer active
 		if(flood_counter == 0)

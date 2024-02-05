@@ -49,6 +49,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 			}
 			else
 			{
+				countdown_value = 6u;
 				sscanf(reinterpret_cast<const char*>(radio_rxBuffer), "%c%c%c%03d", &pirate_from, &pirate_to, &pirate_next, &pirate_percentage);
 				/*pirate_from = radio_rxBuffer[0];
 				pirate_to = radio_rxBuffer[1];
