@@ -52,11 +52,11 @@ void MotorControlTask(jlb::Mission mission)
 		motorcontrol.duty_cycle = 0.5f;
 
 	}
-*/
 	if(motorcontrol.target_velocity < 0.0f)
 	{
 		motorcontrol.duty_cycle = 0.40;
 	}
+	*/
 
 
 	//motorcontrol.duty_cycle = motorcontrol.duty_cycle * (1.0f - ALPHA) + (motorcontrol.duty_cycle_prev * ALPHA);

@@ -205,7 +205,7 @@ void LineSensorTask(void)
 		ls_data.position_rear += (float)((i - 16.0f/* - rear_max_index*/) * ls_data.adc_values_r[i]);
 		denominator_f += (float)(ls_data.adc_values_f[i]);
 		denominator_r += (float)(ls_data.adc_values_r[i]);
-		if(ls_data.adc_values_f[i] > 2000)
+		if(ls_data.adc_values_f[i] > 2300)
 		{
 			ls_data.front_detection[31-i] = false;
 
@@ -216,6 +216,7 @@ void LineSensorTask(void)
 			ls_data.rear_detection[i] = false;
 		}
 	}
+
 
 	for(i = 2; i < SENSOR_COUNT - 2; ++i)
 	{
@@ -278,8 +279,8 @@ void LineSensorTask(void)
 				line_position = (((line_position / denominator) - 16.5f) * SENSOR_WIDTH / (SENSOR_COUNT - 1));
 
 				// add the line position to the vector
-				//ls_data.front.push_back(line_position);
-				ls_data.front.insert(ls_data.front.begin(), line_position);
+				ls_data.front.push_back(line_position);
+				//ls_data.front.insert(ls_data.front.begin(), line_position);
 				// reset the cluster start and end
 				cluster_start_front = SENSOR_COUNT + 1;
 				cluster_end_front = SENSOR_COUNT + 1;
@@ -316,7 +317,8 @@ void LineSensorTask(void)
 				}
 				line_position = ((line_position / denominator) - 16.5f) * SENSOR_WIDTH / (SENSOR_COUNT - 1);
 
-				ls_data.rear.push_back(line_position);
+				//ls_data.rear.push_back(line_position);
+				ls_data.rear.insert(ls_data.rear.begin(), line_position);
 				// reset the cluster start and end
 				cluster_start_rear = SENSOR_COUNT + 1;
 				cluster_end_rear = SENSOR_COUNT + 1;

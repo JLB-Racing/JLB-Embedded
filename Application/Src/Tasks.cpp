@@ -36,7 +36,9 @@ float motor_battery_voltage, lv_battery_voltage, motor_current;
 float wheel_rpm;
 
 uint8_t telemetry_delayer = 0u;
-uint8_t start_button = 0u;
+uint8_t start_button_fast = 0u;
+uint8_t start_button_labyrinth = 0u;
+
 
 uint32_t tick_counter_main, tick_counter_main_prev;
 float dt_main;
@@ -47,7 +49,7 @@ extern int pirate_percentage;
 extern uint8_t countdown_value;
 
 bool flood_active = false;
-uint16_t flood_counter = 300u;
+uint16_t flood_counter = 500u;
 
 jlb::Logic logic;
 
@@ -131,10 +133,17 @@ void MainTask(void * argument)
 
 	for (;;)
 	{
-		start_button = HAL_GPIO_ReadPin(SET_BUTTON_GPIO_Port, SET_BUTTON_Pin);
-        if((start_button) || (countdown_value == 0u))
+		start_button_fast = HAL_GPIO_ReadPin(SET_BUTTON_GPIO_Port, SET_BUTTON_Pin);
+		start_button_labyrinth = HAL_GPIO_ReadPin(RESET_BUTTON_GPIO_Port, RESET_BUTTON_Pin);
+
+
+        if((start_button_labyrinth) || (countdown_value == 0u))
         {
-    		logic.start_signal();
+        	logic.start_signal(false);
+        }
+        else if(start_button_fast)
+        {
+        	logic.start_signal(true);
         }
 
 		lv_battery_voltage = adc_values.lv_batt_voltage_raw / 4096.0f * 3.3f * LV_BATERY_VOLTAGE_DIVIDER * 1.04447;
@@ -156,7 +165,15 @@ void MainTask(void * argument)
 
 
 		auto [target_angle, target_speed] = logic.update();
-		//target_angle += 0.02f;
+		if(target_speed < 0.0f)
+		{
+			target_angle += 0.04f;
+		}
+		else
+		{
+			target_angle -= 0.02f;
+
+		}
 		auto [vx_t, x_t, y_t, theta_t, distance_local] = logic.get_odometry();
 
 		DistanceSensorTask(target_angle * -180.0f / 3.14f);
@@ -183,11 +200,11 @@ void MainTask(void * argument)
 
 
 		// If flood message arrives reset counter and set flood to active
-		if((flood_arrived == true))
+		if(flood_arrived == true)
 		{
 			flood_active = true;
 			flood_arrived = false;
-			flood_counter = 300u;
+			flood_counter = 500u;
 		}
 		//If flood message was not sent decrement counter
 		else
