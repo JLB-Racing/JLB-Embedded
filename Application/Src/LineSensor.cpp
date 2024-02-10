@@ -205,7 +205,7 @@ void LineSensorTask(void)
 		ls_data.position_rear += (float)((i - 16.0f/* - rear_max_index*/) * ls_data.adc_values_r[i]);
 		denominator_f += (float)(ls_data.adc_values_f[i]);
 		denominator_r += (float)(ls_data.adc_values_r[i]);
-		if(ls_data.adc_values_f[i] > 2300)
+		if(ls_data.adc_values_f[i] > 2200)
 		{
 			ls_data.front_detection[31-i] = false;
 
@@ -230,6 +230,18 @@ void LineSensorTask(void)
 			ls_data.rear_detection[i] = true;
 		}
 	}
+	ls_data.front_detection[1] = true;
+	ls_data.front_detection[2] = true;
+
+	ls_data.front_detection[29] = true;
+	ls_data.front_detection[30] = true;
+
+	ls_data.rear_detection[1] = true;
+	ls_data.rear_detection[2] = true;
+
+	ls_data.rear_detection[29] = true;
+	ls_data.rear_detection[30] = true;
+
 
 	for(i = 1; i < 31; ++i)
 	{

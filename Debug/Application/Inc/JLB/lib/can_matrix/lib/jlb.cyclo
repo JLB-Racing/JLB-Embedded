@@ -24,4 +24,4 @@
 ../Application/Inc/JLB/lib/can_matrix/lib/jlb.c:959:10:Unpack_logic_4_jlb	1
 ../Application/Inc/JLB/lib/can_matrix/lib/jlb.c:1024:10:Pack_logic_4_jlb	2
 ../Application/Inc/JLB/lib/can_matrix/lib/jlb.c:1050:10:Unpack_logic_5_jlb	1
-../Application/Inc/JLB/lib/can_matrix/lib/jlb.c:1092:10:Pack_logic_5_jlb	2
+../Application/Inc/JLB/lib/can_matrix/lib/jlb.c:1094:10:Pack_logic_5_jlb	2

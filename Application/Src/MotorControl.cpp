@@ -17,6 +17,7 @@ MotorControData_s motorcontrol = {0.0f};
 extern TIM_HandleTypeDef htim5;
 extern uint32_t usWidth_throttle;
 float pi_integral_error = 0.0f;
+extern uint8_t deadman_activated;
 
 PID motorcontrol_pid{SPEED_CONTROLER_KP,SPEED_CONTROLLER_KI, SPEED_CONTROLLER_KD, SPEED_CONTROLLER_TAU, SPEED_CONTROLLER_T, SPEED_CONTROLLER_MIN, SPEED_CONTROLLER_MAX, SPEED_CONTROLLER_DEADBAND,SPEED_CONTROLLER_DERIVATIVE_FILTER_ALPHA};
 uint32_t tick_counter = 0u;
@@ -35,7 +36,8 @@ void MotorControlTask(jlb::Mission mission)
 	tick_counter_prev = tick_counter;
 	tick_counter = HAL_GetTick();
     float dt = (((float)tick_counter) - ((float)(tick_counter_prev))) / 1000.0f;
-	motorcontrol.duty_cycle = motorcontrol_pid.update(motorcontrol.target_velocity, motorcontrol.actual_velocity, dt);
+
+   	motorcontrol.duty_cycle = motorcontrol_pid.update(motorcontrol.target_velocity, motorcontrol.actual_velocity, dt);
 	motorcontrol.duty_cycle += 0.5f;
 	motorcontrol.duty_cycle = (motorcontrol.duty_cycle > 0.95f) ? 0.95f : motorcontrol.duty_cycle;
 	motorcontrol.duty_cycle = (motorcontrol.duty_cycle < 0.05f) ? 0.05f : motorcontrol.duty_cycle;

@@ -70,6 +70,7 @@ Application/Src/Tasks.o: ../Application/Src/Tasks.cpp \
  C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/logic.hxx \
  C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/as_state.hxx \
  C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/common.hxx \
+ C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/defines.hxx \
  C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/types.hxx \
  C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/map_common.hxx \
  C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/controller.hxx \
@@ -164,6 +165,7 @@ C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/types.hxx:
 C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/logic.hxx:
 C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/as_state.hxx:
 C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/common.hxx:
+C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/defines.hxx:
 C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/types.hxx:
 C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/map_common.hxx:
 C:/RobonAUT/JLB-Embedded/Application/Inc/JLB/controller.hxx:

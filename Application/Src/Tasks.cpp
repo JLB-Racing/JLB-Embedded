@@ -37,8 +37,13 @@ float wheel_rpm;
 
 uint8_t telemetry_delayer = 0u;
 uint8_t start_button_fast = 0u;
+uint8_t reset_button_fast = 0u;
 uint8_t start_button_labyrinth = 0u;
+uint8_t reset_button_labyrinth = 0u;
 
+uint8_t deadman_activated = 0u;
+
+uint8_t rotary_value = 0u;
 
 uint32_t tick_counter_main, tick_counter_main_prev;
 float dt_main;
@@ -135,6 +140,51 @@ void MainTask(void * argument)
 	{
 		start_button_fast = HAL_GPIO_ReadPin(SET_BUTTON_GPIO_Port, SET_BUTTON_Pin);
 		start_button_labyrinth = HAL_GPIO_ReadPin(RESET_BUTTON_GPIO_Port, RESET_BUTTON_Pin);
+		reset_button_labyrinth = HAL_GPIO_ReadPin(BUTTON1_GPIO_Port, BUTTON1_Pin);
+		reset_button_fast = HAL_GPIO_ReadPin(BUTTON2_GPIO_Port, BUTTON2_Pin);
+
+		rotary_value = 0u;
+		rotary_value += HAL_GPIO_ReadPin(ROTARY1_GPIO_Port, ROTARY1_Pin);
+		rotary_value += HAL_GPIO_ReadPin(ROTARY1_GPIO_Port, ROTARY2_Pin)*2;
+		rotary_value += HAL_GPIO_ReadPin(ROTARY1_GPIO_Port, ROTARY3_Pin)*4;
+
+		rotary_value = 7 - rotary_value;
+
+		if(rotary_value < 8)
+		{
+			//bit 0
+			HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, (GPIO_PinState)(rotary_value & 1u) );
+			//bit 1
+			HAL_GPIO_WritePin(LV_BATT_L_GPIO_Port, LV_BATT_L_Pin, (GPIO_PinState)((rotary_value & 2u) >> 1));
+			//bit2
+			HAL_GPIO_WritePin(MOT_BATT_L_GPIO_Port, MOT_BATT_L_Pin, (GPIO_PinState)((rotary_value & 4u) >> 1));
+		}
+		else
+		{
+			//bit 0
+			HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET );
+			//bit 1
+			HAL_GPIO_WritePin(LV_BATT_L_GPIO_Port, LV_BATT_L_Pin, GPIO_PIN_RESET);
+			//bit2
+			HAL_GPIO_WritePin(MOT_BATT_L_GPIO_Port, MOT_BATT_L_Pin, GPIO_PIN_RESET);
+		}
+		//bit 0
+		HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_SET );
+		//bit 1
+		HAL_GPIO_WritePin(LV_BATT_L_GPIO_Port, LV_BATT_L_Pin, GPIO_PIN_SET);
+		//bit2
+		HAL_GPIO_WritePin(MOT_BATT_L_GPIO_Port, MOT_BATT_L_Pin, GPIO_PIN_SET);
+
+
+		if(reset_button_labyrinth)
+		{
+			logic.reset_signal({jlb::LabyrinthState::START});
+		}
+
+		if(reset_button_fast)
+		{
+			logic.reset_signal_fast(rotary_value);
+		}
 
 
         if((start_button_labyrinth) || (countdown_value == 0u))
@@ -165,7 +215,7 @@ void MainTask(void * argument)
 
 
 		auto [target_angle, target_speed] = logic.update();
-		if(target_speed < 0.0f)
+		/*if(target_speed < 0.0f)
 		{
 			target_angle += 0.04f;
 		}
@@ -173,7 +223,12 @@ void MainTask(void * argument)
 		{
 			target_angle -= 0.02f;
 
+		}*/
+		if(target_speed > 0.0f)
+		{
+			target_angle += 0.015f;
 		}
+
 		auto [vx_t, x_t, y_t, theta_t, distance_local] = logic.get_odometry();
 
 		DistanceSensorTask(target_angle * -180.0f / 3.14f);
